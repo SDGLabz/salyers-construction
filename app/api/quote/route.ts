@@ -39,6 +39,7 @@ type Body = {
   phone?: string;
   message?: string;
   website?: string; // honeypot — must be empty
+  ageConfirmed?: boolean; // required 18+ affirmation (COPPA / eligibility)
   // drawings upload — base64 file contents, emailed inline via Resend
   attachments?: { filename: string; content: string; type?: string }[];
   attachmentNames?: string;
@@ -79,6 +80,10 @@ export async function POST(req: Request) {
   if (!name || !EMAIL_RE.test(email) || !phone) {
     return NextResponse.json({ ok: false, error: "validation" }, { status: 400 });
   }
+  // Require the 18+ / eligibility affirmation (also enforced client-side).
+  if (body.ageConfirmed !== true) {
+    return NextResponse.json({ ok: false, error: "age_not_confirmed" }, { status: 400 });
+  }
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -102,6 +107,7 @@ export async function POST(req: Request) {
         ${row("Role", body.role)}
         ${row("Email", email)}
         ${row("Phone", phone)}
+        ${row("Age confirmed", "Yes — confirmed 18 or older")}
         <tr><td colspan="2" style="padding:10px 0 4px;border-top:1px solid #eef0f3"></td></tr>
         ${row("Service line", body.serviceLine)}
         ${row("Project type", body.projectType)}

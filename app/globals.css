@@ -5070,10 +5070,22 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
 
 /* ---- Wizard: age + agreement affirmation on the contact step ---- */
 .qw-agree {
-  margin-top: 16px;
-  font-size: 12.5px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 13px;
   line-height: 1.5;
-  color: var(--text-3);
+  color: var(--text-2);
+  cursor: pointer;
+}
+.qw-agree-box {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 1px 0 0;
+  accent-color: var(--belzona-blue);
+  cursor: pointer;
 }
 .qw-agree a {
   color: var(--orange-ink);

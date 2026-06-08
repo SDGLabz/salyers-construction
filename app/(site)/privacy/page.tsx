@@ -394,13 +394,16 @@ export default function PrivacyPage() {
           </p>
           <p>
             Consistent with the U.S. Children&rsquo;s Online Privacy Protection Act
-            (COPPA), we do <strong>not knowingly collect personal information from
-            children under 13</strong>, and we do not ask for a date of birth or
-            otherwise request information that would tell us a visitor is under 13. Our
-            forms ask each person to confirm they are at least 18 years old before
-            submitting. We also do not knowingly collect, sell, or share the personal
-            information of minors under 16, as addressed by California law (and we do not
-            sell or share personal information at all).
+            (COPPA), we <strong>never knowingly collect, use, sell, share, or retain the
+            personal information of children under 13</strong>, and we do not ask for a
+            date of birth or otherwise request information that would tell us a visitor is
+            under 13. Our forms <strong>require</strong> each person to confirm they are
+            at least 18 years old — via a mandatory checkbox — before a request can be
+            submitted, and our systems reject any submission that does not include that
+            confirmation. We do not use personal information for advertising or profiling,
+            including of minors. We also do not knowingly collect, sell, or share the
+            personal information of minors under 16, as addressed by California law (and
+            we do not sell or share personal information at all).
           </p>
           <p>
             We do not want personal information from children. If you are a parent or

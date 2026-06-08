@@ -127,11 +127,17 @@ export default function TermsPage() {
 
           <h2>2. Eligibility and acceptance</h2>
           <p>
-            You must be at least 18 years old and able to form a binding contract to use
-            the Site. If you use the Site on behalf of an organization, you represent
-            that you are authorized to accept these Terms for it, and &ldquo;you&rdquo;
-            includes that organization. Your use of the Site confirms your acceptance of
-            these Terms.
+            The Site and our services are intended for adults only. You must be at least
+            18 years old and able to form a binding contract to use the Site, and by
+            using it you represent and warrant that you are 18 or older.{" "}
+            <strong>If you are under 18, you may not use the Site or submit any
+            information through it.</strong> We do not knowingly permit anyone under 18 to
+            use the Site, or anyone under 13 to provide personal information, and our
+            forms require you to confirm you are at least 18 before you can submit (see
+            our <a href={`${SITE_URL}/privacy`}>Privacy Policy</a>). If you use the Site
+            on behalf of an organization, you represent that you are authorized to accept
+            these Terms for it, and &ldquo;you&rdquo; includes that organization. Your use
+            of the Site confirms your acceptance of these Terms.
           </p>
 
           <h2>3. Changes to these Terms</h2>

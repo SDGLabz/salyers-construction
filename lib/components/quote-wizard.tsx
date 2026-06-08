@@ -196,6 +196,7 @@ export function QuoteWizard({
   const [website, setWebsite] = useState(""); // honeypot
   const [files, setFiles] = useState<Upload[]>([]);
   const [fileNote, setFileNote] = useState("");
+  const [ageOk, setAgeOk] = useState(false); // required 18+ affirmation (COPPA / eligibility)
   const [status, setStatus] = useState<Status>("idle");
   const [touched, setTouched] = useState(false);
   const [confirmExit, setConfirmExit] = useState(false);
@@ -217,6 +218,7 @@ export function QuoteWizard({
     setWebsite("");
     setFiles([]);
     setFileNote("");
+    setAgeOk(false);
     setStatus("idle");
     setTouched(false);
     setConfirmExit(false);
@@ -326,7 +328,8 @@ export function QuoteWizard({
       return (
         contact.name.trim() !== "" &&
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.email) &&
-        contact.phone.trim() !== ""
+        contact.phone.trim() !== "" &&
+        ageOk
       );
     return true;
   };
@@ -379,6 +382,7 @@ export function QuoteWizard({
           ...contact,
           website,
           context,
+          ageConfirmed: ageOk,
           attachments: files.map((f) => ({ filename: f.name, content: f.content, type: f.type })),
           attachmentNames: files.map((f) => f.name).join(", "),
         }),
@@ -718,12 +722,21 @@ export function QuoteWizard({
             />
           </label>
         </div>
-        {touched && !canAdvance() ? <p className="qw-err">Please add your name, a valid email, and a phone number.</p> : null}
-        <p className="qw-agree">
-          By submitting, you confirm you are at least 18 years old and agree to our{" "}
-          <a href="/terms" target="_blank" rel="noopener noreferrer">Terms</a> and{" "}
-          <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
-        </p>
+        {touched && !canAdvance() ? <p className="qw-err">Please add your name, a valid email and phone, and confirm you&rsquo;re 18 or older.</p> : null}
+        <label className="qw-agree">
+          <input
+            type="checkbox"
+            className="qw-agree-box"
+            checked={ageOk}
+            onChange={(e) => setAgeOk(e.target.checked)}
+            aria-label="I confirm I am at least 18 years old and agree to the Terms and Privacy Policy"
+          />
+          <span>
+            I confirm I am at least 18 years old and agree to the{" "}
+            <a href="/terms" target="_blank" rel="noopener noreferrer">Terms</a> and{" "}
+            <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+          </span>
+        </label>
         <div className="qw-nav-row">
           <button type="button" className="btn btn-outline" onClick={back}>
             Back
