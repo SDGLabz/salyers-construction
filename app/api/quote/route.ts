@@ -39,6 +39,9 @@ type Body = {
   phone?: string;
   message?: string;
   website?: string; // honeypot — must be empty
+  // drawings upload — base64 file contents, emailed inline via Resend
+  attachments?: { filename: string; content: string; type?: string }[];
+  attachmentNames?: string;
 };
 
 const esc = (s: unknown) =>
@@ -111,10 +114,18 @@ export async function POST(req: Request) {
         ${row("Inquiry topic", body.topic)}
         ${row("Scope / details", body.details)}
         ${row("Message", body.message)}
+        ${row("Attachments", body.attachmentNames)}
         ${row("Opened from", body.context)}
       </table>
     </div>
   </div>`;
+
+  const attachments = Array.isArray(body.attachments)
+    ? body.attachments
+        .filter((a) => a && typeof a.filename === "string" && typeof a.content === "string" && a.content.length > 0)
+        .slice(0, 10)
+        .map((a) => ({ filename: a.filename, content: a.content }))
+    : [];
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -126,6 +137,7 @@ export async function POST(req: Request) {
         reply_to: email,
         subject: `Salyers — ${body.pathLabel || "request"} from ${name}${body.company ? ` (${body.company})` : ""}`,
         html,
+        ...(attachments.length ? { attachments } : {}),
       }),
     });
     if (!res.ok) {

@@ -19,7 +19,14 @@ type Field =
   | { kind: "single"; id: string; q: string; help?: string; options: string[] }
   | { kind: "text"; id: string; q: string; help?: string; placeholder?: string }
   | { kind: "textarea"; id: string; q: string; help?: string; placeholder?: string }
+  | { kind: "file"; id: string; q: string; help?: string }
   | { kind: "contact" };
+
+// Attachments are emailed inline via Resend, which travels in the API request
+// body — Vercel caps that at ~4.5 MB, so base64 has to stay under it. Cap raw
+// uploads at 3 MB total and steer larger drawing sets to an emailed share link.
+const MAX_UPLOAD_BYTES = 3 * 1024 * 1024;
+type Upload = { name: string; type: string; size: number; content: string };
 
 type PathId = "bid" | "drawings" | "samples" | "inquiry";
 
@@ -108,7 +115,8 @@ const PATHS: Record<PathId, { label: string; blurb: string; icon: string; steps:
       { kind: "single", id: "role", q: "What's your role on this project?", options: ROLE },
       { kind: "single", id: "serviceLine", q: "Which line of work do the drawings cover?", options: SERVICE_LINE },
       { kind: "single", id: "drawingStage", q: "What stage are the drawings?", help: "It tells us how firm the scope is when we price it.", options: DRAWING_STAGE },
-      { kind: "textarea", id: "details", q: "Describe the structure", help: "Building type, size, and what the documents call for. After you submit, just reply to our email with the PDFs or a share link — there's no upload here.", placeholder: "e.g. 1970s concrete parking deck, Tyfo column wraps per EOR, four levels…" },
+      { kind: "textarea", id: "details", q: "Describe the structure", help: "Building type, size, and what the documents call for.", placeholder: "e.g. 1970s concrete parking deck, Tyfo column wraps per EOR, four levels…" },
+      { kind: "file", id: "drawings", q: "Attach your drawings", help: "Optional — PDF, images, DWG/DXF or a ZIP, up to 3 MB total here. Larger set? Submit this and reply to our email with the files or a share link." },
       { kind: "contact" },
     ],
   },
@@ -167,6 +175,7 @@ export function QuoteWizard({
   children,
   context,
   inline = false,
+  initialPath,
 }: {
   label?: string;
   triggerClassName?: string;
@@ -174,6 +183,8 @@ export function QuoteWizard({
   children?: React.ReactNode;
   context?: string;
   inline?: boolean;
+  /** Skip the intro + chooser and open straight into one path (e.g. "Send Drawings"). */
+  initialPath?: PathId;
 }) {
   const [open, setOpen] = useState(false);
   const [path, setPath] = useState<PathId | null>(null);
@@ -183,6 +194,8 @@ export function QuoteWizard({
   const [others, setOthers] = useState<Record<string, string>>({});
   const [contact, setContact] = useState<Contact>({ name: "", company: "", role: "", email: "", phone: "", message: "" });
   const [website, setWebsite] = useState(""); // honeypot
+  const [files, setFiles] = useState<Upload[]>([]);
+  const [fileNote, setFileNote] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [touched, setTouched] = useState(false);
   const [confirmExit, setConfirmExit] = useState(false);
@@ -202,10 +215,41 @@ export function QuoteWizard({
     setOthers({});
     setContact({ name: "", company: "", role: "", email: "", phone: "", message: "" });
     setWebsite("");
+    setFiles([]);
+    setFileNote("");
     setStatus("idle");
     setTouched(false);
     setConfirmExit(false);
   }, []);
+
+  // Read picked files → base64, enforcing the total-size cap (Vercel body limit).
+  const addFiles = (list: FileList | null) => {
+    if (!list?.length) return;
+    setFileNote("");
+    let total = files.reduce((n, f) => n + f.size, 0);
+    for (const f of Array.from(list)) {
+      if (total + f.size > MAX_UPLOAD_BYTES) {
+        setFileNote(
+          "That would go over 3 MB. Submit what fits and reply to our email with the rest, or send a share link.",
+        );
+        continue;
+      }
+      total += f.size;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = String(reader.result || "");
+        const content = result.includes(",") ? result.split(",")[1] : result;
+        setFiles((cur) =>
+          cur.some((c) => c.name === f.name && c.size === f.size)
+            ? cur
+            : [...cur, { name: f.name, type: f.type || "application/octet-stream", size: f.size, content }],
+        );
+      };
+      reader.readAsDataURL(f);
+    }
+  };
+  const removeFile = (name: string, size: number) =>
+    setFiles((cur) => cur.filter((f) => !(f.name === name && f.size === size)));
 
   const doClose = useCallback(() => {
     clearTimer();
@@ -277,6 +321,7 @@ export function QuoteWizard({
     }
     if (current.kind === "text") return !!answers[current.id]?.trim();
     if (current.kind === "textarea") return true; // optional
+    if (current.kind === "file") return true; // optional
     if (current.kind === "contact")
       return (
         contact.name.trim() !== "" &&
@@ -334,6 +379,8 @@ export function QuoteWizard({
           ...contact,
           website,
           context,
+          attachments: files.map((f) => ({ filename: f.name, content: f.content, type: f.type })),
+          attachmentNames: files.map((f) => f.name).join(", "),
         }),
       });
       const json = (await res.json().catch(() => ({}))) as { ok?: boolean };
@@ -365,7 +412,10 @@ export function QuoteWizard({
           {path === "drawings" ? (
             <>
               {" "}
-              You can send drawings now by replying to our email at{" "}
+              {files.length
+                ? "We've got your drawings. "
+                : ""}
+              Need to add more or send a larger set? Just reply to our email at{" "}
               <a href={CONTACT.emailHref}>{CONTACT.email}</a>.
             </>
           ) : (
@@ -552,6 +602,70 @@ export function QuoteWizard({
           </button>
         </div>
       </div>
+    ) : current?.kind === "file" ? (
+      <div className="qw-q">
+        <div className="qw-q-head">
+          <span className="qw-path-tag">{PATHS[path].label}</span>
+          <span className="qw-q-no">
+            {stepNo} <span>/ {total}</span>
+          </span>
+        </div>
+        <h2>{current.q}</h2>
+        {current.help ? <p className="qw-q-help">{current.help}</p> : null}
+        <label
+          className="qw-file-drop"
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={(e) => {
+            e.preventDefault();
+            addFiles(e.dataTransfer.files);
+          }}
+        >
+          <input
+            type="file"
+            multiple
+            accept=".pdf,.jpg,.jpeg,.png,.webp,.zip,.dwg,.dxf,image/*,application/pdf"
+            onChange={(e) => {
+              addFiles(e.target.files);
+              e.target.value = "";
+            }}
+          />
+          <span className="qw-file-ic" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <path d="M12 16V4M7 9l5-5 5 5M5 20h14" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+          <span className="qw-file-cta">
+            <b>Choose files</b> or drag them here
+          </span>
+          <span className="qw-file-hint">PDF, images, DWG/DXF or ZIP · up to 3 MB total</span>
+        </label>
+        {files.length ? (
+          <ul className="qw-file-list">
+            {files.map((f) => (
+              <li key={f.name + f.size}>
+                <span className="qw-file-name">{f.name}</span>
+                <span className="qw-file-size">
+                  {f.size < 1048576 ? `${Math.max(1, Math.round(f.size / 1024))} KB` : `${(f.size / 1048576).toFixed(1)} MB`}
+                </span>
+                <button type="button" className="qw-file-rm" onClick={() => removeFile(f.name, f.size)} aria-label={`Remove ${f.name}`}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  </svg>
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+        {fileNote ? <p className="qw-err">{fileNote}</p> : null}
+        <div className="qw-nav-row">
+          <button type="button" className="btn btn-outline" onClick={back}>
+            Back
+          </button>
+          <button type="button" className="btn btn-primary" onClick={next}>
+            {files.length ? "Next" : "Skip"} <span className="ar" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
     ) : (
       /* contact */
       <div className="qw-q">
@@ -707,6 +821,10 @@ export function QuoteWizard({
         className={`${triggerClassName} qw-trigger`}
         onClick={() => {
           reset();
+          if (initialPath) {
+            setStarted(true);
+            setPath(initialPath);
+          }
           setOpen(true);
         }}
       >

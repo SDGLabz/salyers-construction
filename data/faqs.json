@@ -42,6 +42,41 @@
     "topic": "coatings"
   },
   {
+    "slug": "coatings-flake-vs-solid",
+    "name": "What's the difference between solid color, flake, and quartz systems?",
+    "question": "What's the difference between solid color, flake, and quartz systems?",
+    "answer": "A solid-color system is one uniform color — clean, bright, and economical. Flake (or broadcast) systems blend vinyl chips into the coating for a textured, hide-everything look that is popular in garages and showrooms. Quartz systems broadcast colored quartz aggregate for a heavier-duty, naturally slip-resistant surface used in wet and food-service areas. We match the system to how the floor looks and how hard it works.",
+    "topic": "coatings"
+  },
+  {
+    "slug": "coatings-slip-resistance",
+    "name": "Can the floor be made slip-resistant?",
+    "question": "Can the floor be made slip-resistant?",
+    "answer": "Yes. Slip resistance is tuned by broadcasting aggregate — quartz, aluminum oxide, or polymer grit — into the system and choosing the right topcoat. We set the texture to the environment, balancing traction in wet or greasy areas against ease of cleaning, and we confirm the approach in the written bid.",
+    "topic": "coatings"
+  },
+  {
+    "slug": "coatings-moisture",
+    "name": "What if the slab has a moisture problem?",
+    "question": "What if the concrete slab has a moisture problem?",
+    "answer": "Concrete can carry moisture vapor that will lift a coating not built for it. Where it is a concern we test the slab and, when needed, install a moisture-mitigation primer rated for the measured vapor emission before the system goes down. Catching it up front is far cheaper than recoating a failed floor.",
+    "topic": "coatings"
+  },
+  {
+    "slug": "coatings-lifespan",
+    "name": "How long does a resinous floor last?",
+    "question": "How long does a resinous floor last?",
+    "answer": "A properly specified and installed resinous floor is measured in years to decades, not seasons — the exact life depends on the system, the traffic, and the chemical exposure it sees. High-wear topcoats can be refreshed without redoing the whole build-up, which extends the floor further.",
+    "topic": "coatings"
+  },
+  {
+    "slug": "coatings-existing-floor",
+    "name": "Can you coat over an old or previously coated floor?",
+    "question": "Can you coat over an old or previously coated floor?",
+    "answer": "Often, yes. We assess the existing floor — coating type, adhesion, and condition — and either prepare and recoat it or remove it down to sound substrate. Oil-stained, previously coated, and worn floors are common; the prep approach and any repairs are spelled out in the written bid.",
+    "topic": "coatings"
+  },
+  {
     "slug": "lead-time",
     "name": "How fast can you get a bid back?",
     "question": "How fast can you get a bid back?",

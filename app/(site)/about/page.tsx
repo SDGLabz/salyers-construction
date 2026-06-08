@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/lib/components/page-hero";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
 import { seoTitle, SITE_URL } from "@/lib/site";
 import { CONTACT } from "@/lib/contact";
 import "./about.css";
@@ -39,12 +40,8 @@ export default function AboutPage() {
         title="A California GC. Engineering first, hands behind it."
         lead={`Salyers Construction has held a California B1 general contractor license since ${CONTACT.since}. The work is structural strengthening — principally fiber reinforced polymer seismic retrofit — with industrial epoxy coatings filling the calendar between seismic projects.`}
       >
-        <Link href="/contact" className="btn btn-primary">
-          Request a Bid
-        </Link>
-        <Link href="/contact" className="btn btn-outline">
-          Send Drawings
-        </Link>
+        <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+        <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
       </PageHero>
 
       {/* ---- Real credentials strip (NEVER fabricated) ---- */}
@@ -152,8 +149,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ---- Technical approach + credentials aside (.ov2) ---- */}
-      <section className="sec sec--cream">
+      {/* ---- Technical approach + credentials aside (.ov2), subtle cursor glow ---- */}
+      <section className="sec sec--cream" data-glow>
         <div className="wrap">
           <div className="sec-head">
             <div className="eyebrow">How the work is governed</div>
@@ -221,8 +218,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ---- Honest about the shape of the company (out-of-scope) ---- */}
-      <section className="sec">
+      {/* ---- Honest about the shape of the company (out-of-scope), cursor glow ---- */}
+      <section className="sec" data-glow>
         <div className="wrap">
           <div className="sec-head">
             <div className="eyebrow">Straight talk</div>
@@ -234,7 +231,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="ab-honest">
-            <div className="ab-honest-row">
+            <div className="ab-honest-row fb-card">
               <b>Non-union</b>
               <p>
                 The shop is small. That means lower overhead, faster mobilization on
@@ -242,7 +239,7 @@ export default function AboutPage() {
                 of project management to reach the lead.
               </p>
             </div>
-            <div className="ab-honest-row">
+            <div className="ab-honest-row fb-card">
               <b>Engineering rigor at small-shop scale</b>
               <p>
                 Salyers does not pretend to be a 200-person concrete restoration
@@ -250,7 +247,7 @@ export default function AboutPage() {
                 a certified system specification, and document what was done.
               </p>
             </div>
-            <div className="ab-honest-row">
+            <div className="ab-honest-row fb-card">
               <b>Statewide for seismic</b>
               <p>
                 Seismic FRP is the primary line of business, and the team will travel
@@ -259,7 +256,7 @@ export default function AboutPage() {
                 right-sized job.
               </p>
             </div>
-            <div className="ab-honest-row ab-honest-row--out">
+            <div className="ab-honest-row ab-honest-row--out fb-card">
               <b>Not the right call for everything</b>
               <p>
                 A residential garage coating, a soft-story wood-frame retrofit that is
@@ -281,13 +278,13 @@ export default function AboutPage() {
           <div className="mkt-grid mkt-grid--feat ab-jobgrid">
             <div className="mkt-tile">
               <Image
-                src="/images/jobs/job-5700.jpg"
-                alt="Externally bonded carbon fiber reinforcement on a structural concrete member."
+                src="/images/jobs/job-8293.jpg"
+                alt="Externally bonded carbon fiber fabric wrapped around a structural beam during a seismic FRP retrofit."
                 fill
                 loading="lazy"
                 quality={40}
                 sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 600px"
-                style={{ objectFit: "cover", objectPosition: "center 40%" }}
+                style={{ objectFit: "cover", objectPosition: "center 45%" }}
               />
               <div className="mkt-label">
                 <b>Seismic FRP retrofit</b>
@@ -329,16 +326,16 @@ export default function AboutPage() {
             <div className="mkt-tile">
               <Image
                 src="/images/jobs/job-3253.jpg"
-                alt="Decorative flake resinous floor coating installed over a prepared concrete slab."
+                alt="Salyers reviewing a resinous coating system with a Polymer Nation representative in the coatings lab."
                 fill
                 loading="lazy"
                 quality={40}
                 sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 25vw"
-                style={{ objectFit: "cover", objectPosition: "center 65%" }}
+                style={{ objectFit: "cover", objectPosition: "center 40%" }}
               />
               <div className="mkt-label">
-                <b>Industrial coatings</b>
-                <span>Polymer Nation resinous floor systems.</span>
+                <b>Trained on the systems</b>
+                <span>Polymer Nation resinous systems, learned firsthand.</span>
               </div>
             </div>
             <div className="mkt-tile">
@@ -375,12 +372,8 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="cta-band-actions">
-                <Link href="/contact" className="btn btn-primary">
-                  Request a Bid
-                </Link>
-                <Link href="/contact" className="btn btn-ghost">
-                  Send Drawings
-                </Link>
+                <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+                <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
               </div>
             </div>
           </div>

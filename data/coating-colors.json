@@ -1,0 +1,347 @@
+[
+  {
+    "tab": "Solid Colors",
+    "slug": "solid",
+    "note": "100% solids epoxy and topcoat colors — single, uniform color.",
+    "colors": [
+      {
+        "name": "Light Gray",
+        "code": "C-03",
+        "file": "/images/colors/solid/light-gray-c-03.png"
+      },
+      {
+        "name": "Medium Gray",
+        "code": "C-02",
+        "file": "/images/colors/solid/medium-gray-c-02.png"
+      },
+      {
+        "name": "Dark Gray",
+        "code": "C-01",
+        "file": "/images/colors/solid/dark-gray-c-01.png"
+      },
+      {
+        "name": "White",
+        "code": "C-18",
+        "file": "/images/colors/solid/white-c-18.png"
+      },
+      {
+        "name": "Beige",
+        "code": "C-13",
+        "file": "/images/colors/solid/beige-c-13.png"
+      },
+      {
+        "name": "Tan",
+        "code": "C-14",
+        "file": "/images/colors/solid/tan-c-14.png"
+      },
+      {
+        "name": "Warm Sun",
+        "code": "C-16",
+        "file": "/images/colors/solid/warm-sun-c-16.png"
+      },
+      {
+        "name": "Safety Yellow",
+        "code": "C-17",
+        "file": "/images/colors/solid/safety-yellow-c-17.png"
+      },
+      {
+        "name": "Tile Red",
+        "code": "C-12",
+        "file": "/images/colors/solid/tile-red-c-12.png"
+      },
+      {
+        "name": "Blue",
+        "code": "C-05",
+        "file": "/images/colors/solid/blue-c-05.png"
+      },
+      {
+        "name": "Twilight Blue",
+        "code": "C-06",
+        "file": "/images/colors/solid/twilight-blue-c-06.png"
+      },
+      {
+        "name": "Black",
+        "code": "C-08",
+        "file": "/images/colors/solid/black-c-08.png"
+      }
+    ]
+  },
+  {
+    "tab": "Flake Blends",
+    "slug": "flake",
+    "note": "Decorative vinyl-flake broadcast blends — the most popular garage and showroom finish.",
+    "colors": [
+      {
+        "name": "Ocean",
+        "code": "327-13",
+        "file": "/images/colors/flake/ocean-327-13.jpg"
+      },
+      {
+        "name": "Camouflage",
+        "code": "327-14",
+        "file": "/images/colors/flake/camouflage-327-14.jpg"
+      },
+      {
+        "name": "Argyle",
+        "code": "327-15",
+        "file": "/images/colors/flake/argyle-327-15.jpg"
+      },
+      {
+        "name": "Plantain",
+        "code": "327-16",
+        "file": "/images/colors/flake/plantain-327-16.jpg"
+      },
+      {
+        "name": "Mocha",
+        "code": "327-17",
+        "file": "/images/colors/flake/mocha-327-17.jpg"
+      },
+      {
+        "name": "Terra",
+        "code": "327-18",
+        "file": "/images/colors/flake/terra-327-18.jpg"
+      },
+      {
+        "name": "Stratus",
+        "code": "327-19",
+        "file": "/images/colors/flake/stratus-327-19.jpg"
+      },
+      {
+        "name": "Sandstone",
+        "code": "327-20",
+        "file": "/images/colors/flake/sandstone-327-20.jpg"
+      },
+      {
+        "name": "Paprika",
+        "code": "327-21",
+        "file": "/images/colors/flake/paprika-327-21.jpg"
+      },
+      {
+        "name": "Moss",
+        "code": "327-22",
+        "file": "/images/colors/flake/moss-327-22.jpg"
+      },
+      {
+        "name": "Tempest",
+        "code": "327-23",
+        "file": "/images/colors/flake/tempest-327-23.jpg"
+      },
+      {
+        "name": "Stonehenge",
+        "code": "327-24",
+        "file": "/images/colors/flake/stonehenge-327-24.jpg"
+      }
+    ]
+  },
+  {
+    "tab": "Specialty Flake",
+    "slug": "specialty-flake",
+    "note": "Bold, high-contrast random-flake blends for a statement floor.",
+    "colors": [
+      {
+        "name": "Seashore",
+        "code": "327-15",
+        "file": "/images/colors/specialty-flake/seashore-327-15.png"
+      },
+      {
+        "name": "Curacao",
+        "code": "327-13",
+        "file": "/images/colors/specialty-flake/curacao-327-13.png"
+      },
+      {
+        "name": "Sahara",
+        "code": "327-18",
+        "file": "/images/colors/specialty-flake/sahara-327-18.png"
+      },
+      {
+        "name": "Gladiator",
+        "code": "327-24",
+        "file": "/images/colors/specialty-flake/gladiator-327-24.png"
+      },
+      {
+        "name": "Cranberry",
+        "code": "327-15",
+        "file": "/images/colors/specialty-flake/cranberry-327-15.png"
+      },
+      {
+        "name": "Confetti",
+        "code": "327-22",
+        "file": "/images/colors/specialty-flake/confetti-327-22.jpg"
+      },
+      {
+        "name": "Moon Dust",
+        "code": "327-23",
+        "file": "/images/colors/specialty-flake/moon-dust-327-23.png"
+      },
+      {
+        "name": "Odyssey",
+        "code": "327-19",
+        "file": "/images/colors/specialty-flake/odyssey-327-19.jpg"
+      }
+    ]
+  },
+  {
+    "tab": "Quartz",
+    "slug": "quartz",
+    "note": "Colored-quartz broadcast systems — slip-resistant, extremely durable, ideal for wet and food-service areas.",
+    "colors": [
+      {
+        "name": "Safari",
+        "code": "321-19",
+        "file": "/images/colors/quartz/safari-321-19.jpg"
+      },
+      {
+        "name": "Auburn Sand",
+        "code": "321-20",
+        "file": "/images/colors/quartz/auburn-sand-321-20.jpg"
+      },
+      {
+        "name": "Autumn",
+        "code": "321-21",
+        "file": "/images/colors/quartz/autumn-321-21.jpg"
+      },
+      {
+        "name": "Purple Haze",
+        "code": "321-22",
+        "file": "/images/colors/quartz/purple-haze-321-22.jpg"
+      },
+      {
+        "name": "Granite",
+        "code": "321-23",
+        "file": "/images/colors/quartz/granite-321-23.jpg"
+      },
+      {
+        "name": "Pumpkin Spice",
+        "code": "321-24",
+        "file": "/images/colors/quartz/pumpkin-spice-321-24.jpg"
+      },
+      {
+        "name": "Sapphire",
+        "code": "321-25",
+        "file": "/images/colors/quartz/sapphire-321-25.jpg"
+      },
+      {
+        "name": "Sage Green",
+        "code": "321-26",
+        "file": "/images/colors/quartz/sage-green-321-26.jpg"
+      },
+      {
+        "name": "Arctic Storm",
+        "code": "321-27",
+        "file": "/images/colors/quartz/arctic-storm-321-27.jpg"
+      },
+      {
+        "name": "Azul",
+        "code": "321-28",
+        "file": "/images/colors/quartz/azul-321-28.jpg"
+      },
+      {
+        "name": "Evergreen",
+        "code": "321-29",
+        "file": "/images/colors/quartz/evergreen-321-29.jpg"
+      },
+      {
+        "name": "Crimson Stone",
+        "code": "321-30",
+        "file": "/images/colors/quartz/crimson-stone-321-30.jpg"
+      }
+    ]
+  },
+  {
+    "tab": "Terrazzo",
+    "slug": "terrazzo",
+    "note": "Polished terrazzo-look flake and aggregate blends for premium architectural floors.",
+    "colors": [
+      {
+        "name": "Taupe",
+        "code": "1375-01",
+        "file": "/images/colors/terrazzo/taupe-1375-01.webp"
+      },
+      {
+        "name": "Cafe",
+        "code": "1375-02",
+        "file": "/images/colors/terrazzo/cafe-1375-02.jpg"
+      },
+      {
+        "name": "Brown Stone",
+        "code": "1375-03",
+        "file": "/images/colors/terrazzo/brown-stone-1375-03.jpg"
+      },
+      {
+        "name": "Moonscape",
+        "code": "1375-04",
+        "file": "/images/colors/terrazzo/moonscape-1375-04.jpg"
+      },
+      {
+        "name": "Glacier",
+        "code": "1375-05",
+        "file": "/images/colors/terrazzo/glacier-1375-05.jpg"
+      },
+      {
+        "name": "Black Ice",
+        "code": "1375-06",
+        "file": "/images/colors/terrazzo/black-ice-1375-06.jpg"
+      },
+      {
+        "name": "Tundra",
+        "code": "1375-07",
+        "file": "/images/colors/terrazzo/tundra-1375-07.jpg"
+      },
+      {
+        "name": "Canary",
+        "code": "1375-08",
+        "file": "/images/colors/terrazzo/canary-1375-08.jpg"
+      },
+      {
+        "name": "Rose Stone",
+        "code": "1375-09",
+        "file": "/images/colors/terrazzo/rose-stone-1375-09.jpg"
+      },
+      {
+        "name": "Sage",
+        "code": "1375-10",
+        "file": "/images/colors/terrazzo/sage-1375-10.jpg"
+      },
+      {
+        "name": "Blue Isle",
+        "code": "1375-11",
+        "file": "/images/colors/terrazzo/blue-isle-1375-11.jpg"
+      },
+      {
+        "name": "Ocean",
+        "code": "1375-12",
+        "file": "/images/colors/terrazzo/ocean-1375-12.jpg"
+      },
+      {
+        "name": "Oatmeal",
+        "code": "326-13",
+        "file": "/images/colors/terrazzo/oatmeal-326-13.jpg"
+      },
+      {
+        "name": "Blue Agave",
+        "code": "326-14",
+        "file": "/images/colors/terrazzo/blue-agave-326-14.jpg"
+      },
+      {
+        "name": "Grapevine",
+        "code": "326-15",
+        "file": "/images/colors/terrazzo/grapevine-326-15.jpg"
+      },
+      {
+        "name": "Quarry",
+        "code": "326-16",
+        "file": "/images/colors/terrazzo/quarry-326-16.jpg"
+      },
+      {
+        "name": "Amber",
+        "code": "326-17",
+        "file": "/images/colors/terrazzo/amber-326-17.jpg"
+      },
+      {
+        "name": "Emerald",
+        "code": "326-19",
+        "file": "/images/colors/terrazzo/emerald-326-19.jpg"
+      }
+    ]
+  }
+]

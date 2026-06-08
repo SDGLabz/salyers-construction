@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/lib/components/page-hero";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
 import { seoTitle, SITE_URL } from "@/lib/site";
 import { CONTACT } from "@/lib/contact";
 import { getCertifications, getStandards } from "@/lib/catalog";
@@ -26,14 +26,14 @@ const CERT_PHOTOS: Record<
     objectPosition: "center 35%",
   },
   "loctite-tyfo": {
-    src: "/images/jobs/job-5700.jpg",
-    alt: "Externally bonded carbon-fiber fabric wrapped around a structural concrete column during an FRP seismic retrofit.",
-    objectPosition: "center",
+    src: "/images/jobs/job-g.jpg",
+    alt: "Externally bonded carbon FRP strips applied to a concrete deck during a Tyfo-system seismic retrofit.",
+    objectPosition: "center 35%",
   },
   "polymer-nation": {
-    src: "/images/jobs/job-3253.jpg",
-    alt: "A finished resinous floor coating, an example of an industrial epoxy system installed to the manufacturer's published method.",
-    objectPosition: "center",
+    src: "/images/jobs/job-1358.jpg",
+    alt: "A finished high-gloss resinous floor coating installed to the manufacturer's published method.",
+    objectPosition: "center 60%",
   },
 };
 
@@ -85,12 +85,8 @@ export default function CertificationsPage() {
         }
         lead="A licensed California general contractor, a certified applicator under the Henkel and LOCTITE Tyfo system, and a trained installer of Polymer Nation coatings. The paperwork is part of the work — every bid stands on a license and a system the design references."
       >
-        <Link href="/contact" className="btn btn-primary">
-          Request a Bid
-        </Link>
-        <Link href="/contact" className="btn btn-ghost">
-          Send Drawings
-        </Link>
+        <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+        <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
       </PageHero>
 
       {/* ---- Real-credentials strip (navy) — verifiable facts only ---- */}
@@ -246,12 +242,8 @@ export default function CertificationsPage() {
                 </p>
               </div>
               <div className="cta-band-actions">
-                <Link href="/contact" className="btn btn-primary">
-                  Request a Bid
-                </Link>
-                <Link href="/contact" className="btn btn-ghost">
-                  Send Drawings
-                </Link>
+                <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+                <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
               </div>
             </div>
           </div>

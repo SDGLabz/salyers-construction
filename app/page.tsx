@@ -7,6 +7,9 @@ import { getFrpTypes, getSectors } from "@/lib/catalog";
 import { CONTACT } from "@/lib/contact";
 import { SITE_URL, seoTitle } from "@/lib/site";
 import TiltCards from "@/lib/components/tilt-cards";
+import PointerGlow from "@/lib/components/pointer-glow";
+import { RevealOnScroll } from "@/lib/components/reveal";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
 import "./home.css";
 
 export const metadata: Metadata = {
@@ -126,7 +129,7 @@ export default function HomePage() {
       <main id="main" className="site-main" tabIndex={-1}>
         {/* (1) HERO — structural photo dimmed behind */}
         <PageHero
-          image="/images/jobs/courthouse-merced.jpg"
+          image="/images/jobs/job-6936.jpg"
           eyebrow="California B1 General Contractor · #960653 · Since 2011"
           title={
             <>
@@ -135,12 +138,8 @@ export default function HomePage() {
           }
           lead="Seismic FRP retrofit and industrial coatings, statewide California. We install Henkel and LOCTITE Tyfo composite systems and American-made resinous floors from engineer-of-record drawings — on commercial, industrial, multifamily, and infrastructure assets."
         >
-          <Link href="/contact" className="btn btn-primary">
-            Request a Bid
-          </Link>
-          <Link href="/contact" className="btn btn-ghost">
-            Send Drawings
-          </Link>
+          <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+          <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
         </PageHero>
 
         {/* (2) REAL-CREDENTIALS STRIP */}
@@ -188,13 +187,13 @@ export default function HomePage() {
               <Link href="/seismic" className="hx-svc-card">
                 <div className="hx-svc-media">
                   <Image
-                    src="/images/jobs/job-6936.jpg"
-                    alt="Carbon fiber fabric wrapped around a reinforced concrete beam-column intersection during a seismic FRP retrofit"
+                    src="/images/jobs/job-8294.jpg"
+                    alt="Carbon fiber fabric bonded to a structural beam beneath a wood subfloor during a seismic FRP retrofit"
                     fill
                     loading="lazy"
                     quality={40}
                     sizes="(max-width: 860px) 100vw, 50vw"
-                    style={{ objectFit: "cover", objectPosition: "center 35%" }}
+                    style={{ objectFit: "cover", objectPosition: "center 50%" }}
                   />
                 </div>
                 <div className="hx-svc-body">
@@ -214,13 +213,13 @@ export default function HomePage() {
               <Link href="/coatings" className="hx-svc-card">
                 <div className="hx-svc-media">
                   <Image
-                    src="/images/jobs/coatings-salyers.jpg"
-                    alt="Seamless resinous floor coating in an aircraft hangar serviced by Salyers Construction"
+                    src="/images/jobs/job-1358.jpg"
+                    alt="High-gloss poured epoxy floor reflecting the lights of a finished industrial warehouse — a Salyers Construction coating"
                     fill
                     loading="lazy"
                     quality={40}
                     sizes="(max-width: 860px) 100vw, 50vw"
-                    style={{ objectFit: "cover", objectPosition: "center 55%" }}
+                    style={{ objectFit: "cover", objectPosition: "center 60%" }}
                   />
                 </div>
                 <div className="hx-svc-body">
@@ -315,8 +314,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* (6) HOW A JOB RUNS — 3-step process */}
-        <section className="sec" aria-labelledby="proc-h">
+        {/* (6) HOW A JOB RUNS — 3-step process (subtle cursor glow, not clickable) */}
+        <section className="sec" data-glow aria-labelledby="proc-h">
           <div className="wrap">
             <div className="sec-head">
               <div className="eyebrow">How a job runs</div>
@@ -328,7 +327,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="hx-steps">
-              <article className="hx-step">
+              <article className="hx-step fb-card">
                 <span className="hx-step-no">01</span>
                 <h3>EOR drawings in</h3>
                 <p>
@@ -338,7 +337,7 @@ export default function HomePage() {
                   chemical, and traffic it actually sees.
                 </p>
               </article>
-              <article className="hx-step">
+              <article className="hx-step fb-card">
                 <span className="hx-step-no">02</span>
                 <h3>System engineering</h3>
                 <p>
@@ -349,7 +348,7 @@ export default function HomePage() {
                   sheets.
                 </p>
               </article>
-              <article className="hx-step">
+              <article className="hx-step fb-card">
                 <span className="hx-step-no">03</span>
                 <h3>Bid, mobilize, install</h3>
                 <p>
@@ -363,19 +362,19 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* (7) COATINGS TEASER — alternating photo + text feature */}
-        <section className="sec sec--cream" aria-labelledby="coat-h">
+        {/* (7) COATINGS TEASER — alternating photo + text feature (subtle cursor glow) */}
+        <section className="sec sec--cream" data-glow aria-labelledby="coat-h">
           <div className="wrap">
             <div className="feature reverse">
               <div className="feature-media">
                 <Image
-                  src="/images/jobs/job-1358.jpg"
-                  alt="Glossy poured epoxy resin floor reflecting overhead light in an industrial warehouse interior"
+                  src="/images/jobs/coatings-salyers.jpg"
+                  alt="Seamless high-gloss resinous floor coating across a large clear-span aircraft hangar"
                   fill
                   loading="lazy"
                   quality={40}
                   sizes="(max-width: 900px) 100vw, 50vw"
-                  style={{ objectFit: "cover", objectPosition: "center 60%" }}
+                  style={{ objectFit: "cover", objectPosition: "center 55%" }}
                 />
               </div>
               <div className="feature-body">
@@ -416,12 +415,8 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="cta-band-actions">
-                  <Link href="/contact" className="btn btn-primary">
-                    Request a Bid
-                  </Link>
-                  <Link href="/contact" className="btn btn-ghost">
-                    Send Drawings
-                  </Link>
+                  <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+                  <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
                 </div>
               </div>
             </div>
@@ -430,6 +425,8 @@ export default function HomePage() {
       </main>
       <SiteFooter />
       <TiltCards />
+      <PointerGlow />
+      <RevealOnScroll />
     </>
   );
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/lib/components/page-hero";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
+import { Accordion } from "@/lib/components/accordion";
+import { ColorExplorer, type ColorCategory } from "@/lib/components/color-explorer";
 import { seoTitle, SITE_URL } from "@/lib/site";
 import { CONTACT } from "@/lib/contact";
 import {
@@ -12,6 +14,7 @@ import {
   getCoatingSystems,
   getFaqsByTopic,
 } from "@/lib/catalog";
+import colorData from "@/data/coating-colors.json";
 import "./coatings.css";
 
 const service = getServiceBySlug("coatings");
@@ -28,57 +31,22 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/coatings` },
 };
 
-// Accurate photo per market. Only THREE images in the job set are honest
-// coatings shots — the seamless grey epoxy bay (job-1358), the resinous
-// aircraft-hangar floor (coatings-salyers), and the Polymer Nation crew in a
-// coated shop (job-3253). The rest of the job set is carbon-fiber seismic work
-// or crew-on-scaffold, which would mislabel a coatings tile, so it is NOT used
-// here. job-e (a glass-curtainwall office) carries the facility-type market.
-// We rotate the real floor shots across the floor-centric markets and pair each
-// with `object-position` that keeps the floor — not the ceiling — in frame.
-// Alt text describes what each photo ACTUALLY shows (not the market name).
-const FLOOR_BAY = {
-  src: "/images/jobs/job-1358.jpg",
-  alt: "Seamless high-gloss light-grey epoxy floor across a large industrial bay",
-  pos: "center 65%",
-} as const;
-const FLOOR_HANGAR = {
-  src: "/images/jobs/coatings-salyers.jpg",
-  alt: "Seamless resinous coated floor in an aircraft maintenance hangar",
-  pos: "center 70%",
-} as const;
-const SHOP_CREW = {
-  src: "/images/jobs/job-3253.jpg",
-  alt: "Salyers and Polymer Nation crew on a coated shop floor with safety striping",
-  pos: "center 55%",
-} as const;
-const FACILITY = {
-  src: "/images/jobs/job-e.jpg",
-  alt: "Glass-curtainwall commercial facility exterior",
-  pos: "center center",
-} as const;
-
-// Assigned in render order (markets JSON order) so the same shot never lands
-// in adjacent tiles: animal-care, automotive, commercial-industrial,
-// corrections, food-beverage, grocery-retail, healthcare-fitness,
-// hospitality-entertainment, manufacturing, municipalities,
-// pharmaceutical-biotech, aviation-transportation.
-const MARKET_PHOTO: Record<
-  string,
-  { src: string; alt: string; pos: string }
-> = {
-  "animal-care": FLOOR_HANGAR,
-  automotive: SHOP_CREW,
-  "commercial-industrial": FLOOR_BAY,
-  corrections: FLOOR_HANGAR,
-  "food-beverage": FLOOR_BAY,
-  "grocery-retail": FLOOR_HANGAR,
-  "healthcare-fitness": FLOOR_BAY,
-  "hospitality-entertainment": FLOOR_HANGAR,
-  manufacturing: SHOP_CREW,
-  municipalities: FACILITY,
-  "pharmaceutical-biotech": FLOOR_BAY,
-  "aviation-transportation": FLOOR_HANGAR,
+// One real, on-topic industry floor photo per market (localized), mapped 1:1 to
+// the 12 coatings markets. Alt text describes the scene; object-position keeps
+// the floor — not the ceiling — in frame under the label gradient.
+const MARKET_PHOTO: Record<string, { src: string; alt: string; pos: string }> = {
+  "animal-care": { src: "/images/markets/pc-animal-care.jpg", alt: "Seamless resinous floor in a veterinary and animal-care facility", pos: "center 72%" },
+  automotive: { src: "/images/markets/pc-automotive.jpg", alt: "High-gloss epoxy floor in an automotive service and dealership space", pos: "center 60%" },
+  "commercial-industrial": { src: "/images/markets/pc-commercial-industrial.jpg", alt: "Resinous floor coating across a commercial-industrial building", pos: "center 60%" },
+  corrections: { src: "/images/markets/pc-corrections.jpg", alt: "Durable seamless epoxy floor in a corrections facility dayroom", pos: "center 72%" },
+  "food-beverage": { src: "/images/markets/pc-food-beverage.jpg", alt: "Sanitary resinous floor in a food and beverage production area", pos: "center 60%" },
+  "grocery-retail": { src: "/images/markets/pc-grocery-retail.jpg", alt: "Polished resinous floor down a grocery and retail aisle", pos: "center 60%" },
+  "healthcare-fitness": { src: "/images/markets/pc-healthcare-fitness.jpg", alt: "Seamless hygienic floor in a healthcare and fitness facility", pos: "center 55%" },
+  "hospitality-entertainment": { src: "/images/markets/pc-hospitality-entertainment.jpg", alt: "Decorative resinous floor in a hospitality and entertainment venue", pos: "center 55%" },
+  manufacturing: { src: "/images/markets/pc-manufacturing.jpg", alt: "Heavy-duty epoxy floor on a manufacturing plant floor", pos: "center 60%" },
+  municipalities: { src: "/images/markets/pc-municipalities.jpg", alt: "Resinous floor in a municipal and civic facility", pos: "center 60%" },
+  "pharmaceutical-biotech": { src: "/images/markets/pc-pharmaceutical-biotech.jpg", alt: "Cleanroom-grade resinous floor in a pharmaceutical and biotech lab", pos: "center 55%" },
+  "aviation-transportation": { src: "/images/markets/pc-aviation-transportation.jpg", alt: "Seamless resinous floor in an aviation and transportation facility", pos: "center 60%" },
 };
 
 const benefitIcons: Record<string, ReactNode> = {
@@ -157,16 +125,12 @@ export default function CoatingsPage() {
         lead="Epoxy, polyaspartic and polyurea, polyurethane, and urethane concrete systems for industrial floors, parking decks, residential, and high-traffic commercial. Northern California primary, statewide for the right project."
         image="/images/jobs/job-1358.jpg"
       >
-        <Link href="/contact" className="btn btn-primary">
-          Request a Bid
-        </Link>
-        <Link href="/contact" className="btn btn-outline">
-          Send Drawings
-        </Link>
+        <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+        <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
       </PageHero>
 
       {/* ---- Floors that work for a living (overview) ---- */}
-      <section className="sec wrap">
+      <section className="sec wrap" data-glow>
         <div className="sec-head">
           <div className="eyebrow">Floors that work for a living</div>
           <h2>The floor is part of the operation, not decoration.</h2>
@@ -188,15 +152,6 @@ export default function CoatingsPage() {
                 )}
               </p>
             ))}
-            <h3>How a coatings job runs</h3>
-            {service?.workflow.map((step) => (
-              <p key={step.step}>
-                <strong>
-                  {step.step} &middot; {step.title}.
-                </strong>{" "}
-                {step.detail}
-              </p>
-            ))}
           </div>
           <aside className="ov2-aside">
             <h3>The other half of the shop</h3>
@@ -213,10 +168,32 @@ export default function CoatingsPage() {
               data sheets, and back the work with their warranty when project
               conditions qualify.
             </p>
-            <Link href="/contact" className="btn btn-primary">
-              Request a Bid
-            </Link>
+            <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
           </aside>
+        </div>
+      </section>
+
+      {/* ---- How a coatings job runs (steps as cards, subtle cursor glow) ---- */}
+      <section className="sec sec--cream" data-glow>
+        <div className="wrap">
+          <div className="sec-head">
+            <div className="eyebrow">How a coatings job runs</div>
+            <h2>From slab profile to a signed-off floor.</h2>
+            <p className="lede">
+              We don&rsquo;t pour a coating onto whatever is already there. We read the
+              slab and the way the floor gets used, then install the system to the
+              manufacturer&rsquo;s method and document it at handover.
+            </p>
+          </div>
+          <div className="cx-steps">
+            {service?.workflow.map((step) => (
+              <article key={step.step} className="feat-card fb-card">
+                <span className="cx-stepno">{step.step}</span>
+                <h3>{step.title}</h3>
+                <p>{step.detail}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -234,7 +211,7 @@ export default function CoatingsPage() {
           </div>
           <div className="mkt-grid mkt-grid--feat">
             {markets.map((m, i) => {
-              const photo = MARKET_PHOTO[m.slug] ?? FLOOR_BAY;
+              const photo = MARKET_PHOTO[m.slug] ?? MARKET_PHOTO["commercial-industrial"];
               // First tile is the 2x2 feature (~66vw on desktop); the rest are
               // ~33vw. Only the feature tile sits near the fold, so it loads
               // eagerly under the scrim; the rest stay lazy with q40.
@@ -303,12 +280,13 @@ export default function CoatingsPage() {
         <div className="wrap">
           <div className="cx-made">
             <div className="cx-made-body">
-              <div className="eyebrow">Polymer Nation &middot; American-made</div>
+              <div className="eyebrow">American-made</div>
               <h2>The resins are American-made. The path is direct.</h2>
               <p>
-                We install Polymer Nation resinous systems. We order from the
-                manufacturer, install per their data sheets, and back the work
-                with their warranty when project conditions qualify.
+                We install American-made resinous floor systems. We order direct
+                from the manufacturer, install per their published data sheets, and
+                back the work with the manufacturer&rsquo;s warranty when project
+                conditions qualify.
               </p>
               <ul className="cx-made-points">
                 <li>Factory-trained on every system we install.</li>
@@ -323,13 +301,13 @@ export default function CoatingsPage() {
             </div>
             <div className="cx-made-media">
               <Image
-                src="/images/jobs/job-3253.jpg"
-                alt="Salyers and Polymer Nation crew reviewing a resinous coating system in the shop"
+                src="/images/markets/pn-epoxies.jpg"
+                alt="Applicators squeegeeing a poured American-made epoxy resin floor coating"
                 fill
-                quality={40}
+                quality={45}
                 loading="lazy"
                 sizes="(max-width: 860px) 100vw, 45vw"
-                style={{ objectFit: "cover", objectPosition: "center 30%" }}
+                style={{ objectFit: "cover", objectPosition: "center 60%" }}
               />
             </div>
           </div>
@@ -346,61 +324,78 @@ export default function CoatingsPage() {
             the system against the wear, chemical, and traffic the floor sees.
           </p>
         </div>
-        <div className="faq">
-          {systems.map((s) => (
-            <details key={s.slug} className="faq-item">
-              <summary>
+        <Accordion
+          items={systems.map((s) => ({
+            q: (
+              <>
                 {s.name}
                 <span className="cx-sys-summary-kicker">{s.summary}</span>
-              </summary>
-              <div className="faq-a">
+              </>
+            ),
+            a: (
+              <>
                 <p>{s.body}</p>
                 <div className="cx-bestfor">
                   {s.bestFor.map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
+              </>
+            ),
+          }))}
+        />
+      </section>
+
+      {/* ---- Residential garages (real garage epoxy floor) ---- */}
+      <section className="sec sec--cream">
+        <div className="wrap">
+          <div className="feature">
+            <div className="feature-media">
+              <Image
+                src="/images/markets/residential.jpg"
+                alt="High-end residential garage finished with a decorative grey flake epoxy floor"
+                fill
+                quality={45}
+                loading="lazy"
+                sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectFit: "cover", objectPosition: "center 65%" }}
+              />
+            </div>
+            <div className="feature-body">
+              <div className="eyebrow">Residential</div>
+              <h2>Yes, we coat residential garages.</h2>
+              <p>
+                Decorative flake, quartz, and metallic systems bring
+                industrial-grade durability to high-end residential garages — same
+                prep discipline and the same manufacturer-spec install as our
+                commercial work.
+              </p>
+              <p>
+                Browse the flake, quartz, terrazzo, and solid color options below, or
+                tell us the look you&rsquo;re after and we&rsquo;ll walk you through it
+                as part of your written bid.
+              </p>
+              <div className="cx-cta-row">
+                <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+                <QuoteWizard label="Request samples" triggerClassName="btn btn-outline" initialPath="samples" />
               </div>
-            </details>
-          ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ---- Residential note + samples / color inquiry ---- */}
-      <section className="sec sec--cream">
-        <div className="wrap">
-          <div className="sec-head">
-            <div className="eyebrow">Before you bid</div>
-            <h2>Residential garages, samples, and color.</h2>
-          </div>
-          <div className="cx-note">
-            <article className="cx-note-card">
-              <div className="eyebrow">Residential</div>
-              <h3>Yes, we coat residential garages.</h3>
-              <p>
-                Decorative flake, quartz, and metallic systems bring
-                industrial-grade durability to high-end residential garages.
-                Same prep discipline, same manufacturer-spec install as our
-                commercial work.
-              </p>
-              <Link href="/contact" className="btn btn-outline">
-                Request a Bid
-              </Link>
-            </article>
-            <article className="cx-note-card">
-              <div className="eyebrow">Samples &amp; color</div>
-              <h3>Want to see flake or metallic options?</h3>
-              <p>
-                Tell us the space and the look you&rsquo;re after and we&rsquo;ll
-                walk you through flake, quartz, and metallic finishes and color
-                options as part of your written bid.
-              </p>
-              <Link href="/contact" className="btn btn-primary">
-                Request a color inquiry
-              </Link>
-            </article>
-          </div>
+      {/* ---- Colors & finishes (tabbed swatch explorer) ---- */}
+      <section className="sec wrap" data-glow>
+        <div className="sec-head">
+          <div className="eyebrow">Colors &amp; finishes</div>
+          <h2>Pick a look — flake, quartz, terrazzo, and solid color.</h2>
+          <p className="lede">
+            The resinous floor color line we install, grouped by finish so it&rsquo;s
+            easy to browse. We confirm availability and bring physical samples as part
+            of your bid. Metallic finishes are available on request.
+          </p>
         </div>
+        <ColorExplorer categories={colorData as ColorCategory[]} />
       </section>
 
       {/* ---- Credentials strip (real, never fabricated) ---- */}
@@ -436,16 +431,7 @@ export default function CoatingsPage() {
             <div className="eyebrow">Coatings FAQ</div>
             <h2>Common coatings questions.</h2>
           </div>
-          <div className="faq">
-            {faqs.map((f) => (
-              <details key={f.slug} className="faq-item">
-                <summary>{f.question}</summary>
-                <div className="faq-a">
-                  <p>{f.answer}</p>
-                </div>
-              </details>
-            ))}
-          </div>
+          <Accordion items={faqs.map((f) => ({ q: f.question, a: <p>{f.answer}</p> }))} />
         </div>
       </section>
 
@@ -463,12 +449,8 @@ export default function CoatingsPage() {
               </p>
             </div>
             <div className="cta-band-actions">
-              <Link href="/contact" className="btn btn-primary">
-                Request a Bid
-              </Link>
-              <Link href="/contact" className="btn btn-ghost">
-                Send Drawings
-              </Link>
+              <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+              <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
             </div>
           </div>
         </div>

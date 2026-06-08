@@ -67,6 +67,7 @@ export function SiteFooter() {
               California, since {CONTACT.since}.
             </p>
             <p className="sf-license">{CONTACT.license}</p>
+            <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary sf-cta" />
           </div>
           <div>
             <h3>Services</h3>

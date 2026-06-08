@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/lib/components/page-hero";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
+import { Accordion } from "@/lib/components/accordion";
 import { seoTitle, SITE_URL } from "@/lib/site";
 import { CONTACT } from "@/lib/contact";
 import {
@@ -107,17 +108,13 @@ export default function SeismicPage() {
         eyebrow="Seismic FRP retrofit"
         title="Engineered to strengthen. Built to spec."
         lead="Externally bonded carbon and glass fiber strengthening for reinforced concrete and masonry, statewide across California. We install the Henkel and LOCTITE Tyfo certified system from engineer-of-record drawings — adding tensile capacity, confinement, and ductility without adding meaningful mass."
-        image="/images/jobs/job-5700.jpg"
+        image="/images/jobs/job-g.jpg"
       >
-        <Link href="/contact" className="btn btn-primary">
-          Request a Bid
-        </Link>
-        <Link href="/contact" className="btn btn-ghost">
-          Send Drawings
-        </Link>
+        <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+        <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
       </PageHero>
 
-      {/* ---- What FRP is ---- */}
+      {/* ---- What FRP is (definition prose) ---- */}
       <section className="sec">
         <div className="wrap">
           <div className="sec-head">
@@ -129,57 +126,76 @@ export default function SeismicPage() {
               work without changing how the building feels or weighs.
             </p>
           </div>
-          <div className="ov2">
-            <div className="ov2-main">
-              {overview.slice(0, 2).map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-              <h3>A thin laminate, not a jacket</h3>
-              <p>
-                The finished laminate is roughly an eighth to a quarter inch thick.
-                Compared with a concrete or steel jacket it adds almost no dead load,
-                which is one of the reasons structural engineers specify it on
-                existing buildings rather than rebuilding members.
-              </p>
-            </div>
-            <aside className="ov2-aside" aria-label="What FRP adds">
-              <h3>What it adds</h3>
-              <ul className="sx-facts">
-                <li>
-                  <b>Tensile capacity</b>
-                  <span>
-                    High-strength carbon or glass fibers carry tension the existing
-                    section cannot.
-                  </span>
-                </li>
-                <li>
-                  <b>Confinement</b>
-                  <span>
-                    Hoop-direction fibers restrain the concrete core for higher axial
-                    capacity.
-                  </span>
-                </li>
-                <li>
-                  <b>Ductility</b>
-                  <span>
-                    Members deform under cyclic seismic load instead of failing
-                    brittle.
-                  </span>
-                </li>
-                <li>
-                  <b>~1/8 to 1/4 inch</b>
-                  <span>
-                    A thin externally bonded laminate — no meaningful added mass.
-                  </span>
-                </li>
-              </ul>
-            </aside>
+          <div className="sx-prose">
+            {overview.slice(0, 2).map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ---- How it carries load ---- */}
-      <section className="sec sec--cream">
+      {/* ---- What it adds (2x2 cards — pulled out of the dense intro) ---- */}
+      <section className="sec sec--cream" data-glow>
+        <div className="wrap">
+          <div className="sec-head">
+            <p className="eyebrow">What it adds</p>
+            <h2>Four things externally bonded fiber brings to a member</h2>
+            <p className="lede">
+              Engineers reach for FRP because a thin bonded laminate can deliver
+              capacity the existing section was never detailed for.
+            </p>
+          </div>
+          <div className="sx-adds">
+            <article className="feat-card fb-card">
+              <h3>Tensile capacity</h3>
+              <p>High-strength carbon or glass fibers carry tension the existing section cannot.</p>
+            </article>
+            <article className="feat-card fb-card">
+              <h3>Confinement</h3>
+              <p>Hoop-direction fibers restrain the concrete core for higher axial capacity.</p>
+            </article>
+            <article className="feat-card fb-card">
+              <h3>Ductility</h3>
+              <p>Members deform under cyclic seismic load instead of failing brittle.</p>
+            </article>
+            <article className="feat-card fb-card">
+              <h3>~1/8 to 1/4 inch thick</h3>
+              <p>A thin externally bonded laminate — no meaningful added mass.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* ---- A thin laminate, not a jacket (feature) ---- */}
+      <section className="sec">
+        <div className="wrap">
+          <div className="feature">
+            <div className="feature-media">
+              <Image
+                src="/images/jobs/job-8294.jpg"
+                alt="A thin externally bonded carbon fiber laminate on a structural beam — far lighter than a concrete or steel jacket"
+                fill
+                loading="lazy"
+                sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectPosition: "center 50%" }}
+              />
+            </div>
+            <div className="feature-body">
+              <p className="eyebrow">Low added mass</p>
+              <h2>A thin laminate, not a jacket</h2>
+              <p>
+                The finished laminate is roughly an eighth to a quarter inch thick.
+                Compared with a concrete or steel jacket it adds almost no dead load,
+                which is one of the reasons structural engineers specify it on existing
+                buildings rather than rebuilding members.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---- How it carries load (subtle cursor glow, not clickable) ---- */}
+      <section className="sec sec--cream" data-glow>
         <div className="wrap">
           <div className="feature">
             <div className="feature-media">
@@ -257,8 +273,8 @@ export default function SeismicPage() {
         </div>
       </section>
 
-      {/* ---- 4-step engineering workflow ---- */}
-      <section className="sec sec--cream">
+      {/* ---- 4-step engineering workflow (subtle cursor glow, not clickable) ---- */}
+      <section className="sec sec--cream" data-glow>
         <div className="wrap">
           <div className="sec-head">
             <p className="eyebrow">Engineering first, hands behind it</p>
@@ -270,7 +286,7 @@ export default function SeismicPage() {
           </div>
           <ol className="sx-flow">
             {workflow.map((s) => (
-              <li key={s.step} className="sx-step">
+              <li key={s.step} className="sx-step fb-card">
                 <span className="sx-num">{s.step}</span>
                 <h3>{s.title}</h3>
                 <p>{s.detail}</p>
@@ -328,7 +344,7 @@ export default function SeismicPage() {
               people accountable for the building.
             </p>
           </div>
-          <div className="feat3">
+          <div className="sx-adds">
             {personas.map((p) => (
               <article key={p.slug} className="feat-card">
                 <h3>{p.name}</h3>
@@ -346,16 +362,7 @@ export default function SeismicPage() {
             <p className="eyebrow">Seismic FRP, answered</p>
             <h2>Common questions on FRP retrofit</h2>
           </div>
-          <div className="faq">
-            {faqs.map((f) => (
-              <details key={f.slug} className="faq-item">
-                <summary>{f.question}</summary>
-                <div className="faq-a">
-                  <p>{f.answer}</p>
-                </div>
-              </details>
-            ))}
-          </div>
+          <Accordion items={faqs.map((f) => ({ q: f.question, a: <p>{f.answer}</p> }))} />
         </div>
       </section>
 
@@ -373,12 +380,8 @@ export default function SeismicPage() {
                 </p>
               </div>
               <div className="cta-band-actions">
-                <Link href="/contact" className="btn btn-primary">
-                  Request a Bid
-                </Link>
-                <Link href="/contact" className="btn btn-ghost">
-                  Send Drawings
-                </Link>
+                <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+                <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
               </div>
             </div>
           </div>

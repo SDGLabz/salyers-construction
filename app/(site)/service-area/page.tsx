@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/lib/components/page-hero";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
 import { seoTitle, SITE_URL, SITE_NAME } from "@/lib/site";
 import { getServiceRegions } from "@/lib/catalog";
 import { CONTACT } from "@/lib/contact";
@@ -115,16 +115,12 @@ export default function ServiceAreaPage() {
         }
         lead="Two service-area policies, because the two scopes have different mobilization economics. Seismic FRP travels anywhere in California. Industrial coatings is centered in Northern California and travels for a right-sized job."
       >
-        <Link href="/contact" className="btn btn-primary">
-          Request a Bid
-        </Link>
-        <Link href="/contact" className="btn btn-ghost">
-          Send Drawings
-        </Link>
+        <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+        <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
       </PageHero>
 
-      {/* ---- Two-policy explainer ---- */}
-      <section className="sec">
+      {/* ---- Two-policy explainer (subtle cursor glow) ---- */}
+      <section className="sec" data-glow>
         <div className="wrap">
           <div className="sec-head">
             <div className="eyebrow">Two policies, on purpose</div>
@@ -138,7 +134,7 @@ export default function ServiceAreaPage() {
             </p>
           </div>
           <div className="sa-policies">
-            <article className="sa-policy">
+            <article className="sa-policy fb-card">
               <div className="eyebrow">Seismic FRP retrofit</div>
               <h3>The full state.</h3>
               <p>
@@ -151,7 +147,7 @@ export default function ServiceAreaPage() {
               </p>
               <span className="sa-scope">Statewide California</span>
             </article>
-            <article className="sa-policy">
+            <article className="sa-policy fb-card">
               <div className="eyebrow">Industrial coatings</div>
               <h3>Northern California first.</h3>
               <p>
@@ -191,13 +187,13 @@ export default function ServiceAreaPage() {
           <div className="mkt-grid mkt-grid--feat">
             <div className="mkt-tile">
               <Image
-                src="/images/jobs/job-5700.jpg"
-                alt="Concrete column wrapped with externally bonded carbon-fiber fabric during a seismic FRP retrofit"
+                src="/images/jobs/job-8294.jpg"
+                alt="Carbon fiber fabric bonded to a structural beam during a seismic FRP retrofit"
                 fill
                 loading="lazy"
                 quality={40}
                 sizes="(max-width: 1000px) 100vw, 66vw"
-                style={{ objectFit: "cover", objectPosition: "center" }}
+                style={{ objectFit: "cover", objectPosition: "center 50%" }}
               />
               <div className="mkt-label">
                 <b>Statewide structural strengthening</b>
@@ -330,18 +326,18 @@ export default function ServiceAreaPage() {
         </div>
       </section>
 
-      {/* ---- Photo + HQ feature ---- */}
-      <section className="sec sec--cream">
+      {/* ---- Photo + HQ feature (subtle cursor glow) ---- */}
+      <section className="sec sec--cream" data-glow>
         <div className="wrap">
           <div className="feature">
             <div className="feature-media">
               <Image
-                src="/images/jobs/job-3253.jpg"
-                alt="Decorative flake epoxy floor coating finished on an interior industrial slab"
+                src="/images/jobs/job-5687.jpg"
+                alt="Salyers Construction truck on a California job site, run out of Roseville in Placer County"
                 fill
                 loading="lazy"
                 sizes="(max-width: 900px) 100vw, 50vw"
-                style={{ objectFit: "cover", objectPosition: "center 60%" }}
+                style={{ objectFit: "cover", objectPosition: "center 35%" }}
               />
             </div>
             <div className="feature-body">
@@ -358,9 +354,7 @@ export default function ServiceAreaPage() {
                 the location and scope — we will tell you straight, and bid the
                 ones we can do right.
               </p>
-              <Link href="/contact" className="btn btn-outline">
-                Request a Bid
-              </Link>
+              <QuoteWizard label="Request a Bid" triggerClassName="btn btn-outline" />
             </div>
           </div>
         </div>
@@ -408,12 +402,8 @@ export default function ServiceAreaPage() {
                 </p>
               </div>
               <div className="cta-band-actions">
-                <Link href="/contact" className="btn btn-primary">
-                  Request a Bid
-                </Link>
-                <Link href="/contact" className="btn btn-ghost">
-                  Send Drawings
-                </Link>
+                <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+                <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
               </div>
             </div>
           </div>

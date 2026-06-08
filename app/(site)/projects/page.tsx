@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/lib/components/page-hero";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
+import { LightboxGallery } from "@/lib/components/lightbox";
 import { seoTitle, SITE_URL } from "@/lib/site";
 import "./projects.css";
 
@@ -18,41 +19,75 @@ const PHASES = [
   { n: "03", label: "Saturant cure" },
 ] as const;
 
-// Real job photos only, alt text written from the actual photo — no invented
-// names or clients. Six tiles fill the featured bento cleanly (first tile spans
-// 2x2 on wide screens; 2x2 + five singles = nine cells = three flush rows).
-// Each `pos` frames the subject for object-position so nothing key is cropped.
+// Real job photos only — alt + caption written from the actual photo, no invented
+// names or clients. FRP / seismic work leads; the two resinous-floor shots are
+// pushed to the end. Clicking any photo opens it in the lightbox.
 const GALLERY = [
   {
-    // FEATURE (2x2) — finished, high-gloss light-gray resinous floor, full bay.
-    src: "/images/jobs/job-1358.jpg",
-    alt: "Finished high-gloss light-gray resinous floor coating across a large industrial bay.",
-    pos: "center 60%",
-  },
-  {
-    src: "/images/jobs/coatings-salyers.jpg",
-    alt: "Light-gray resinous coating on an aircraft maintenance hangar floor.",
-    pos: "center 70%",
-  },
-  {
-    src: "/images/jobs/job-3850.jpg",
-    alt: "Carbon fiber reinforced polymer fabric bonded to the base of an exterior building wall.",
-    pos: "center 45%",
+    src: "/images/jobs/job-g.jpg",
+    alt: "Externally bonded carbon FRP strips applied across a concrete parking-deck soffit.",
+    caption: "Carbon FRP strips bonded to a parking-deck soffit",
+    objPos: "center 35%",
   },
   {
     src: "/images/jobs/job-8292.jpg",
     alt: "Structural beam wrapped with carbon fiber reinforced polymer fabric during a seismic retrofit.",
-    pos: "center center",
+    caption: "Carbon fiber beam wrap, in progress",
+    objPos: "center center",
   },
   {
-    src: "/images/jobs/job-5687.jpg",
-    alt: "Salyers Construction team member on site beside the company truck and a pallet of coating materials.",
-    pos: "center 35%",
+    src: "/images/jobs/job-8293.jpg",
+    alt: "Beam-to-column area wrapped with externally bonded FRP fabric in a framed building.",
+    caption: "FRP fabric at a framed beam",
+    objPos: "center 45%",
+  },
+  {
+    src: "/images/jobs/job-3850.jpg",
+    alt: "Carbon fiber reinforced polymer fabric bonded to the base of an exterior building wall.",
+    caption: "Foundation / cripple-wall FRP, residential",
+    objPos: "center 45%",
   },
   {
     src: "/images/jobs/job-d.jpg",
     alt: "Carbon FRP strips bonded to a concrete slab underside, routed around overhead piping.",
-    pos: "center center",
+    caption: "Slab-underside FRP, routed around piping",
+    objPos: "center center",
+  },
+  {
+    src: "/images/jobs/job-c.jpg",
+    alt: "Carbon fiber reinforcement bonded across a concrete member in a parking structure.",
+    caption: "Shear strengthening, parking structure",
+    objPos: "center center",
+  },
+  {
+    src: "/images/jobs/job-8294.jpg",
+    alt: "Carbon fiber fabric bonded to a structural beam beneath a wood subfloor.",
+    caption: "Carbon beam wrap beneath a subfloor",
+    objPos: "center 50%",
+  },
+  {
+    src: "/images/jobs/job-a.jpg",
+    alt: "Crew in coveralls preparing and strengthening a concrete column in a parking structure.",
+    caption: "Crew strengthening a parking-structure column",
+    objPos: "center 40%",
+  },
+  {
+    src: "/images/jobs/job-5687.jpg",
+    alt: "Salyers Construction team member on site beside the company truck and a pallet of materials.",
+    caption: "On site — Salyers Construction",
+    objPos: "center 35%",
+  },
+  {
+    src: "/images/jobs/job-1358.jpg",
+    alt: "Finished high-gloss light-gray resinous floor coating across a large industrial bay.",
+    caption: "Industrial resinous floor coating",
+    objPos: "center 60%",
+  },
+  {
+    src: "/images/jobs/coatings-salyers.jpg",
+    alt: "Light-gray resinous coating on an aircraft maintenance hangar floor.",
+    caption: "Resinous hangar floor coating",
+    objPos: "center 70%",
   },
 ] as const;
 
@@ -93,12 +128,8 @@ export default function ProjectsPage() {
         }
         lead="Phased work that strengthens the structure without closing it. Below is a featured retrofit, real job photography across both lines of work, and how to get documented references for your project."
       >
-        <Link href="/contact" className="btn btn-primary">
-          Request a Bid
-        </Link>
-        <Link href="/contact" className="btn btn-outline">
-          Send Drawings
-        </Link>
+        <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+        <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
       </PageHero>
 
       {/* ---- Featured retrofit (the one real job, verbatim source prose) ---- */}
@@ -191,25 +222,14 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          <div className="mkt-grid mkt-grid--feat pj-gallery">
-            {GALLERY.map((shot, i) => (
-              <figure key={shot.src} className="mkt-tile">
-                <Image
-                  src={shot.src}
-                  alt={shot.alt}
-                  fill
-                  loading="lazy"
-                  quality={40}
-                  sizes={
-                    i === 0
-                      ? "(max-width: 540px) 100vw, (max-width: 900px) 50vw, (max-width: 1000px) 66vw, 600px"
-                      : "(max-width: 540px) 100vw, (max-width: 900px) 50vw, 33vw"
-                  }
-                  style={{ objectFit: "cover", objectPosition: shot.pos }}
-                />
-              </figure>
-            ))}
-          </div>
+          <LightboxGallery
+            items={GALLERY.map((g) => ({
+              src: g.src,
+              alt: g.alt,
+              caption: g.caption,
+              objPos: g.objPos,
+            }))}
+          />
         </div>
       </section>
 
@@ -244,12 +264,8 @@ export default function ProjectsPage() {
                 seismic FRP retrofit or industrial coatings that match your scope.
               </p>
               <div className="pj-note-cta">
-                <Link href="/contact" className="btn btn-primary">
-                  Request a Bid
-                </Link>
-                <Link href="/contact" className="btn btn-outline">
-                  Send Drawings
-                </Link>
+                <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+                <QuoteWizard label="Send Drawings" triggerClassName="btn btn-outline" initialPath="drawings" />
               </div>
             </div>
           </div>
@@ -270,12 +286,8 @@ export default function ProjectsPage() {
               </p>
             </div>
             <div className="cta-band-actions">
-              <Link href="/contact" className="btn btn-primary">
-                Request a Bid
-              </Link>
-              <Link href="/contact" className="btn btn-ghost">
-                Send Drawings
-              </Link>
+              <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+              <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
             </div>
           </div>
         </div>

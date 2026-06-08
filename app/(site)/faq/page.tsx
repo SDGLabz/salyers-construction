@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/lib/components/page-hero";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
+import { Accordion } from "@/lib/components/accordion";
 import { seoTitle, SITE_URL } from "@/lib/site";
 import { CONTACT } from "@/lib/contact";
 import { getFaqs, getFaqsByTopic } from "@/lib/catalog";
@@ -76,12 +77,8 @@ export default function FaqPage() {
         lead="Plainspoken answers on seismic FRP retrofit and industrial floor coatings — the things structural engineers, general contractors, building owners, and public agencies ask us before a bid goes out."
         image="/images/jobs/courthouse-merced.jpg"
       >
-        <Link href="/contact" className="btn btn-primary">
-          Request a Bid
-        </Link>
-        <Link href="/contact" className="btn btn-ghost">
-          Send Drawings
-        </Link>
+        <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+        <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
       </PageHero>
 
       {/* Intro: sets the technical, builder-not-fluff tone before the accordions. */}
@@ -119,8 +116,8 @@ export default function FaqPage() {
         </div>
       </section>
 
-      {/* Grouped accordions on a cream band. */}
-      <section className="sec sec--cream">
+      {/* Grouped accordions on a cream band (subtle cursor glow). */}
+      <section className="sec sec--cream" data-glow>
         <div className="wrap">
           {GROUPS.map((g) => {
             const items = getFaqsByTopic(g.topic);
@@ -137,15 +134,11 @@ export default function FaqPage() {
                     {items.length} {items.length === 1 ? "question" : "questions"}
                   </span>
                 </div>
-                <div className="faq" style={{ marginTop: "clamp(20px, 2.6vw, 30px)" }}>
-                  {items.map((f, i) => (
-                    <details className="faq-item" key={f.slug} open={i === 0}>
-                      <summary>{f.question}</summary>
-                      <div className="faq-a">
-                        <p>{f.answer}</p>
-                      </div>
-                    </details>
-                  ))}
+                <div style={{ marginTop: "clamp(20px, 2.6vw, 30px)" }}>
+                  <Accordion
+                    items={items.map((f) => ({ q: f.question, a: <p>{f.answer}</p> }))}
+                    defaultOpen={0}
+                  />
                 </div>
               </div>
             );
@@ -196,12 +189,8 @@ export default function FaqPage() {
                 </p>
               </div>
               <div className="cta-band-actions">
-                <Link href="/contact" className="btn btn-primary">
-                  Request a Bid
-                </Link>
-                <Link href="/contact" className="btn btn-ghost">
-                  Send Drawings
-                </Link>
+                <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
+                <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
               </div>
             </div>
           </div>
