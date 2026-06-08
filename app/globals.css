@@ -13,88 +13,114 @@
 /* Tailwind theme — exposes brand colors + fonts to utility classes
    (e.g. bg-belzona-blue, text-orange, font-mono) for future pages. */
 @theme {
-  /* Salyers Construction brand — re-skinned from the approved Webflow site.
-     Pine-green primary + electric-green accent. Token NAMES kept so the
-     ported component CSS re-skins wholesale. */
-  --color-belzona-blue: #1f6b4a; /* primary */
-  --color-dark-blue: #0f2c24; /* ink / hero deep-end */
-  --color-orange: #3beb64; /* electric accent (fill on dark only) */
-  --color-light-blue: #2fa46a; /* teal-green secondary / glow */
-  --color-light-grey: #d7e3da;
+  /* Salyers Construction — OFFICIAL brand kit (red + navy; Archivo Black + Inter).
+     Token NAMES kept so the ported component CSS re-skins wholesale. */
+  --color-belzona-blue: #15263f; /* navy — primary / structural */
+  --color-dark-blue: #0f1d31; /* deeper navy — hero deep-end / ink */
+  --color-orange: #7c1f1f; /* deep brand red — accent / primary CTA fill (use sparingly) */
+  --color-light-blue: #4d72a6; /* blue-light accent / hero glow */
+  --color-light-grey: #c9c7c2;
 
   --font-sans:
-    var(--font-lato), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono:
-    var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-archivo-black), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 :root {
-  --belzona-blue: #1f6b4a; /* primary: headings, links, nav — 6.44:1 on white */
-  --dark-blue: #0f2c24; /* ink + hero gradient deep-end — 14.94:1 on white */
-  --orange: #3beb64; /* electric-green accent — FILL on dark only (≈1.6:1 on white, never text on light) */
-  --orange-ink: #0f7a35; /* accent TEXT on light surfaces — 5.45:1 on white */
-  --light-blue: #2fa46a; /* teal-green hero glow / secondary */
-  --light-grey: #d7e3da;
+  /* Official Salyers palette: navy structure, deep red accent, cream surfaces. */
+  --belzona-blue: #15263f; /* navy — headings, links, nav, primary, card-hover border */
+  --dark-blue: #0f1d31; /* deeper navy — hero gradient deep-end, ink, shadow tint */
+  --orange: #7c1f1f; /* deep red — CTA fill (WHITE text) + accents. Use sparingly. */
+  --orange-ink: #a02828; /* red TEXT on light (eyebrows/links) — 5.6:1 on white */
+  --light-blue: #4d72a6; /* blue-light accent / hero glow orb */
+  --light-grey: #c9c7c2;
   --bg: #fff;
-  --surface: #f6f4f0; /* warm off-white — matches the Salyers brand */
-  --surface-2: #efeae3;
-  --border: #e7e3db;
-  --text: #11201b; /* near-black, green-tinted ink */
-  --text-2: #46564f;
-  --text-3: #5a6a62; /* muted — clears WCAG AA 4.5:1 on white/surface */
-  --font: var(--font-lato), system-ui, -apple-system, "Segoe UI", Roboto,
+  --surface: #f8f6f2; /* cream — warm off-white section bands */
+  --surface-2: #f2f2f0;
+  --border: #e5e4e1;
+  --text: #1a1a1a; /* charcoal — primary text */
+  --text-2: #3f3f3f; /* gray-700 — body emphasis / lede */
+  --text-3: #6b6b6b; /* gray-500 — secondary; ~5.1:1 on white */
+  --eyebrow-dark: #e7a9a9; /* light red — eyebrow/label on dark navy (AA) */
+  --font: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
     sans-serif;
-  --mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo,
-    monospace;
+  --font-display: var(--font-archivo-black), "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --maxw: 1240px;
 }
 
-/* ---- Salyers additions: wordmark, homepage sections, ghost button ---- */
-.site-wordmark {
-  font-family: var(--font);
-  font-weight: 900;
-  font-size: 18px;
-  letter-spacing: -0.01em;
-  color: var(--belzona-blue);
-  line-height: 1;
+/* ---- Salyers brand additions: logo lockup, button + eyebrow overrides ---- */
+/* Logo lockup: Golden Gate bridge mark + Archivo Black wordmark */
+.sc-logo {
   display: inline-flex;
-  gap: 6px;
-  align-items: baseline;
-  text-transform: uppercase;
+  align-items: center;
+  gap: 11px;
+  color: var(--belzona-blue);
 }
-.site-wordmark strong {
-  font-weight: 400;
-  color: var(--text-2);
-  letter-spacing: 0.06em;
-  font-size: 13px;
-}
-.site-wordmark--light {
+.sc-logo--light {
   color: #fff;
 }
-.site-wordmark--light strong {
-  color: #bfe6cc;
+.sc-logo-mark {
+  width: 40px;
+  height: 30px;
+  flex: none;
+}
+.sc-logo-wm {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+}
+.sc-logo-wm b {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+}
+.sc-logo-wm span {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-3);
+}
+.sc-logo--light .sc-logo-wm span {
+  color: #9fb2cc;
+}
+/* Primary button = deep red fill + white text (brand kit) */
+body .btn-primary {
+  color: #fff;
+}
+body .btn-primary:hover {
+  background: #c73e3e;
+  color: #fff;
+}
+/* Eyebrow/label on dark navy bands → light red tint (AA on navy) */
+body .pg-hero-eyebrow,
+body .sal-cta .eyebrow {
+  color: var(--eyebrow-dark);
 }
 .sf-license {
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: 0.06em;
-  color: #9fb5a8;
+  color: #9fb2cc;
   margin-top: 6px;
 }
+/* On the dark navy hero the emphasis word stays white (red carried by CTAs) */
 .pg-hero h1 em {
-  font-style: italic;
-  color: var(--orange);
+  font-style: normal;
 }
 .btn-ghost {
   background: transparent;
   color: #fff;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
 }
 .btn-ghost:hover {
   border-color: #fff;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
 }
 .sal-services {
   padding-block: clamp(56px, 8vw, 104px);
@@ -128,9 +154,9 @@
   display: block;
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 14px;
   padding: 30px;
-  box-shadow: 0 18px 50px -30px rgba(15, 44, 36, 0.32);
+  box-shadow: 0 8px 24px rgba(21, 38, 63, 0.1);
   transition:
     transform 0.3s var(--ease),
     box-shadow 0.3s var(--ease),
@@ -152,7 +178,8 @@
 .sal-go {
   display: inline-block;
   margin-top: 18px;
-  font-family: var(--mono);
+  font-family: var(--font);
+  font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.04em;
   color: var(--orange-ink);
@@ -161,7 +188,7 @@
 @media (hover: hover) {
   .sal-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 26px 50px -30px rgba(31, 107, 74, 0.5);
+    box-shadow: 0 18px 48px rgba(21, 38, 63, 0.18);
     border-color: var(--belzona-blue);
   }
 }
@@ -171,7 +198,7 @@
   padding-block: clamp(48px, 7vw, 84px);
 }
 .sal-cta .eyebrow {
-  color: var(--orange);
+  color: var(--eyebrow-dark);
 }
 .sal-cta h2 {
   color: #fff;
@@ -226,16 +253,18 @@ a {
 }
 h1,
 h2,
-h3 {
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  font-weight: 600;
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 400;
   color: var(--belzona-blue);
 }
 .eyebrow {
-  font-family: var(--mono);
+  font-family: var(--font);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--orange-ink); /* AA on light; dark sections override back to bright orange below */

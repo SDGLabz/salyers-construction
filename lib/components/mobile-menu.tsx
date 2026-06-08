@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { CONTACT } from "@/lib/contact";
+import { Logo } from "@/lib/components/logo";
 
 /**
  * Shared mobile hamburger menu — identical on every page. Full-screen panel
@@ -51,9 +52,7 @@ export function MobileMenu() {
     <div className="mnav" role="dialog" aria-modal="true" aria-label="Menu">
       <div className="mnav-top">
         <Link href="/" className="mnav-logo" onClick={close} aria-label="Salyers Construction — home">
-          <span className="site-wordmark site-wordmark--light">
-            Salyers<strong>Construction</strong>
-          </span>
+          <Logo light />
         </Link>
         <button type="button" className="mnav-x" aria-label="Close menu" onClick={close}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

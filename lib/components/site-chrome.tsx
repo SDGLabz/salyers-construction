@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { SearchTrigger } from "@/lib/components/search-trigger";
 import { MobileMenu } from "@/lib/components/mobile-menu";
+import { Logo } from "@/lib/components/logo";
 import { CONTACT } from "@/lib/contact";
 
 const COMPANY_LINKS = [
@@ -33,20 +34,12 @@ export function CompanyDropdown() {
   );
 }
 
-function Wordmark({ light = false }: { light?: boolean }) {
-  return (
-    <span className={`site-wordmark${light ? " site-wordmark--light" : ""}`}>
-      Salyers<strong>Construction</strong>
-    </span>
-  );
-}
-
 export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="wrap site-nav">
         <Link href="/" className="site-logo" aria-label="Salyers Construction — home">
-          <Wordmark />
+          <Logo />
         </Link>
         <nav className="site-links" aria-label="Primary">
           <Link href="/seismic">Seismic FRP</Link>
@@ -74,7 +67,7 @@ export function SiteFooter() {
         </div>
         <div className="sf-grid">
           <div className="sf-brand">
-            <Wordmark light />
+            <Logo light />
             <p>
               Engineered seismic strengthening and industrial coatings.
               California, since {CONTACT.since}.

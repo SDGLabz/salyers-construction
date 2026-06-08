@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Lato, IBM_Plex_Mono } from "next/font/google";
+import { Archivo_Black, Inter } from "next/font/google";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
-// Display + body: Lato (matches the approved Salyers brand). Exposed to
-// globals.css as --font-lato.
-const lato = Lato({
+// Display / headings / logo wordmark — Archivo Black (official Salyers brand
+// kit). Exposed to globals.css as --font-archivo-black.
+const archivoBlack = Archivo_Black({
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
-  variable: "--font-lato",
+  weight: ["400"],
+  variable: "--font-archivo-black",
   display: "swap",
 });
 
-// Technical mono for eyebrows, specs, standards codes, and labels.
-const ibmPlexMono = IBM_Plex_Mono({
+// Body / UI / eyebrows — Inter.
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-ibm-plex-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lato.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" className={`${archivoBlack.variable} ${inter.variable}`}>
       <body>
         <a href="#main" className="skip-link">
           Skip to content
