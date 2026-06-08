@@ -10,7 +10,7 @@ import "./service-area.css";
 export const metadata: Metadata = {
   title: seoTitle("Service Area — California"),
   description:
-    "Seismic FRP retrofit statewide across California — Sacramento, the Bay Area, Greater Los Angeles, San Diego, Fresno, the Inland Empire, and the Central Coast. Industrial coatings centered in Northern California, traveling statewide for right-sized projects.",
+    "Seismic FRP retrofit statewide across California — the Bay Area, Sacramento, the Central Valley, Greater Los Angeles, the Inland Empire, San Diego, and the Central Coast. Industrial coatings centered in Northern California, traveling statewide for right-sized projects.",
   alternates: { canonical: `${SITE_URL}/service-area` },
 };
 
@@ -24,26 +24,23 @@ function PinIcon() {
   );
 }
 
-// Named metros for each scope — accurate to the page spec. These are the
-// markets we mobilize to; the catalog ServiceRegion blurbs are the prose source.
+// Named regions for each scope — kept to the source/catalog list so nothing is
+// fabricated. The live page + catalog name these regions; we do not invent
+// specific cities the source never claims.
 const SEISMIC_METROS = [
+  "Bay Area",
   "Sacramento",
-  "Bay Area — SF, Oakland, San Jose, Fremont",
-  "Greater Los Angeles & Long Beach",
+  "Central Valley",
+  "Greater Los Angeles",
+  "Inland Empire",
   "San Diego",
-  "Fresno",
-  "Bakersfield",
-  "Stockton",
-  "Inland Empire — Riverside & San Bernardino",
-  "Santa Rosa",
   "Central Coast",
 ];
 
 const COATINGS_METROS = [
-  "Sacramento metro — Roseville, Placer, Sacramento, El Dorado, Yolo & Nevada counties",
+  "Roseville (HQ) & the Sacramento metro",
   "Bay Area",
-  "Stockton & Modesto",
-  "Chico & Redding",
+  "Central Valley",
 ];
 
 export default function ServiceAreaPage() {
@@ -71,24 +68,15 @@ export default function ServiceAreaPage() {
     foundingDate: String(CONTACT.since),
     areaServed: [
       { "@type": "State", name: "California" },
-      { "@type": "City", name: "Sacramento, CA" },
-      { "@type": "City", name: "San Francisco, CA" },
-      { "@type": "City", name: "Oakland, CA" },
-      { "@type": "City", name: "San Jose, CA" },
-      { "@type": "City", name: "Los Angeles, CA" },
-      { "@type": "City", name: "Long Beach, CA" },
-      { "@type": "City", name: "San Diego, CA" },
-      { "@type": "City", name: "Fresno, CA" },
-      { "@type": "City", name: "Bakersfield, CA" },
-      { "@type": "City", name: "Stockton, CA" },
-      { "@type": "City", name: "Riverside, CA" },
-      { "@type": "City", name: "San Bernardino, CA" },
-      { "@type": "City", name: "Santa Rosa, CA" },
-      { "@type": "City", name: "Modesto, CA" },
       { "@type": "City", name: "Roseville, CA" },
+      { "@type": "City", name: "Sacramento, CA" },
+      { "@type": "City", name: "Los Angeles, CA" },
+      { "@type": "City", name: "San Diego, CA" },
+      { "@type": "AdministrativeArea", name: "San Francisco Bay Area, California" },
       { "@type": "AdministrativeArea", name: "Northern California" },
       { "@type": "AdministrativeArea", name: "Central Valley, California" },
       { "@type": "AdministrativeArea", name: "Inland Empire, California" },
+      { "@type": "AdministrativeArea", name: "Central Coast, California" },
     ],
   };
 
@@ -206,8 +194,10 @@ export default function ServiceAreaPage() {
                 src="/images/jobs/job-5700.jpg"
                 alt="Concrete column wrapped with externally bonded carbon-fiber fabric during a seismic FRP retrofit"
                 fill
+                loading="lazy"
+                quality={40}
                 sizes="(max-width: 1000px) 100vw, 66vw"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center" }}
               />
               <div className="mkt-label">
                 <b>Statewide structural strengthening</b>
@@ -223,8 +213,10 @@ export default function ServiceAreaPage() {
                 src="/images/jobs/job-8292.jpg"
                 alt="Underside of a concrete parking deck strengthened with bonded fiber-reinforced polymer"
                 fill
+                loading="lazy"
+                quality={40}
                 sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 33vw"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center" }}
               />
               <div className="mkt-label">
                 <b>Parking decks &amp; structures</b>
@@ -236,8 +228,10 @@ export default function ServiceAreaPage() {
                 src="/images/jobs/courthouse-merced.jpg"
                 alt="Historic Merced County Courthouse, a masonry building of the kind targeted for seismic retrofit"
                 fill
+                loading="lazy"
+                quality={40}
                 sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 33vw"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center 30%" }}
               />
               <div className="mkt-label">
                 <b>Public &amp; historic buildings</b>
@@ -297,9 +291,8 @@ export default function ServiceAreaPage() {
               </div>
               <h3>Sacramento metro</h3>
               <p>
-                Our base. Roseville HQ plus Placer, Sacramento, El Dorado, Yolo,
-                and Nevada counties — the densest concentration of resinous floor
-                work we do.
+                Our base. The Roseville HQ and the surrounding Sacramento metro
+                are the densest concentration of resinous floor work we do.
               </p>
             </article>
             <article className="feat-card">
@@ -308,20 +301,20 @@ export default function ServiceAreaPage() {
               </div>
               <h3>Bay Area &amp; Central Valley</h3>
               <p>
-                The Bay Area, Stockton, and Modesto round out the primary
+                The Bay Area and the broader Central Valley round out the primary
                 coatings footprint — industrial floors, warehouses, and
-                high-traffic commercial.
+                high-traffic commercial slabs.
               </p>
             </article>
             <article className="feat-card">
               <div className="feat-ico" aria-hidden="true">
                 <PinIcon />
               </div>
-              <h3>Northern reach &amp; beyond</h3>
+              <h3>Travels for scope</h3>
               <p>
-                Chico and Redding extend the NorCal reach. Right-sized projects
-                in Southern California or out of state are evaluated by scope and
-                schedule.
+                Right-sized projects in Southern California or out of state are
+                evaluated case by case — by scope and schedule. Send the
+                location and we will tell you straight.
               </p>
             </article>
           </div>
@@ -346,8 +339,9 @@ export default function ServiceAreaPage() {
                 src="/images/jobs/job-3253.jpg"
                 alt="Decorative flake epoxy floor coating finished on an interior industrial slab"
                 fill
+                loading="lazy"
                 sizes="(max-width: 900px) 100vw, 50vw"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center 60%" }}
               />
             </div>
             <div className="feature-body">

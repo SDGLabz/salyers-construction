@@ -23,6 +23,17 @@
   font-weight: 500;
 }
 
+/* Links inside the "at a glance" / "in brief" bento cards. The shared .bento
+   primitive does not style inline links, so without this they fall back to the
+   UA blue underline (off-brand + weaker contrast on white). Scope a brand
+   red-on-light treatment to just the legal bento via the .lx-bento modifier. */
+.lx-bento a {
+  color: var(--orange-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
 /* The "expanded before launch / reviewed by counsel" honesty note. */
 .lx-note {
   margin-top: 28px;

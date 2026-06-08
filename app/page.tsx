@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { SiteHeader, SiteFooter } from "@/lib/components/site-chrome";
 import { PageHero } from "@/lib/components/page-hero";
-import { getFrpTypes, getSectors, getMarketBySlug } from "@/lib/catalog";
+import { getFrpTypes, getSectors } from "@/lib/catalog";
 import { CONTACT } from "@/lib/contact";
 import { SITE_URL, seoTitle } from "@/lib/site";
 import TiltCards from "@/lib/components/tilt-cards";
@@ -25,22 +25,52 @@ function Arrow() {
 }
 
 // Match each FRP type to a real structural photo + accurate alt text.
-const FRP_PHOTO: Record<string, { src: string; alt: string }> = {
+// objPos frames the wrapped member / subject so the gradient label band does
+// not crop the key content out of the 2x2 tiles.
+const FRP_PHOTO: Record<string, { src: string; alt: string; objPos: string }> = {
   "column-jacketing": {
     src: "/images/jobs/job-8292.jpg",
-    alt: "Carbon fiber fabric wrapped around a reinforced concrete column for seismic confinement",
+    alt: "Carbon fiber fabric wrapped around a structural concrete member during a seismic retrofit",
+    objPos: "center 40%",
   },
   "shear-strengthening": {
     src: "/images/jobs/job-8288.jpg",
-    alt: "FRP fabric bonded to a concrete beam web to add shear capacity",
+    alt: "Cracked, deteriorating reinforced concrete column of the kind addressed by FRP shear strengthening",
+    objPos: "center 35%",
   },
   "flexural-strengthening": {
-    src: "/images/jobs/job-5700.jpg",
-    alt: "Externally bonded fiber reinforced polymer on the underside of a concrete deck",
+    src: "/images/jobs/job-g.jpg",
+    alt: "Externally bonded fiber reinforced polymer strips on the underside of a concrete deck",
+    objPos: "center 30%",
   },
   "beam-column-joints": {
     src: "/images/jobs/job-8293.jpg",
-    alt: "Bidirectional FRP fabric and anchorage at a concrete beam-column joint",
+    alt: "FRP fabric wrapped around a structural concrete beam in a framed building",
+    objPos: "center 40%",
+  },
+};
+
+// "Who we serve" — one correctly categorized structural photo per sector.
+const SECTOR_PHOTO: Record<string, { src: string; alt: string; objPos: string }> = {
+  commercial: {
+    src: "/images/jobs/job-5693.jpg",
+    alt: "Salyers Construction truck and trailer at a glass-clad commercial building during a structural retrofit",
+    objPos: "center 35%",
+  },
+  industrial: {
+    src: "/images/jobs/job-d.jpg",
+    alt: "Carbon fiber strengthening bonded to an overhead concrete beam amid process piping in an industrial plant",
+    objPos: "center center",
+  },
+  multifamily: {
+    src: "/images/jobs/job-3850.jpg",
+    alt: "FRP fabric bonded to the masonry base of a wood-sided multifamily building exterior",
+    objPos: "center 45%",
+  },
+  infrastructure: {
+    src: "/images/jobs/job-f.jpg",
+    alt: "Externally bonded carbon fiber strips on the underside of a concrete parking-deck soffit",
+    objPos: "center 35%",
   },
 };
 
@@ -52,10 +82,6 @@ export default function HomePage() {
     .filter((t): t is NonNullable<typeof t> => Boolean(t));
 
   const sectors = getSectors();
-  // Coating markets mixed into the "Who we serve" photo grid.
-  const coatingMarkets = ["food-beverage", "manufacturing", "automotive"]
-    .map((slug) => getMarketBySlug(slug))
-    .filter((m): m is NonNullable<typeof m> => Boolean(m));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -162,11 +188,13 @@ export default function HomePage() {
               <Link href="/seismic" className="hx-svc-card">
                 <div className="hx-svc-media">
                   <Image
-                    src="/images/jobs/job-5693.jpg"
-                    alt="Crew bonding carbon fiber fabric to a reinforced concrete structure during a seismic retrofit"
+                    src="/images/jobs/job-6936.jpg"
+                    alt="Carbon fiber fabric wrapped around a reinforced concrete beam-column intersection during a seismic FRP retrofit"
                     fill
+                    loading="lazy"
+                    quality={40}
                     sizes="(max-width: 860px) 100vw, 50vw"
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: "cover", objectPosition: "center 35%" }}
                   />
                 </div>
                 <div className="hx-svc-body">
@@ -186,11 +214,13 @@ export default function HomePage() {
               <Link href="/coatings" className="hx-svc-card">
                 <div className="hx-svc-media">
                   <Image
-                    src="/images/jobs/job-3253.jpg"
-                    alt="Decorative flake epoxy resin floor system installed on an industrial concrete slab"
+                    src="/images/jobs/coatings-salyers.jpg"
+                    alt="Seamless resinous floor coating in an aircraft hangar serviced by Salyers Construction"
                     fill
+                    loading="lazy"
+                    quality={40}
                     sizes="(max-width: 860px) 100vw, 50vw"
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: "cover", objectPosition: "center 55%" }}
                   />
                 </div>
                 <div className="hx-svc-body">
@@ -232,8 +262,10 @@ export default function HomePage() {
                       src={photo.src}
                       alt={photo.alt}
                       fill
-                      sizes="(max-width: 540px) 100vw, (max-width: 900px) 50vw, 25vw"
-                      style={{ objectFit: "cover" }}
+                      loading="lazy"
+                      quality={40}
+                      sizes="(max-width: 700px) 100vw, 50vw"
+                      style={{ objectFit: "cover", objectPosition: photo.objPos }}
                     />
                     <div className="mkt-label">
                       <b>{t.name}</b>
@@ -258,62 +290,23 @@ export default function HomePage() {
                 multifamily, infrastructure, and the facilities behind them.
               </p>
             </div>
-            <div className="mkt-grid mkt-grid--feat">
-              <article className="mkt-tile">
-                <Image
-                  src="/images/jobs/courthouse-merced.jpg"
-                  alt="Historic Merced County Courthouse, a masonry structure of the kind addressed by California seismic retrofit work"
-                  fill
-                  sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 50vw"
-                  style={{ objectFit: "cover" }}
-                />
-                <div className="mkt-label">
-                  <b>{sectors[0]?.name}</b>
-                  <span>{sectors[0]?.blurb}</span>
-                </div>
-              </article>
-              {sectors.slice(1).map((s, i) => {
-                const photos = [
-                  { src: "/images/jobs/job-8294.jpg", alt: "Industrial process piping and ductwork in a plant environment served by FRP and coatings" },
-                  { src: "/images/jobs/job-d.jpg", alt: "Multifamily and mixed-use building exterior of the type subject to California retrofit ordinances" },
-                  { src: "/images/jobs/job-f.jpg", alt: "Concrete infrastructure structure of the kind strengthened with externally bonded FRP" },
-                ];
-                const p = photos[i];
+            <div className="mkt-grid hx-serve4">
+              {sectors.map((s) => {
+                const p = SECTOR_PHOTO[s.slug] ?? SECTOR_PHOTO.commercial;
                 return (
                   <article key={s.slug} className="mkt-tile">
                     <Image
                       src={p.src}
                       alt={p.alt}
                       fill
+                      loading="lazy"
+                      quality={40}
                       sizes="(max-width: 540px) 100vw, (max-width: 900px) 50vw, 25vw"
-                      style={{ objectFit: "cover" }}
+                      style={{ objectFit: "cover", objectPosition: p.objPos }}
                     />
                     <div className="mkt-label">
                       <b>{s.name}</b>
                       <span>{s.blurb}</span>
-                    </div>
-                  </article>
-                );
-              })}
-              {coatingMarkets.map((m, i) => {
-                const photos = [
-                  { src: "/images/jobs/job-1358.jpg", alt: "Glossy seamless epoxy floor in a clean food and beverage processing space" },
-                  { src: "/images/jobs/job-6936.jpg", alt: "Dark high-build epoxy floor system installed on a manufacturing production floor" },
-                  { src: "/images/jobs/job-b.jpg", alt: "Glossy resinous floor coating in an automotive service interior" },
-                ];
-                const p = photos[i];
-                return (
-                  <article key={m.slug} className="mkt-tile">
-                    <Image
-                      src={p.src}
-                      alt={p.alt}
-                      fill
-                      sizes="(max-width: 540px) 100vw, (max-width: 900px) 50vw, 25vw"
-                      style={{ objectFit: "cover" }}
-                    />
-                    <div className="mkt-label">
-                      <b>{m.name}</b>
-                      <span>{m.blurb}</span>
                     </div>
                   </article>
                 );
@@ -377,10 +370,12 @@ export default function HomePage() {
               <div className="feature-media">
                 <Image
                   src="/images/jobs/job-1358.jpg"
-                  alt="Glossy poured epoxy resin floor reflecting overhead light in an industrial interior"
+                  alt="Glossy poured epoxy resin floor reflecting overhead light in an industrial warehouse interior"
                   fill
+                  loading="lazy"
+                  quality={40}
                   sizes="(max-width: 900px) 100vw, 50vw"
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: "center 60%" }}
                 />
               </div>
               <div className="feature-body">

@@ -88,7 +88,10 @@ export default function ContactPage() {
             <div className="ct-ways">
               <div className="ct-ways-head">
                 <h2>What to expect</h2>
-                <p>Straight answers from the people who&rsquo;ll do the work. Engineering first, hands behind it.</p>
+                <p>
+                  The owner sees every inquiry, and the response comes directly from Nick — engineering first,
+                  hands behind it.
+                </p>
               </div>
               <div className="ct-ways-grid">
                 <div className="ct-way">
@@ -135,7 +138,10 @@ export default function ContactPage() {
           <aside className="ct-team">
             <div className="ct-team-intro">
               <h2>Reach us directly.</h2>
-              <p>Prefer to call or email? Here&rsquo;s how to get straight to Salyers Construction.</p>
+              <p>
+                Prefer to call or email? Reach Salyers Construction straight away — every inquiry goes to the
+                owner, and the response comes directly from Nick.
+              </p>
               <div className="ct-team-cta">
                 <a href={CONTACT.phoneHref} className="btn btn-ghost">
                   Call {CONTACT.phone}

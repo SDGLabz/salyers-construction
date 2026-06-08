@@ -87,6 +87,16 @@
   transition: transform 0.3s var(--ease);
 }
 
+/* ---- "Who we serve" — 4 sectors as a balanced 2x2 (not 3+1) ---- */
+.mkt-grid.hx-serve4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 540px) {
+  .mkt-grid.hx-serve4 {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---- "How a job runs" 3-step process ---- */
 .hx-steps {
   display: grid;

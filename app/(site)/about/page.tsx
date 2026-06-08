@@ -82,9 +82,12 @@ export default function AboutPage() {
             <div className="feature-media">
               <Image
                 src="/images/jobs/job-5687.jpg"
-                alt="Salyers Construction crew working on a structural strengthening job."
+                alt="Salyers Construction crew on site during a structural strengthening job."
                 fill
+                priority
+                fetchPriority="high"
                 sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectFit: "cover", objectPosition: "center 35%" }}
               />
             </div>
             <div className="feature-body">
@@ -275,13 +278,16 @@ export default function AboutPage() {
             <div className="eyebrow">On the job</div>
             <h2>Engineered seismic strengthening and resinous floors.</h2>
           </div>
-          <div className="mkt-grid mkt-grid--feat">
+          <div className="mkt-grid mkt-grid--feat ab-jobgrid">
             <div className="mkt-tile">
               <Image
                 src="/images/jobs/job-5700.jpg"
                 alt="Externally bonded carbon fiber reinforcement on a structural concrete member."
                 fill
-                sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 50vw"
+                loading="lazy"
+                quality={40}
+                sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 600px"
+                style={{ objectFit: "cover", objectPosition: "center 40%" }}
               />
               <div className="mkt-label">
                 <b>Seismic FRP retrofit</b>
@@ -295,7 +301,10 @@ export default function AboutPage() {
                 src="/images/jobs/courthouse-merced.jpg"
                 alt="Historic Merced County Courthouse, a masonry structure of the kind addressed by seismic retrofit."
                 fill
+                loading="lazy"
+                quality={40}
                 sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 25vw"
+                style={{ objectFit: "cover", objectPosition: "center 30%" }}
               />
               <div className="mkt-label">
                 <b>Masonry strengthening</b>
@@ -307,7 +316,10 @@ export default function AboutPage() {
                 src="/images/jobs/job-8292.jpg"
                 alt="Structural concrete column and beam framing on a strengthening project."
                 fill
+                loading="lazy"
+                quality={40}
                 sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 25vw"
+                style={{ objectFit: "cover", objectPosition: "center" }}
               />
               <div className="mkt-label">
                 <b>Columns and beams</b>
@@ -319,7 +331,10 @@ export default function AboutPage() {
                 src="/images/jobs/job-3253.jpg"
                 alt="Decorative flake resinous floor coating installed over a prepared concrete slab."
                 fill
+                loading="lazy"
+                quality={40}
                 sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 25vw"
+                style={{ objectFit: "cover", objectPosition: "center 65%" }}
               />
               <div className="mkt-label">
                 <b>Industrial coatings</b>
@@ -331,7 +346,10 @@ export default function AboutPage() {
                 src="/images/jobs/job-6265.jpg"
                 alt="Salyers Construction crew at work on an industrial jobsite."
                 fill
+                loading="lazy"
+                quality={40}
                 sizes="(max-width: 540px) 100vw, (max-width: 1000px) 50vw, 25vw"
+                style={{ objectFit: "cover", objectPosition: "center 35%" }}
               />
               <div className="mkt-label">
                 <b>The crew</b>

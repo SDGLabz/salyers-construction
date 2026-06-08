@@ -22,31 +22,41 @@ export const metadata: Metadata = {
     "Externally bonded carbon and glass FRP seismic retrofit for concrete and masonry across California — Henkel and LOCTITE Tyfo, ACI 440.2R, ASCE 41, ICC-ES ESR-2103.",
 };
 
-// One real seismic/structural photo per FRP service-type (accurate alt text).
-const FRP_PHOTO: Record<string, { src: string; alt: string }> = {
+// One real seismic/structural photo per FRP service-type (accurate alt text +
+// object-position so the structural subject stays framed in the 16:10 tile).
+const FRP_PHOTO: Record<
+  string,
+  { src: string; alt: string; pos: string }
+> = {
   "column-jacketing": {
-    src: "/images/jobs/job-8292.jpg",
+    src: "/images/jobs/job-8288.jpg",
     alt: "Reinforced concrete column wrapped with carbon fiber confinement fabric on a Salyers Construction seismic retrofit",
+    pos: "center 40%",
   },
   "beam-column-joints": {
-    src: "/images/jobs/job-8288.jpg",
+    src: "/images/jobs/job-8293.jpg",
     alt: "Beam-to-column joint of a concrete moment frame strengthened with externally bonded FRP fabric",
+    pos: "center 45%",
   },
   "shear-strengthening": {
-    src: "/images/jobs/job-8293.jpg",
-    alt: "Concrete beam web with U-wrapped fiber reinforced polymer adding shear capacity",
+    src: "/images/jobs/job-c.jpg",
+    alt: "Carbon fiber reinforcement fabric bonded across the web of a concrete member to add shear capacity",
+    pos: "center center",
   },
   "flexural-strengthening": {
     src: "/images/jobs/job-5693.jpg",
     alt: "Underside of a concrete slab with FRP fabric bonded to the tension face for added flexural reinforcement",
+    pos: "center 45%",
   },
   "masonry-retrofit": {
     src: "/images/jobs/courthouse-merced.jpg",
     alt: "Historic Merced County Courthouse, a masonry building of the type addressed by California URM seismic retrofit work",
+    pos: "center 35%",
   },
   infrastructure: {
     src: "/images/jobs/job-3850.jpg",
     alt: "Concrete structural member on an infrastructure retrofit prepared for fiber reinforced polymer strengthening",
+    pos: "center 50%",
   },
 };
 
@@ -174,10 +184,12 @@ export default function SeismicPage() {
           <div className="feature">
             <div className="feature-media">
               <Image
-                src="/images/jobs/job-c.jpg"
-                alt="Carbon fiber reinforcement mesh installed across a prepared concrete surface"
+                src="/images/jobs/job-8292.jpg"
+                alt="Reinforced concrete column confined with hoop-direction carbon fiber fabric, transferring tensile load into the fibers"
                 fill
+                loading="lazy"
                 sizes="(max-width: 900px) 100vw, 50vw"
+                style={{ objectPosition: "center 40%" }}
               />
             </div>
             <div className="feature-body">
@@ -227,7 +239,9 @@ export default function SeismicPage() {
                         src={photo.src}
                         alt={photo.alt}
                         fill
+                        loading="lazy"
                         sizes="(max-width: 540px) 100vw, (max-width: 900px) 50vw, 33vw"
+                        style={{ objectPosition: photo.pos }}
                       />
                     </div>
                   ) : null}

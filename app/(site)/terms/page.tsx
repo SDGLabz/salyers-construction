@@ -102,7 +102,7 @@ export default function TermsPage() {
             </p>
           </div>
 
-          <div className="bento">
+          <div className="bento lx-bento">
             <article className="bento-card">
               <h3>Information, not a quote</h3>
               <p>

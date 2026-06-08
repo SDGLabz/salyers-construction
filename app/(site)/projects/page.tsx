@@ -18,39 +18,41 @@ const PHASES = [
   { n: "03", label: "Saturant cure" },
 ] as const;
 
-// Real job photos only, with accurate generic alt text — no invented names/clients.
+// Real job photos only, alt text written from the actual photo — no invented
+// names or clients. Six tiles fill the featured bento cleanly (first tile spans
+// 2x2 on wide screens; 2x2 + five singles = nine cells = three flush rows).
+// Each `pos` frames the subject for object-position so nothing key is cropped.
 const GALLERY = [
   {
-    src: "/images/jobs/job-5700.jpg",
-    alt: "Carbon fiber reinforced polymer wrap applied to a concrete column during a seismic retrofit.",
+    // FEATURE (2x2) — finished, high-gloss light-gray resinous floor, full bay.
+    src: "/images/jobs/job-1358.jpg",
+    alt: "Finished high-gloss light-gray resinous floor coating across a large industrial bay.",
+    pos: "center 60%",
+  },
+  {
+    src: "/images/jobs/coatings-salyers.jpg",
+    alt: "Light-gray resinous coating on an aircraft maintenance hangar floor.",
+    pos: "center 70%",
+  },
+  {
+    src: "/images/jobs/job-3850.jpg",
+    alt: "Carbon fiber reinforced polymer fabric bonded to the base of an exterior building wall.",
+    pos: "center 45%",
   },
   {
     src: "/images/jobs/job-8292.jpg",
-    alt: "Underside of a concrete parking-structure slab strengthened with externally bonded FRP.",
-  },
-  {
-    src: "/images/jobs/job-3253.jpg",
-    alt: "Broadcast-flake resinous floor coating installed over a prepared concrete slab.",
-  },
-  {
-    src: "/images/jobs/job-8288.jpg",
-    alt: "Concrete beam and slab framing prepared for fiber reinforced polymer strengthening.",
-  },
-  {
-    src: "/images/jobs/job-1358.jpg",
-    alt: "Finished high-gloss epoxy floor coating in an industrial interior.",
-  },
-  {
-    src: "/images/jobs/job-5693.jpg",
-    alt: "Concrete reinforcement detail on a structural retrofit in progress.",
-  },
-  {
-    src: "/images/jobs/job-6936.jpg",
-    alt: "Dark resinous epoxy coating system on an industrial concrete floor.",
+    alt: "Structural beam wrapped with carbon fiber reinforced polymer fabric during a seismic retrofit.",
+    pos: "center center",
   },
   {
     src: "/images/jobs/job-5687.jpg",
-    alt: "Salyers Construction crew installing a structural strengthening system on site.",
+    alt: "Salyers Construction team member on site beside the company truck and a pallet of coating materials.",
+    pos: "center 35%",
+  },
+  {
+    src: "/images/jobs/job-d.jpg",
+    alt: "Carbon FRP strips bonded to a concrete slab underside, routed around overhead piping.",
+    pos: "center center",
   },
 ] as const;
 
@@ -113,32 +115,38 @@ export default function ProjectsPage() {
           </div>
 
           <div className="feature">
-            <div className="pj-feature-media" aria-hidden="false">
+            <div className="pj-feature-media">
               <div className="pj-shot pj-shot--lead">
                 <Image
-                  src="/images/jobs/job-8292.jpg"
-                  alt="Concrete parking-structure slab underside strengthened with externally bonded carbon FRP."
+                  src="/images/jobs/job-6936.jpg"
+                  alt="Concrete column and beam under a parking deck wrapped with externally bonded carbon FRP."
                   fill
+                  loading="lazy"
+                  quality={40}
                   sizes="(max-width: 900px) 100vw, 50vw"
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: "center" }}
                 />
               </div>
               <div className="pj-shot pj-shot--sm">
                 <Image
-                  src="/images/jobs/job-5700.jpg"
-                  alt="Carbon fiber wrap applied to a concrete column during the retrofit."
+                  src="/images/jobs/job-8288.jpg"
+                  alt="Concrete column with surface spalling exposed for preparation before strengthening."
                   fill
+                  loading="lazy"
+                  quality={40}
                   sizes="(max-width: 900px) 50vw, 25vw"
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: "center 40%" }}
                 />
               </div>
               <div className="pj-shot pj-shot--sm">
                 <Image
-                  src="/images/jobs/job-8293.jpg"
-                  alt="Concrete framing prepared for fiber reinforced polymer strengthening."
+                  src="/images/jobs/job-b.jpg"
+                  alt="Carbon FRP strip bonded along the underside of a parking-structure slab."
                   fill
+                  loading="lazy"
+                  quality={40}
                   sizes="(max-width: 900px) 50vw, 25vw"
-                  style={{ objectFit: "cover" }}
+                  style={{ objectFit: "cover", objectPosition: "center 35%" }}
                 />
               </div>
             </div>
@@ -184,14 +192,20 @@ export default function ProjectsPage() {
           </div>
 
           <div className="mkt-grid mkt-grid--feat pj-gallery">
-            {GALLERY.map((shot) => (
+            {GALLERY.map((shot, i) => (
               <figure key={shot.src} className="mkt-tile">
                 <Image
                   src={shot.src}
                   alt={shot.alt}
                   fill
-                  sizes="(max-width: 540px) 100vw, (max-width: 900px) 50vw, 33vw"
-                  style={{ objectFit: "cover" }}
+                  loading="lazy"
+                  quality={40}
+                  sizes={
+                    i === 0
+                      ? "(max-width: 540px) 100vw, (max-width: 900px) 50vw, (max-width: 1000px) 66vw, 600px"
+                      : "(max-width: 540px) 100vw, (max-width: 900px) 50vw, 33vw"
+                  }
+                  style={{ objectFit: "cover", objectPosition: shot.pos }}
                 />
               </figure>
             ))}

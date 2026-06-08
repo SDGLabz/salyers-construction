@@ -33,6 +33,8 @@ export function PageHero({
               alt=""
               fill
               priority
+              fetchPriority="high"
+              quality={45}
               sizes="100vw"
               style={{ objectFit: "cover", objectPosition: "center" }}
             />

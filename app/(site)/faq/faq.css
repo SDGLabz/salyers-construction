@@ -72,3 +72,19 @@
     gap: 6px;
   }
 }
+
+/* ---- credentials strip: kill the orphan at the tablet breakpoint ----
+   The shared .cred-strip is 5 columns on desktop (one clean row), but its
+   default 2-column tablet rule leaves 5 items as 2 + 2 + 1 — a lone stranded
+   box. Override to 3 columns in that band so the five real credentials fall
+   as 3 + 2 (no orphan), while the global <=480 single-column stack stays. */
+@media (max-width: 900px) and (min-width: 481px) {
+  .fq-cred .cred-strip {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 28px;
+  }
+  /* re-suppress the vertical dividers the global rule hides below 900px */
+  .fq-cred .cred-item + .cred-item::before {
+    display: none;
+  }
+}

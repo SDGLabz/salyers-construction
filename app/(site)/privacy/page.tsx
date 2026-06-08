@@ -104,7 +104,7 @@ export default function PrivacyPage() {
             </p>
           </div>
 
-          <div className="bento">
+          <div className="bento lx-bento">
             <article className="bento-card">
               <h3>What we collect</h3>
               <p>

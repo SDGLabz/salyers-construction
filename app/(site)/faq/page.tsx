@@ -112,7 +112,7 @@ export default function FaqPage() {
                 alt="Carbon-fiber fabric bonded to a concrete structural member during a seismic FRP retrofit"
                 fill
                 sizes="(max-width: 900px) 100vw, 38vw"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center 40%" }}
               />
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function FaqPage() {
 
       {/* Real-credentials strip — never fabricated numbers. */}
       <section className="sec">
-        <div className="wrap">
+        <div className="wrap fq-cred">
           <div className="cred-strip">
             <div className="cred-item">
               <b>Since {CONTACT.since}</b>

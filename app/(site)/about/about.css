@@ -90,6 +90,24 @@
   }
 }
 
+/* ---- "on the job" photo grid: 1 featured + 4 supporting tiles ----
+   The shared .mkt-grid--feat is 3-col, which would strand the 5th tile in a
+   ragged third row (2 tiles + an empty cell). Override to a clean 4-col / 2-row
+   rectangle at >=1000px: the featured tile spans cols 1-2 / rows 1-2, and the
+   four supporting tiles fill cols 3-4 over the two rows — no orphan cell.
+   Below 1000px it falls back to the shared 2-col / 1-col stacks. */
+@media (min-width: 1000px) {
+  .ab-jobgrid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+  }
+  .ab-jobgrid > :first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+}
+
 /* ---- credential aside list inside .ov2 ---- */
 .ab-cred {
   list-style: none;

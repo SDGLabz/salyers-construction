@@ -1,7 +1,6 @@
 // Shared header + footer for interior pages. The homepage reuses these for now;
 // a bespoke transparent-over-hero homepage nav comes in a later batch.
 import Link from "next/link";
-import { SearchTrigger } from "@/lib/components/search-trigger";
 import { MobileMenu } from "@/lib/components/mobile-menu";
 import { Logo } from "@/lib/components/logo";
 import { QuoteWizard } from "@/lib/components/quote-wizard";
@@ -48,7 +47,6 @@ export function SiteHeader() {
           <Link href="/projects">Projects</Link>
           <CompanyDropdown />
         </nav>
-        <SearchTrigger />
         {/* Primary CTA opens the multistep bid wizard (modal). */}
         <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary site-cta" />
         <MobileMenu />
@@ -61,9 +59,6 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="wrap">
-        <div className="sf-search-row">
-          <SearchTrigger variant="footer" />
-        </div>
         <div className="sf-grid">
           <div className="sf-brand">
             <Logo light />

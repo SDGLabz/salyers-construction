@@ -28,58 +28,57 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/coatings` },
 };
 
-// Accurate photo per market. Real coatings-floor shots lead the floor-centric
-// markets; supporting industrial / interior / exterior tiles carry the rest.
+// Accurate photo per market. Only THREE images in the job set are honest
+// coatings shots — the seamless grey epoxy bay (job-1358), the resinous
+// aircraft-hangar floor (coatings-salyers), and the Polymer Nation crew in a
+// coated shop (job-3253). The rest of the job set is carbon-fiber seismic work
+// or crew-on-scaffold, which would mislabel a coatings tile, so it is NOT used
+// here. job-e (a glass-curtainwall office) carries the facility-type market.
+// We rotate the real floor shots across the floor-centric markets and pair each
+// with `object-position` that keeps the floor — not the ceiling — in frame.
 // Alt text describes what each photo ACTUALLY shows (not the market name).
-const MARKET_PHOTO: Record<string, { src: string; alt: string }> = {
-  "food-beverage": {
-    src: "/images/jobs/job-3253.jpg",
-    alt: "Decorative flake resinous floor finished with a clear topcoat",
-  },
-  manufacturing: {
-    src: "/images/jobs/job-6936.jpg",
-    alt: "Dark monolithic epoxy floor coating in an industrial bay",
-  },
-  "commercial-industrial": {
-    src: "/images/jobs/job-8294.jpg",
-    alt: "Industrial pipe and duct work above a coated floor",
-  },
-  automotive: {
-    src: "/images/jobs/job-1358.jpg",
-    alt: "High-gloss seamless epoxy floor reflecting overhead light",
-  },
-  "grocery-retail": {
-    src: "/images/jobs/job-b.jpg",
-    alt: "Glossy resinous floor in a finished commercial interior",
-  },
-  "healthcare-fitness": {
-    src: "/images/jobs/job-a.jpg",
-    alt: "Finished interior space with a coated floor",
-  },
-  "pharmaceutical-biotech": {
-    src: "/images/jobs/job-1358.jpg",
-    alt: "Seamless high-gloss epoxy floor with no joints or grout lines",
-  },
-  "animal-care": {
-    src: "/images/jobs/job-b.jpg",
-    alt: "Glossy seamless interior floor coating, easy to wash down",
-  },
-  corrections: {
-    src: "/images/jobs/job-6936.jpg",
-    alt: "Durable dark epoxy floor coating in a hard-use environment",
-  },
-  "hospitality-entertainment": {
-    src: "/images/jobs/job-3253.jpg",
-    alt: "Decorative flake floor system with a designer finish",
-  },
-  municipalities: {
-    src: "/images/jobs/job-d.jpg",
-    alt: "Exterior of a public-facility building",
-  },
-  "aviation-transportation": {
-    src: "/images/jobs/job-8294.jpg",
-    alt: "Overhead duct and pipe runs above an industrial coated floor",
-  },
+const FLOOR_BAY = {
+  src: "/images/jobs/job-1358.jpg",
+  alt: "Seamless high-gloss light-grey epoxy floor across a large industrial bay",
+  pos: "center 65%",
+} as const;
+const FLOOR_HANGAR = {
+  src: "/images/jobs/coatings-salyers.jpg",
+  alt: "Seamless resinous coated floor in an aircraft maintenance hangar",
+  pos: "center 70%",
+} as const;
+const SHOP_CREW = {
+  src: "/images/jobs/job-3253.jpg",
+  alt: "Salyers and Polymer Nation crew on a coated shop floor with safety striping",
+  pos: "center 55%",
+} as const;
+const FACILITY = {
+  src: "/images/jobs/job-e.jpg",
+  alt: "Glass-curtainwall commercial facility exterior",
+  pos: "center center",
+} as const;
+
+// Assigned in render order (markets JSON order) so the same shot never lands
+// in adjacent tiles: animal-care, automotive, commercial-industrial,
+// corrections, food-beverage, grocery-retail, healthcare-fitness,
+// hospitality-entertainment, manufacturing, municipalities,
+// pharmaceutical-biotech, aviation-transportation.
+const MARKET_PHOTO: Record<
+  string,
+  { src: string; alt: string; pos: string }
+> = {
+  "animal-care": FLOOR_HANGAR,
+  automotive: SHOP_CREW,
+  "commercial-industrial": FLOOR_BAY,
+  corrections: FLOOR_HANGAR,
+  "food-beverage": FLOOR_BAY,
+  "grocery-retail": FLOOR_HANGAR,
+  "healthcare-fitness": FLOOR_BAY,
+  "hospitality-entertainment": FLOOR_HANGAR,
+  manufacturing: SHOP_CREW,
+  municipalities: FACILITY,
+  "pharmaceutical-biotech": FLOOR_BAY,
+  "aviation-transportation": FLOOR_HANGAR,
 };
 
 const benefitIcons: Record<string, ReactNode> = {
@@ -156,7 +155,7 @@ export default function CoatingsPage() {
           </>
         }
         lead="Epoxy, polyaspartic and polyurea, polyurethane, and urethane concrete systems for industrial floors, parking decks, residential, and high-traffic commercial. Northern California primary, statewide for the right project."
-        image="/images/jobs/job-3253.jpg"
+        image="/images/jobs/job-1358.jpg"
       >
         <Link href="/contact" className="btn btn-primary">
           Request a Bid
@@ -180,7 +179,14 @@ export default function CoatingsPage() {
         <div className="ov2">
           <div className="ov2-main">
             {service?.overview.map((para) => (
-              <p key={para.slice(0, 24)}>{para}</p>
+              // Keep Polymer Nation framed as "trained" (not "certified") —
+              // accuracy correction applied at render without mutating catalog.
+              <p key={para.slice(0, 24)}>
+                {para.replace(
+                  /factory-trained and certified on every system/gi,
+                  "factory-trained on every system",
+                )}
+              </p>
             ))}
             <h3>How a coatings job runs</h3>
             {service?.workflow.map((step) => (
@@ -227,19 +233,26 @@ export default function CoatingsPage() {
             </p>
           </div>
           <div className="mkt-grid mkt-grid--feat">
-            {markets.map((m) => {
-              const photo = MARKET_PHOTO[m.slug] ?? {
-                src: "/images/jobs/job-6936.jpg",
-                alt: "Industrial epoxy floor coating",
-              };
+            {markets.map((m, i) => {
+              const photo = MARKET_PHOTO[m.slug] ?? FLOOR_BAY;
+              // First tile is the 2x2 feature (~66vw on desktop); the rest are
+              // ~33vw. Only the feature tile sits near the fold, so it loads
+              // eagerly under the scrim; the rest stay lazy with q40.
+              const isFeature = i === 0;
               return (
                 <div key={m.slug} className="mkt-tile">
                   <Image
                     src={photo.src}
                     alt={photo.alt}
                     fill
-                    sizes="(max-width: 540px) 100vw, (max-width: 900px) 50vw, 33vw"
-                    style={{ objectFit: "cover" }}
+                    quality={40}
+                    loading={isFeature ? "eager" : "lazy"}
+                    sizes={
+                      isFeature
+                        ? "(max-width: 540px) 100vw, (max-width: 999px) 50vw, 66vw"
+                        : "(max-width: 540px) 100vw, (max-width: 900px) 50vw, 33vw"
+                    }
+                    style={{ objectFit: "cover", objectPosition: photo.pos }}
                   />
                   <div className="mkt-label">
                     <b>{m.name}</b>
@@ -298,9 +311,7 @@ export default function CoatingsPage() {
                 with their warranty when project conditions qualify.
               </p>
               <ul className="cx-made-points">
-                <li>
-                  Factory-trained and certified on every system we install.
-                </li>
+                <li>Factory-trained on every system we install.</li>
                 <li>
                   Installed per the manufacturer&rsquo;s published data sheets.
                 </li>
@@ -312,11 +323,13 @@ export default function CoatingsPage() {
             </div>
             <div className="cx-made-media">
               <Image
-                src="/images/jobs/job-1358.jpg"
-                alt="High-gloss seamless epoxy floor installed by the Salyers crew"
+                src="/images/jobs/job-3253.jpg"
+                alt="Salyers and Polymer Nation crew reviewing a resinous coating system in the shop"
                 fill
+                quality={40}
+                loading="lazy"
                 sizes="(max-width: 860px) 100vw, 45vw"
-                style={{ objectFit: "cover" }}
+                style={{ objectFit: "cover", objectPosition: "center 30%" }}
               />
             </div>
           </div>
@@ -407,7 +420,7 @@ export default function CoatingsPage() {
           </div>
           <div className="cred-item">
             <b>Factory-trained</b>
-            <span>Certified on every system we install</span>
+            <span>On every Polymer Nation system we install</span>
           </div>
           <div className="cred-item">
             <b>Bids in 1&ndash;2 days</b>

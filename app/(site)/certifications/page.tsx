@@ -14,18 +14,26 @@ export const metadata: Metadata = {
 };
 
 // Each credential gets a photo that accurately depicts what it backs.
-const CERT_PHOTOS: Record<string, { src: string; alt: string }> = {
+// Object-position frames the subject so the key content is never cropped out;
+// these images sit under a scrim, so they load lazily at quality 40.
+const CERT_PHOTOS: Record<
+  string,
+  { src: string; alt: string; objectPosition: string }
+> = {
   "cslb-b1": {
     src: "/images/jobs/courthouse-merced.jpg",
     alt: "The historic Merced County Courthouse, a public masonry building of the kind a licensed general contractor coordinates seismic work on.",
+    objectPosition: "center 35%",
   },
   "loctite-tyfo": {
     src: "/images/jobs/job-5700.jpg",
     alt: "Externally bonded carbon-fiber fabric wrapped around a structural concrete column during an FRP seismic retrofit.",
+    objectPosition: "center",
   },
   "polymer-nation": {
     src: "/images/jobs/job-3253.jpg",
-    alt: "A finished decorative flake resinous floor coating, an example of an industrial epoxy system installed to the manufacturer's method.",
+    alt: "A finished resinous floor coating, an example of an industrial epoxy system installed to the manufacturer's published method.",
+    objectPosition: "center",
   },
 };
 
@@ -68,6 +76,7 @@ export default function CertificationsPage() {
       />
 
       <PageHero
+        image="/images/jobs/job-8293.jpg"
         eyebrow="Certifications"
         title={
           <>
@@ -137,8 +146,13 @@ export default function CertificationsPage() {
                         src={photo.src}
                         alt={photo.alt}
                         fill
-                        sizes="(max-width: 760px) 100vw, 48vw"
-                        style={{ objectFit: "cover" }}
+                        loading="lazy"
+                        quality={40}
+                        sizes="(max-width: 760px) 100vw, (max-width: 1100px) 50vw, 540px"
+                        style={{
+                          objectFit: "cover",
+                          objectPosition: photo.objectPosition,
+                        }}
                       />
                     </div>
                   ) : null}
