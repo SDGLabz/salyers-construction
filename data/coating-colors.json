@@ -253,11 +253,6 @@
     "note": "Polished terrazzo-look flake and aggregate blends for premium architectural floors.",
     "colors": [
       {
-        "name": "Taupe",
-        "code": "1375-01",
-        "file": "/images/colors/terrazzo/taupe-1375-01.webp"
-      },
-      {
         "name": "Cafe",
         "code": "1375-02",
         "file": "/images/colors/terrazzo/cafe-1375-02.jpg"

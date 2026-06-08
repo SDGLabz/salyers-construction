@@ -11,7 +11,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const CONSENT_KEY = "belzona_consent";
+const CONSENT_KEY = "salyers_consent";
 type ConsentStatus = "accepted" | "declined" | null;
 
 /** Read the stored consent status (callable from any client module). */
@@ -66,8 +66,9 @@ export function CookieConsent() {
     <div className="cc-banner" role="dialog" aria-label="Cookie consent">
       <div className="cc-inner">
         <p className="cc-text">
-          We use cookies and similar technologies to improve your experience and
-          understand how visitors use our site.{" "}
+          We store one small preference to remember your cookie choice. This site
+          doesn&rsquo;t currently run third-party analytics or advertising &mdash; and
+          if that ever changes, you can decline it here.{" "}
           <Link href="/privacy" className="cc-link">
             Privacy Policy
           </Link>

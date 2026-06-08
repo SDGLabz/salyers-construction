@@ -620,7 +620,8 @@ section {
 .qw-q-help {
   color: var(--text-2);
   font-size: 16px;
-  margin-top: 12px;
+  line-height: 1.55;
+  margin-top: 14px;
 }
 /* welcome */
 .qw-welcome {
@@ -670,7 +671,7 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  margin-top: 26px;
+  margin-top: 28px;
 }
 .qw-opt {
   display: flex;
@@ -724,7 +725,7 @@ section {
 }
 .qw-textarea {
   width: 100%;
-  margin-top: 24px;
+  margin-top: 28px;
   padding: 14px 16px;
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -1282,7 +1283,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-top: 26px;
+  margin-top: 28px;
 }
 .qw-field {
   display: flex;
@@ -3625,6 +3626,7 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
 /* single-line text input (company name) */
 .qw-text {
   width: 100%;
+  margin-top: 28px;
   padding: 14px 16px;
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -5019,6 +5021,53 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
   margin-top: 6px;
 }
 
+/* ---- Legal pages: strict-policy prose (headings + lists for .lx-prose) ---- */
+.lx-updated {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 18px;
+}
+.lx-prose h2 {
+  font-size: clamp(20px, 2.4vw, 26px);
+  color: var(--belzona-blue);
+  letter-spacing: -0.02em;
+  margin: 40px 0 12px;
+  scroll-margin-top: 90px;
+}
+.lx-prose h2:first-of-type {
+  margin-top: 26px;
+}
+.lx-prose h3 {
+  font-size: 18px;
+  color: var(--text);
+  margin: 22px 0 8px;
+}
+.lx-prose ul {
+  margin: 12px 0 0;
+  padding-left: 22px;
+  color: var(--text-2);
+  font-size: 17px;
+  line-height: 1.7;
+}
+.lx-prose li {
+  margin-top: 8px;
+}
+.lx-prose li::marker {
+  color: var(--orange-ink);
+}
+.lx-prose strong {
+  color: var(--text);
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .lx-prose ul {
+    font-size: 16px;
+  }
+}
+
 /* ---- Wizard: drawings upload step ---- */
 .qw-file-drop {
   display: flex;
@@ -5026,6 +5075,7 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
   align-items: center;
   gap: 6px;
   text-align: center;
+  margin-top: 28px;
   padding: 30px 22px;
   border: 2px dashed var(--border);
   border-radius: 16px;

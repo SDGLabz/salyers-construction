@@ -89,7 +89,6 @@ const CATS = [
     slug: "terrazzo",
     note: "Polished terrazzo-look flake and aggregate blends for premium architectural floors.",
     colors: [
-      ["Taupe", "1375-01", B2 + "69c7f6c573dd5f9f99e3d31f_tab7-image-1.webp"],
       ["Cafe", "1375-02", B + "69e28f7add07c78229bbec59_1375-02_Cafe.jpg"],
       ["Brown Stone", "1375-03", B + "69e28f741b891f22e8dd71c4_1375-03_Brown_Stone.jpg"],
       ["Moonscape", "1375-04", B + "69e28f6c42c5abbf1b62aef2_1375-04_Moonscape.jpg"],
