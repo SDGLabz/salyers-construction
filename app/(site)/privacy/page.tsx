@@ -8,7 +8,7 @@ import "./legal.css";
 export const metadata: Metadata = {
   title: seoTitle("Privacy Policy"),
   description:
-    "How Salyers Construction collects, uses, shares, retains, and protects the information you submit through this website, and the privacy choices and rights you have, including for California residents.",
+    "How Salyers Construction collects, uses, discloses, retains, and protects personal information through this website, and the privacy rights of California, other U.S. state, and international (GDPR/UK) residents.",
 };
 
 export default function PrivacyPage() {
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
             How we handle <em>your information</em>.
           </>
         }
-        lead="What we collect when you contact us or request a bid, how we use and share it, how long we keep it, and the choices and rights you have — including California privacy rights."
+        lead="What we collect when you use this website or request a bid, how we use, disclose, and protect it, how long we keep it, and the privacy rights you have — including for California, other U.S. state, and international residents."
       >
         <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
         <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
@@ -46,10 +46,10 @@ export default function PrivacyPage() {
         <div className="wrap">
           <div className="sec-head">
             <p className="eyebrow">At a glance</p>
-            <h2>What we collect, and what we do with it.</h2>
+            <h2>The short version.</h2>
             <p className="lede">
-              The short version. Everything here applies to information you submit
-              through the bid, drawings, samples, and contact forms on this website.
+              A plain-English summary. The full, controlling Privacy Policy is below
+              and governs in the event of any conflict.
             </p>
           </div>
 
@@ -65,22 +65,22 @@ export default function PrivacyPage() {
               <h3>Why we use it</h3>
               <p>
                 Only to respond, scope the work, prepare a written itemized bid,
-                follow up, and keep our own project records.
+                follow up, run the site, and keep our own project records.
               </p>
             </article>
             <article className="bento-card">
               <h3>Where it goes</h3>
               <p>
-                Submissions are delivered to{" "}
-                <a href={CONTACT.emailHref}>{CONTACT.email}</a> via our email
-                provider, and shared only with people on your project, when needed.
+                Submissions reach{" "}
+                <a href={CONTACT.emailHref}>{CONTACT.email}</a> through our email
+                provider, shared only with people on your project, when needed.
               </p>
             </article>
             <article className="bento-card">
               <h3>What we don&rsquo;t do</h3>
               <p>
-                We do not sell or share your information for advertising, and we
-                do not trade it to data brokers.
+                We do not sell or share your information for advertising, and we do
+                not trade it to data brokers.
               </p>
             </article>
             <article className="bento-card">
@@ -94,8 +94,8 @@ export default function PrivacyPage() {
             <article className="bento-card">
               <h3>Your rights</h3>
               <p>
-                Ask us to access, correct, or delete your information any time —
-                email <a href={CONTACT.emailHref}>{CONTACT.email}</a> or call{" "}
+                Access, correct, delete, or opt out — email{" "}
+                <a href={CONTACT.emailHref}>{CONTACT.email}</a> or call{" "}
                 <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>.
               </p>
             </article>
@@ -106,212 +106,332 @@ export default function PrivacyPage() {
       {/* ---- Full policy ---- */}
       <section className="sec">
         <div className="wrap lx-prose">
-          <p className="lx-updated">Effective date: June 8, 2026</p>
+          <p className="lx-updated">Effective date: June 8, 2026 &middot; Last updated: June 8, 2026</p>
           <p className="lede">
-            This Privacy Policy explains what information {CONTACT.legalName}{" "}
+            This Privacy Policy (&ldquo;Policy&rdquo;) describes how {CONTACT.legalName}{" "}
             (&ldquo;{CONTACT.legalName},&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or
-            &ldquo;our&rdquo;) collects through this website, how we use and share it,
-            how long we keep it, and the choices and rights you have. By using this
-            site or submitting a form, you agree to this Policy.
+            &ldquo;our&rdquo;) collects, uses, discloses, retains, and protects personal
+            information through this website and the bid, drawings, samples, and inquiry
+            forms on it (collectively, the &ldquo;Site&rdquo;), and explains the privacy
+            choices and rights available to you. By accessing or using the Site or
+            submitting information through it, you acknowledge that you have read and
+            understood this Policy. If you do not agree, please do not use the Site.
           </p>
 
-          <h2>1. Who we are</h2>
+          <h2>1. Scope and definitions</h2>
           <p>
-            {CONTACT.legalName} is a California general building contractor (CSLB
-            license {CONTACT.license}) located at {CONTACT.street}, {CONTACT.city},{" "}
-            {CONTACT.region} {CONTACT.postalCode}. This Policy applies to this website
-            and the bid, drawings, samples, and inquiry forms on it. It does not cover
-            any third-party website we link to.
+            This Policy applies to personal information we process in connection with
+            the Site. It does not apply to information collected offline, through
+            separate signed agreements, or by any third-party website or service we link
+            to. In this Policy: <strong>&ldquo;personal information&rdquo;</strong> (or
+            &ldquo;personal data&rdquo;) means information that identifies, relates to,
+            or could reasonably be linked to an identified or identifiable individual or
+            household; <strong>&ldquo;sensitive personal information&rdquo;</strong>{" "}
+            means the subset of personal information given heightened protection by law
+            (such as government identifiers, financial account credentials, precise
+            geolocation, or health data); <strong>&ldquo;process&rdquo;</strong> means
+            any operation performed on personal information; and{" "}
+            <strong>&ldquo;service provider&rdquo;</strong> (or
+            &ldquo;processor&rdquo;) means a vendor that processes personal information
+            on our behalf and under our instructions.
           </p>
 
-          <h2>2. Information we collect</h2>
+          <h2>2. Personal information we collect</h2>
           <p>
-            <strong>Information you give us.</strong> When you contact us or use a
-            form, we collect what you choose to provide — your name, company, role,
-            email address, phone number, project location, the line of work and
-            project type, square footage and facility details, your message, and any
-            drawings, documents, or photos you upload. You don&rsquo;t have to provide
-            this, but we can&rsquo;t prepare a bid without enough of it to scope the
-            work.
+            We collect the categories of personal information below. We do not collect
+            more than we need, and many fields are optional — though we cannot prepare a
+            bid without enough information to scope the work. This Policy, together with
+            the short notice shown on our forms, serves as our <strong>notice at
+            collection</strong> under the CCPA/CPRA: we collect the categories described
+            in this Section for the purposes in Section 4, retain them as described in
+            Section 8, and do not sell or share personal information.
           </p>
-          <p>
-            <strong>Information collected automatically.</strong> Like most websites,
-            our hosting provider records standard technical data when you visit — such
-            as your IP address, browser type, device, referring page, and the pages
-            you view — in server logs used to operate, secure, and troubleshoot the
-            site. We also store one small item in your browser to remember your cookie
-            choice (see Section 4).
-          </p>
-          <p>
-            <strong>What we don&rsquo;t want.</strong> We don&rsquo;t ask for sensitive
-            personal information (such as government IDs, financial account numbers, or
-            health data) through this website — please don&rsquo;t include it in a form
-            or attachment. This site is not directed to children (see Section 10).
-          </p>
-          <p>
-            <strong>In CCPA/CPRA terms,</strong> the personal information we collect
-            falls into these categories: identifiers (name, email, phone); commercial
-            and professional information (company, role, project details); internet or
-            network activity (server-log data such as IP address and pages viewed); and
-            approximate geolocation (the project city or county you provide). We do not
-            collect sensitive personal information through this site.
-          </p>
-
-          <h2>3. How we use your information</h2>
           <ul>
-            <li>To respond to your inquiry, scope your project, and prepare and send a written, itemized bid;</li>
-            <li>To follow up about that project and our working relationship;</li>
-            <li>To keep internal records of the projects we bid and perform;</li>
-            <li>To operate, secure, maintain, and improve this website;</li>
-            <li>To prevent abuse (our forms use a spam-prevention &ldquo;honeypot&rdquo; field) and to comply with law and protect our rights, your safety, and others.</li>
+            <li>
+              <strong>Identifiers and contact information</strong> — your name, company,
+              role/title, email address, and phone number.
+            </li>
+            <li>
+              <strong>Commercial and professional information</strong> — the line of
+              work, project type, square footage, facility details, timeline, and the
+              message and scope you provide.
+            </li>
+            <li>
+              <strong>Project files you upload</strong> — drawings, documents, and
+              photos you choose to attach to a request (which may themselves contain
+              personal information you include).
+            </li>
+            <li>
+              <strong>Approximate geolocation</strong> — the project city, county, or
+              region you tell us (we do not collect precise device location).
+            </li>
+            <li>
+              <strong>Internet and network activity</strong> — standard technical data
+              recorded by our hosting provider in server logs, such as IP address,
+              browser type, device, referring page, and the pages you view, used to
+              operate, secure, and troubleshoot the Site.
+            </li>
+            <li>
+              <strong>Cookie/consent preference</strong> — a single value stored in your
+              browser to remember your cookie choice (see Section 7).
+            </li>
           </ul>
           <p>
-            We process your information only for the purposes above or a compatible
-            purpose. Where the law requires a legal basis, ours are your consent, our
-            legitimate interest in running our business and answering your request, and
-            taking steps at your request before entering a contract.
+            <strong>In CCPA/CPRA category terms,</strong> the above maps to identifiers;
+            customer records and commercial/professional information; internet or
+            network activity; approximate geolocation; and audio/visual or document
+            content you upload. We do <strong>not</strong> collect sensitive personal
+            information through this Site, and we ask that you not submit it in a form or
+            attachment. We do not knowingly process the personal information of children
+            (see Section 13).
           </p>
 
-          <h2>4. Cookies and similar technologies</h2>
+          <h2>3. Sources of personal information</h2>
+          <ul>
+            <li><strong>Directly from you</strong>, when you complete a form, upload files, email, or call us.</li>
+            <li><strong>Automatically</strong>, through standard server logs generated by your interaction with the Site.</li>
+            <li><strong>From your organization or representatives</strong>, if a colleague, engineer, or agent submits a request that involves you.</li>
+          </ul>
+
+          <h2>4. How we use personal information</h2>
+          <ul>
+            <li>To respond to your inquiry, scope your project, and prepare and send a written, itemized bid;</li>
+            <li>To follow up about that project and our working relationship, and to perform any resulting contract;</li>
+            <li>To keep internal business and project records;</li>
+            <li>To operate, maintain, secure, debug, and improve the Site;</li>
+            <li>To detect, prevent, and respond to fraud, abuse, and security incidents (our forms use a spam-prevention &ldquo;honeypot&rdquo; field); and</li>
+            <li>To comply with law and legal process, enforce our terms, and protect our rights, your safety, and the rights and safety of others.</li>
+          </ul>
           <p>
-            <strong>Essential.</strong> We store a single preference in your
-            browser&rsquo;s local storage to remember whether you accepted or declined
-            non-essential technologies. It is required to honor your choice and is not
-            used to track you.
+            We process personal information only for the purposes described in this
+            Policy or a compatible purpose, and we do not use it for incompatible
+            purposes without notice or, where required, consent. We do not use your
+            information for automated decision-making or profiling that produces legal or
+            similarly significant effects (see Section 14).
+          </p>
+
+          <h2>5. Legal bases for processing (EEA / UK / Switzerland)</h2>
+          <p>
+            If you are in the European Economic Area, the United Kingdom, or
+            Switzerland, we process your personal information on one or more of these
+            legal bases: your <strong>consent</strong> (which you may withdraw at any
+            time); the <strong>performance of a contract</strong> or steps you ask us to
+            take before entering one; compliance with a <strong>legal obligation</strong>;
+            and our <strong>legitimate interests</strong> in operating and securing our
+            business and responding to your request, where those interests are not
+            overridden by your rights.
+          </p>
+
+          <h2>6. How we disclose personal information</h2>
+          <p>
+            We do <strong>not sell</strong> your personal information, and we do not
+            &ldquo;share&rdquo; it for cross-context behavioral advertising (as those
+            terms are defined under California law). We have not sold or shared personal
+            information in the preceding 12 months. We never trade your details to
+            advertisers or data brokers. We disclose personal information only as
+            follows:
+          </p>
+          <ul>
+            <li>
+              <strong>Service providers / processors.</strong> A small number of vendors
+              process information on our behalf, under contract, solely to provide their
+              service — including our hosting and infrastructure provider (Vercel) and
+              our email-delivery provider (Resend), which transmits your form submission
+              to us.
+            </li>
+            <li>
+              <strong>Project participants.</strong> When necessary to do the work you
+              asked about, we may disclose relevant details to people on the same project
+              — such as the structural engineer of record, a general contractor or
+              building owner, or a material manufacturer when a product specification
+              requires it.
+            </li>
+            <li>
+              <strong>Legal, safety, and compliance.</strong> We may disclose information
+              when required by law, subpoena, court order, or government request, or when
+              we believe disclosure is necessary to protect the rights, property, or
+              safety of {CONTACT.legalName}, our clients, or others, or to investigate
+              fraud or security issues.
+            </li>
+            <li>
+              <strong>Business transfers.</strong> If we are involved in a merger,
+              acquisition, financing, reorganization, or sale of assets, personal
+              information may be transferred as part of that transaction, subject to this
+              Policy.
+            </li>
+            <li>
+              <strong>With your direction or consent.</strong> We may disclose
+              information for any other purpose you direct or consent to.
+            </li>
+          </ul>
+
+          <h2>7. Cookies and similar technologies</h2>
+          <p>
+            <strong>Strictly necessary / functional.</strong> We store a single
+            preference in your browser&rsquo;s local storage to remember whether you
+            accepted or declined non-essential technologies. It is required to honor your
+            choice and is not used to track you.
           </p>
           <p>
-            <strong>Analytics and advertising.</strong> This site is built to support,
-            but does <strong>not currently run</strong>, any third-party analytics or
-            identity/advertising pixel. If we enable one in the future, the consent
-            banner lets you decline it, and we will honor your &ldquo;Decline&rdquo;
-            choice, your browser settings, and the Global Privacy Control (GPC) signal —
-            a GPC signal is treated as a decline automatically. We do not use cookies for
-            cross-site tracking or targeted advertising.
+            <strong>Analytics and advertising.</strong> The Site is built to support, but
+            does <strong>not currently run</strong>, any third-party analytics or
+            identity/advertising pixel, and we do not use cookies for cross-site tracking
+            or targeted advertising. If we enable such technologies in the future, the
+            consent banner lets you decline them, and we will honor your
+            &ldquo;Decline&rdquo; choice, your browser settings, and the Global Privacy
+            Control (GPC) signal — a GPC signal detected in your browser is treated as a
+            decline automatically.
           </p>
           <p>
             <strong>Your controls.</strong> Use the banner&rsquo;s Accept / Decline
             buttons, your browser&rsquo;s privacy and cookie settings, or a GPC-enabled
-            browser or extension. If your browser sends GPC, we treat it as a request
-            to decline non-essential technologies and to opt out of any
-            &ldquo;sale&rdquo; or &ldquo;sharing.&rdquo;
+            browser or extension to express an opt-out preference. Because we do not run
+            cross-context advertising, we do not respond differently to legacy
+            &ldquo;Do Not Track&rdquo; headers, but we honor GPC as described above.
           </p>
 
-          <h2>5. How we share information</h2>
+          <h2>8. How long we keep personal information</h2>
           <p>
-            We do not sell your personal information, and we do not share it for
-            cross-context behavioral advertising. We never trade your details to
-            advertisers or data brokers. We disclose information only as follows:
-          </p>
-          <ul>
-            <li>
-              <strong>Service providers.</strong> We use a small number of vendors to
-              run the site and our forms — including our hosting and infrastructure
-              provider (Vercel) and our email-delivery provider (Resend), which
-              transmits your form submission to us. They process information on our
-              behalf, under contract, only to provide their service.
-            </li>
-            <li>
-              <strong>Project participants.</strong> When it is necessary to do the work
-              you asked about, we may share relevant details with people on the same
-              project — for example the structural engineer of record, a general
-              contractor or building owner, or a material manufacturer when a product
-              specification requires it.
-            </li>
-            <li>
-              <strong>Legal and safety.</strong> We may disclose information if required
-              by law, subpoena, or government request, or to protect the rights,
-              property, or safety of {CONTACT.legalName}, our clients, or others.
-            </li>
-            <li>
-              <strong>Business transfer.</strong> If our business is sold or
-              reorganized, information may transfer as part of that transaction, subject
-              to this Policy.
-            </li>
-          </ul>
-
-          <h2>6. How long we keep it</h2>
-          <p>
-            We keep your submission and any documents you send for as long as we need
-            them to respond, scope and bid the work, perform any resulting project, and
-            maintain our business and legal records. When information is no longer
-            needed for those purposes, we delete or anonymize it. You can ask us to
-            delete your information at any time (see Section 8), subject to records we
-            are required by law to keep.
+            We retain personal information for as long as necessary to fulfill the
+            purposes in this Policy — to respond, scope and bid the work, perform any
+            resulting project, and maintain our business, accounting, warranty, and legal
+            records — and then we delete or de-identify it. Retention periods are
+            determined by the nature and sensitivity of the information, the purpose for
+            which it was collected, applicable legal and contractual requirements, and
+            our legitimate business needs. You may request deletion at any time (see
+            Section 9), subject to information we are required or permitted by law to
+            retain.
           </p>
 
-          <h2>7. How we protect it</h2>
+          <h2>9. Your privacy rights and how to exercise them</h2>
           <p>
-            We use reasonable administrative and technical safeguards, including
-            encrypted transport (HTTPS) for this site and limiting who can read the
-            inbox where submissions arrive. No website or method of transmission is
-            completely secure, so we cannot guarantee absolute security.
-          </p>
-
-          <h2>8. Your privacy rights</h2>
-          <p>
-            <strong>California residents (CCPA/CPRA).</strong> You have the right to
-            know and access the personal information we have collected about you, to
-            request that we delete or correct it, and to opt out of the
-            &ldquo;sale&rdquo; or &ldquo;sharing&rdquo; of personal information — though
-            we do not sell or share it. You have the right not to be treated
-            differently for exercising these rights, and to use an authorized agent. We
-            honor the Global Privacy Control as a valid opt-out signal. Under
-            California&rsquo;s &ldquo;Shine the Light&rdquo; law, we confirm we do not
-            disclose personal information to third parties for their own direct-marketing
-            purposes.
-          </p>
-          <p>
-            <strong>Other U.S. states.</strong> If your state grants similar rights
-            (such as to access, correct, delete, or opt out), you may exercise them the
-            same way.
-          </p>
-          <p>
-            <strong>How to exercise your rights.</strong> Email{" "}
-            <a href={CONTACT.emailHref}>{CONTACT.email}</a> or call{" "}
-            <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>. We may need to verify your
-            identity before acting on a request, and we will respond within the time the
-            law allows.
-          </p>
-
-          <h2>9. Third-party links</h2>
-          <p>
-            This site may link to other websites (for example, manufacturer or
-            standards pages). We do not control and are not responsible for their content
-            or privacy practices. Review their policies before sharing information with
+            Depending on where you live, you may have some or all of the following
+            rights. We will not discriminate or retaliate against you for exercising
             them.
           </p>
-
-          <h2>10. Children&rsquo;s privacy</h2>
           <p>
-            This website is intended for businesses and the people who build, own, and
-            approve construction projects. It is not directed to children, and we do not
-            knowingly collect personal information from anyone under 16. If you believe a
-            child has provided information, contact us and we will delete it.
+            <strong>California residents (CCPA/CPRA).</strong> You have the right to know
+            and access the categories and specific pieces of personal information we have
+            collected, the sources, the business purposes, and the categories of third
+            parties to whom we disclose it; to request deletion; to request correction of
+            inaccurate information; to opt out of the &ldquo;sale&rdquo; or
+            &ldquo;sharing&rdquo; of personal information (we do neither); and to limit
+            the use of sensitive personal information (we do not collect it). You have
+            the right to be free from discrimination for exercising these rights and to
+            use an authorized agent. We honor the Global Privacy Control as a valid
+            opt-out signal. We do not offer financial incentives for personal
+            information. Under California&rsquo;s &ldquo;Shine the Light&rdquo; law (Civil
+            Code &sect; 1798.83), we confirm we do not disclose personal information to
+            third parties for their own direct-marketing purposes.
+          </p>
+          <p>
+            <strong>Other U.S. state residents.</strong> If you reside in a state with a
+            comprehensive privacy law — such as Virginia, Colorado, Connecticut, Utah,
+            Texas, Oregon, Montana, and others as they take effect — you may have rights
+            to confirm whether we process your personal information and to access,
+            correct, delete, or obtain a portable copy of it, and to opt out of targeted
+            advertising, sale, or certain profiling. Where the law provides, you may also
+            appeal a decision on your request.
+          </p>
+          <p>
+            <strong>EEA, UK, and Switzerland (GDPR / UK GDPR).</strong> You may have the
+            right to access; to rectification; to erasure (&ldquo;right to be
+            forgotten&rdquo;); to restriction of processing; to data portability; to
+            object to processing based on legitimate interests; and to withdraw consent
+            at any time without affecting prior processing. You also have the right to
+            lodge a complaint with your local supervisory authority.
+          </p>
+          <p>
+            <strong>How to submit a request.</strong> Email{" "}
+            <a href={CONTACT.emailHref}>{CONTACT.email}</a> or call{" "}
+            <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>. To protect your information,
+            we may need to verify your identity (and, for an authorized agent, proof of
+            authorization) before we act. We will respond within the timeframe required
+            by applicable law, and where the law allows an appeal of our decision, we
+            will tell you how to appeal.
           </p>
 
-          <h2>11. Where your information is processed</h2>
+          <h2>10. Data security</h2>
           <p>
-            We operate from the United States, and the information you submit is
-            processed and stored in the United States. If you access this site from
-            outside the U.S., you understand your information will be transferred to and
-            handled in the U.S.
+            We maintain reasonable administrative, technical, and organizational
+            safeguards designed to protect personal information against unauthorized
+            access, use, alteration, and destruction, including encrypted transport
+            (HTTPS) for the Site and limiting who can access the inbox where submissions
+            arrive. No website, electronic transmission, or storage method is completely
+            secure, so we cannot guarantee absolute security. If we become aware of a
+            security incident affecting your personal information, we will notify you and
+            the relevant authorities as required by law.
           </p>
 
-          <h2>12. Changes to this Policy</h2>
+          <h2>11. International data transfers</h2>
           <p>
-            We may update this Policy from time to time. When we do, we will revise the
-            &ldquo;Effective date&rdquo; above, and significant changes will be reflected
-            on this page. Your continued use of the site after an update means you accept
-            the revised Policy.
+            We operate from, and process and store personal information in, the United
+            States. If you access the Site from outside the United States, you understand
+            that your information will be transferred to and processed in the United
+            States, where data-protection laws may differ from those of your
+            jurisdiction. Where required, we rely on appropriate safeguards (such as
+            standard contractual clauses) for cross-border transfers. {CONTACT.legalName}{" "}
+            is established in the United States and does not target or offer services to
+            individuals in the EEA or UK, and so has not appointed an Article 27
+            representative; EEA, UK, and Swiss residents may contact us using the details
+            in Section 17.
           </p>
 
-          <h2>13. Contact us</h2>
+          <h2>12. Third-party links and services</h2>
           <p>
-            Questions about this Policy or your information? Reach us at{" "}
+            The Site may link to third-party websites and resources (for example,
+            manufacturer or standards pages). We do not control and are not responsible
+            for their content, accuracy, or privacy practices. This Policy does not apply
+            to those sites; review their policies before sharing information with them.
+          </p>
+
+          <h2>13. Children&rsquo;s privacy</h2>
+          <p>
+            The Site is intended for businesses and the people who build, own, design,
+            and approve construction projects. It is not directed to children, and we do
+            not knowingly collect personal information from anyone under 16 (or under 13
+            within the meaning of the U.S. Children&rsquo;s Online Privacy Protection
+            Act). If you believe a child has provided personal information, contact us and
+            we will delete it.
+          </p>
+
+          <h2>14. Automated decision-making</h2>
+          <p>
+            We do not use your personal information to make decisions about you based
+            solely on automated processing — including profiling — that produce legal or
+            similarly significant effects.
+          </p>
+
+          <h2>15. Do Not Track and Global Privacy Control</h2>
+          <p>
+            Some browsers offer &ldquo;Do Not Track&rdquo; signals and a Global Privacy
+            Control (GPC) signal. Because the Site does not run cross-context behavioral
+            advertising or third-party analytics today, there is currently nothing for
+            these signals to disable; however, where a GPC signal is present, we treat it
+            as a valid request to opt out of any sale or sharing and to decline
+            non-essential technologies, and we would honor it automatically if such
+            technologies were ever enabled.
+          </p>
+
+          <h2>16. Changes to this Policy</h2>
+          <p>
+            We may update this Policy from time to time to reflect changes in our
+            practices, technology, or the law. When we do, we will revise the
+            &ldquo;Last updated&rdquo; date above, and material changes will be reflected
+            on this page. Your continued use of the Site after an update constitutes
+            acceptance of the revised Policy.
+          </p>
+
+          <h2>17. How to contact us</h2>
+          <p>
+            For questions about this Policy, to exercise your rights, or to make a
+            privacy complaint, contact {CONTACT.legalName} at{" "}
             <a href={CONTACT.emailHref}>{CONTACT.email}</a>,{" "}
-            <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>, or {CONTACT.legalName},{" "}
-            {CONTACT.street}, {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}. This
-            Policy works alongside our <a href={`${SITE_URL}/terms`}>Terms &amp; Conditions</a>.
+            <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>, or {CONTACT.street},{" "}
+            {CONTACT.city}, {CONTACT.region} {CONTACT.postalCode}. EEA, UK, or Swiss
+            residents also have the right to complain to their local data-protection
+            authority. This Policy works alongside our{" "}
+            <a href={`${SITE_URL}/terms`}>Terms &amp; Conditions</a>.
           </p>
         </div>
       </section>
