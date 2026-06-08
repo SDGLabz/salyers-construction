@@ -1,0 +1,43 @@
+/* Legal pages (privacy + terms) — page-specific prose styling.
+   Namespaced with .lx- to avoid global collisions. Uses brand CSS variables
+   only (never hardcoded brand hex). Mirrors the shared primecoat-modern look. */
+
+.lx-prose {
+  max-width: 70ch;
+}
+.lx-prose p {
+  color: var(--text-2);
+  font-size: 17px;
+  line-height: 1.72;
+}
+.lx-prose p + p {
+  margin-top: 20px;
+}
+.lx-prose .lede {
+  color: var(--text);
+}
+.lx-prose a {
+  color: var(--orange-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
+/* The "expanded before launch / reviewed by counsel" honesty note. */
+.lx-note {
+  margin-top: 28px;
+  padding: 18px 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--orange-ink);
+  border-radius: 12px;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: var(--text-3) !important;
+}
+
+@media (max-width: 600px) {
+  .lx-prose p {
+    font-size: 16px;
+  }
+}

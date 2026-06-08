@@ -1,0 +1,25 @@
+[
+  {
+    "slug": "cslb-b1",
+    "name": "CSLB B1 General Building Contractor License #960653",
+    "number": "CA B1 #960653",
+    "certifyingBody": "California Contractors State License Board",
+    "whatThisMeans": "The license backs the bid. Salyers can hold a prime contract on multi-trade scopes, sub to a GC under their prime, or carry a project that requires coordination across structural and coatings work in one mobilization. Issued 2011, in good standing.",
+    "legal": "License status is publicly verifiable through the California Contractors State License Board."
+  },
+  {
+    "slug": "loctite-tyfo",
+    "name": "Henkel / LOCTITE Tyfo Certified Applicator",
+    "number": "ICC-ES ESR-2103",
+    "certifyingBody": "ICC Evaluation Service",
+    "whatThisMeans": "The work is installed under the system the design references. The engineer of record's drawings, the manufacturer's application drawings, and the installer's documentation form a coherent paper trail for the building official, the owner, and the warranty path. The Tyfo system is held by Henkel Corporation dba Fyfe.",
+    "legal": "ICC-ES Evaluation Report ESR-2103 is publicly available from the ICC Evaluation Service."
+  },
+  {
+    "slug": "polymer-nation",
+    "name": "Polymer Nation Trained Installer",
+    "certifyingBody": "Polymer Nation",
+    "whatThisMeans": "System selection is grounded in the actual product line. The bid lists specific Polymer Nation products and references their data sheets. Field execution follows the manufacturer's published method, not a generic flooring trade approach. Training was completed in person at Polymer Nation's Chicago location.",
+    "legal": "Polymer Nation product information is publicly available at polymernation.com."
+  }
+]

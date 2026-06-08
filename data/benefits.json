@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "built-to-last",
+    "name": "Built to last",
+    "title": "Built to last",
+    "desc": "Epoxy flooring withstands forklifts, dropped tools, heavy point loads, and constant foot traffic without cracking, chipping, or wearing through, protecting your concrete substrate for decades."
+  },
+  {
+    "slug": "chemical-resistance",
+    "name": "Chemical resistance",
+    "title": "Chemical resistance",
+    "desc": "Engineered to resist oils, solvents, acids, caustics, and harsh cleaning agents, epoxy coatings prevent staining, etching, and degradation in even the most chemically aggressive environments."
+  },
+  {
+    "slug": "seamless-hygienic",
+    "name": "Seamless and hygienic",
+    "title": "Seamless and hygienic",
+    "desc": "With no grout lines, joints, or porous seams to trap bacteria, epoxy floors eliminate harborage points and meet FDA, USDA, and healthcare sanitation standards with ease."
+  },
+  {
+    "slug": "slip-resistant-safety",
+    "name": "Slip-resistant safety",
+    "title": "Slip-resistant safety",
+    "desc": "Custom-engineered aggregate textures deliver reliable traction in wet, oily, or high-traffic areas, reducing slip-and-fall incidents while staying easy to clean and sanitize."
+  },
+  {
+    "slug": "low-maintenance",
+    "name": "Low maintenance",
+    "title": "Low maintenance",
+    "desc": "Easy to sweep, mop, and disinfect, epoxy floors resist staining and damage that would sideline traditional flooring, cutting cleaning time and long-term operating costs."
+  },
+  {
+    "slug": "long-term-value",
+    "name": "Long-term value",
+    "title": "Long-term value",
+    "desc": "Properly installed epoxy systems can last 20+ years, dramatically outperforming tile, sealed concrete, or VCT, and delivering a stronger ROI through reduced replacement and downtime."
+  }
+]

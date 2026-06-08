@@ -1,0 +1,169 @@
+/* Homepage-specific styles. Namespaced .hx- to avoid global collisions.
+   All color comes from the brand CSS variables in globals.css :root —
+   never hardcoded brand hex. Hover gated behind @media(hover:hover) +
+   @media(prefers-reduced-motion:no-preference); neutralized under
+   @media(hover:none). Mobile is its own stacked design. */
+
+/* ---- Two big featured service cards (photo + body) ---- */
+.hx-svc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(22px, 3vw, 32px);
+}
+.hx-svc-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(21, 38, 63, 0.1);
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+.hx-svc-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.hx-svc-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.hx-svc-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 29, 49, 0.55),
+    rgba(15, 29, 49, 0.06) 60%,
+    transparent
+  );
+}
+.hx-svc-body {
+  padding: clamp(24px, 3vw, 34px);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.hx-svc-body .eyebrow {
+  margin-bottom: 12px;
+}
+.hx-svc-body h3 {
+  font-size: clamp(22px, 2.6vw, 28px);
+  color: var(--belzona-blue);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+.hx-svc-body p {
+  color: var(--text-2);
+  font-size: 16px;
+  line-height: 1.65;
+  margin-top: 14px;
+}
+.hx-svc-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 22px;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--orange-ink);
+}
+.hx-svc-go svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s var(--ease);
+}
+
+/* ---- "How a job runs" 3-step process ---- */
+.hx-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(18px, 2.4vw, 28px);
+  counter-reset: hx-step;
+}
+.hx-step {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: clamp(26px, 3vw, 34px) clamp(24px, 2.6vw, 30px);
+  box-shadow: 0 8px 24px rgba(21, 38, 63, 0.1);
+}
+.hx-step-no {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--orange-ink);
+  font-weight: 600;
+}
+.hx-step h3 {
+  font-size: 20px;
+  color: var(--belzona-blue);
+  letter-spacing: -0.01em;
+  margin: 12px 0 10px;
+}
+.hx-step p {
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.hx-step-rule {
+  display: none;
+}
+
+/* ---- mobile: stack, full-bleed-ish, >=44px targets ---- */
+@media (max-width: 860px) {
+  .hx-svc {
+    grid-template-columns: 1fr;
+  }
+  .hx-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- tasteful hover (gated) ---- */
+@media (hover: hover) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hx-svc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(21, 38, 63, 0.18);
+      border-color: var(--belzona-blue);
+    }
+    .hx-svc-card:hover .hx-svc-media img {
+      transform: scale(1.05);
+    }
+    .hx-svc-card:hover .hx-svc-go svg {
+      transform: translateX(4px);
+    }
+  }
+}
+@media (hover: none) {
+  .hx-svc-card:hover {
+    transform: none;
+    box-shadow: 0 10px 30px rgba(21, 38, 63, 0.1);
+    border-color: var(--border);
+  }
+  .hx-svc-card:hover .hx-svc-media img {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hx-svc-media img,
+  .hx-svc-card,
+  .hx-svc-go svg {
+    transition: none;
+  }
+}

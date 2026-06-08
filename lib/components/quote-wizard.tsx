@@ -1,104 +1,167 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import Image from "next/image";
 import Link from "next/link";
 import { CONTACT } from "@/lib/contact";
-import PRODUCTS from "@/lib/catalog/quote-products.json";
+import { Logo } from "@/lib/components/logo";
 
 /**
- * Multi-path "Contact / Request" flow. A starter screen routes the visitor into
- * one of four paths — product/kit quote, site survey, Lunch & Learn, or a general
+ * Multi-path "Request a Bid / Contact" flow for Salyers Construction. A starter
+ * screen routes the visitor into one of four paths — request a written bid, send
+ * project drawings, request a coatings spec / samples, or a general/technical
  * inquiry — each with its own questions, then a shared contact step. Renders as a
  * full-screen modal (portal) or, with `inline`, embedded in the page (contact).
  * Submits to /api/quote (Resend).
  */
 
-type SlimProduct = { name: string; slug: string; series: string; subtitle: string; fn: string };
-const ALL_PRODUCTS = PRODUCTS as SlimProduct[];
-const seriesLabel = (s: string) => s.replace("belzona-", "").replace("-series", "") + " Series";
-
 type Field =
   | { kind: "single"; id: string; q: string; help?: string; options: string[] }
   | { kind: "text"; id: string; q: string; help?: string; placeholder?: string }
   | { kind: "textarea"; id: string; q: string; help?: string; placeholder?: string }
-  | { kind: "products" }
   | { kind: "contact" };
 
-type PathId = "product" | "survey" | "lunch" | "inquiry";
+type PathId = "bid" | "drawings" | "samples" | "inquiry";
 
-const INDUSTRY = ["Oil & gas", "Petrochemical", "Chemical", "Water & wastewater", "Power", "Marine", "Food & beverage", "Pulp & paper", "Steel", "Other"];
-const PROBLEM = ["Corrosion", "Active leak", "Erosion or abrasion", "Chemical attack", "Cracks or structural damage", "Coating or lining failure", "Worn or damaged part", "Floor or surface problem", "Something else"];
-const ASSET = ["Tank", "Pipe or pipeline", "Pump or impeller", "Valve or fitting", "Heat exchanger", "Process vessel", "Floor", "Roof", "Wall", "Structural steel", "Other"];
-const WORKED = ["Yes — we use Belzona", "No — new to Belzona", "Not sure"];
+// Salyers' two lines of work — used across paths.
+const SERVICE_LINE = ["Seismic FRP retrofit", "Industrial epoxy / resinous coatings"];
+const ROLE = [
+  "Structural Engineer of Record",
+  "General Contractor",
+  "Building owner or manager",
+  "Public agency",
+  "Other",
+];
+const BID_PROJECT = [
+  "Seismic / structural strengthening",
+  "Parking structure or deck",
+  "Concrete repair",
+  "New epoxy or resinous floor",
+  "Re-coat or repair an existing floor",
+  "Containment or secondary containment",
+  "Something else",
+];
+const DRAWING_STAGE = [
+  "EOR design intent",
+  "Issued-for-construction",
+  "Conceptual",
+  "Not sure",
+];
+const COATINGS_MARKET = [
+  "Manufacturing / industrial",
+  "Warehouse / distribution",
+  "Food & beverage",
+  "Healthcare / lab",
+  "Commercial / retail",
+  "Public / institutional",
+  "Other",
+];
+const COATINGS_SYSTEM = [
+  "Epoxy floor coating",
+  "Flake / decorative system",
+  "Polyaspartic / urethane topcoat",
+  "Chemical-resistant lining",
+  "Secondary containment",
+  "Not sure — recommend a system",
+];
+const SQUARE_FOOTAGE = [
+  "Under 2,000 sq ft",
+  "2,000 – 10,000 sq ft",
+  "10,000 – 50,000 sq ft",
+  "Over 50,000 sq ft",
+  "Not sure yet",
+];
+const FACILITY_TYPE = [
+  "New construction",
+  "Existing facility (occupied)",
+  "Existing facility (vacant)",
+  "Tenant improvement",
+  "Other",
+];
+const INQUIRY_TOPIC = [
+  "A seismic standard",
+  "A coating system",
+  "Service area",
+  "Something else",
+];
 
 const PATHS: Record<PathId, { label: string; blurb: string; icon: string; steps: Field[] }> = {
-  product: {
-    label: "Quote on kits or products",
-    blurb: "Pick the Belzona products or repair kits you need, set quantities, and send a quote request.",
-    icon: "M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Zm-9 5.5V12M3.3 7 12 12l8.7-5",
+  bid: {
+    label: "Request a bid",
+    blurb: "Get a written, itemized bid for seismic FRP retrofit or an industrial floor coating.",
+    icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Zm0 0v6h6M9 13h6M9 17h6M9 9h1",
     steps: [
-      { kind: "products" },
-      { kind: "single", id: "use", q: "What's this for?", help: "Helps us confirm pack sizes and lead time.", options: ["A specific repair", "Routine maintenance / stock", "A project or turnaround", "Not sure yet"] },
-      { kind: "textarea", id: "details", q: "Anything else we should know?", help: "Substrate, service conditions, temperatures, timeline, or questions about quantities.", placeholder: "e.g. need this for a pump rebuild before the May turnaround…" },
+      { kind: "single", id: "serviceLine", q: "Which line of work?", help: "We bid both — pick the closer fit and we'll sort the details.", options: SERVICE_LINE },
+      { kind: "single", id: "projectType", q: "What's the project?", help: "Pick the closest match — the scope step is where you add specifics.", options: BID_PROJECT },
+      { kind: "text", id: "company", q: "What's your company?", placeholder: "Company or firm name" },
+      { kind: "text", id: "location", q: "Where is the project?", help: "City and county in California — it drives crew routing and lead time.", placeholder: "e.g. Sacramento, Sacramento County" },
+      { kind: "textarea", id: "details", q: "Scope and timeline", help: "Structure, square footage, conditions, and when you need a bid or a start date.", placeholder: "e.g. two-story tilt-up, ~14,000 sq ft warehouse floor, need a bid in two weeks and a start in Q3…" },
       { kind: "contact" },
     ],
   },
-  survey: {
-    label: "Plan a site survey",
-    blurb: "Have a local Belzona engineer come assess the asset and recommend the right system.",
-    icon: "M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2m-6 9 2 2 4-4",
+  drawings: {
+    label: "Send project drawings",
+    blurb: "Pass us EOR drawings or a construction set and we'll bid to the documents.",
+    icon: "M21 15V6a2 2 0 0 0-2-2H9.5L7 2H3a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h6M14 13l3 3 5-6",
     steps: [
-      { kind: "text", id: "company", q: "What's your company?", placeholder: "Company name" },
-      { kind: "single", id: "industry", q: "What's your industry?", options: INDUSTRY },
-      { kind: "single", id: "worked", q: "Have you worked with Belzona before?", options: WORKED },
-      { kind: "single", id: "problem", q: "What are you dealing with?", help: "Pick the closest match — our engineers refine it on-site.", options: PROBLEM },
-      { kind: "single", id: "asset", q: "Which equipment or surface?", options: ASSET },
-      { kind: "textarea", id: "details", q: "Describe the problem", help: "Dimensions, temperatures, access, and how soon you need it back in service.", placeholder: "e.g. 24-inch carbon-steel line, ~180°F, sulfuric service, needs to hold until the spring turnaround…" },
+      { kind: "text", id: "company", q: "What's your company?", placeholder: "Company or firm name" },
+      { kind: "single", id: "role", q: "What's your role on this project?", options: ROLE },
+      { kind: "single", id: "serviceLine", q: "Which line of work do the drawings cover?", options: SERVICE_LINE },
+      { kind: "single", id: "drawingStage", q: "What stage are the drawings?", help: "It tells us how firm the scope is when we price it.", options: DRAWING_STAGE },
+      { kind: "textarea", id: "details", q: "Describe the structure", help: "Building type, size, and what the documents call for. After you submit, just reply to our email with the PDFs or a share link — there's no upload here.", placeholder: "e.g. 1970s concrete parking deck, Tyfo column wraps per EOR, four levels…" },
       { kind: "contact" },
     ],
   },
-  lunch: {
-    label: "Schedule a Lunch & Learn",
-    blurb: "Bring your team a no-cost session on the Belzona solutions that fit your plant.",
-    icon: "M2 3h20M3 3v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V3M12 15v6M8 21h8",
+  samples: {
+    label: "Coatings spec or samples",
+    blurb: "Spec an American-made resinous floor, or get sample chips and a system recommendation.",
+    icon: "M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Zm10 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z",
     steps: [
-      { kind: "text", id: "company", q: "What's your company?", placeholder: "Company name" },
-      { kind: "single", id: "industry", q: "What's your industry?", options: INDUSTRY },
-      { kind: "single", id: "worked", q: "Have you worked with Belzona before?", options: WORKED },
-      { kind: "single", id: "learn", q: "What would your team like to learn about?", options: ["Corrosion protection & coatings", "Leak sealing (live or static)", "Tank linings & containment", "Concrete repair & flooring", "Pump & equipment repair", "General Belzona overview", "Something specific"] },
-      { kind: "single", id: "audience", q: "Roughly how many will attend?", options: ["Under 10", "10–25", "25+", "Not sure yet"] },
-      { kind: "textarea", id: "goals", q: "What would make this worth your team's time?", help: "Tell us the maintenance challenges you're facing or anything specific you'd like us to cover.", placeholder: "e.g. recurring tank-bottom corrosion and pump erosion — want options that avoid hot work…" },
+      { kind: "single", id: "market", q: "What kind of facility?", options: COATINGS_MARKET },
+      { kind: "single", id: "system", q: "Which system are you after?", help: "Not sure? Pick the last option and we'll match one to your conditions.", options: COATINGS_SYSTEM },
+      { kind: "single", id: "squareFootage", q: "Roughly how much floor area?", options: SQUARE_FOOTAGE },
+      { kind: "single", id: "facilityType", q: "What's the situation on site?", options: FACILITY_TYPE },
+      { kind: "textarea", id: "details", q: "Anything else we should know?", help: "Service conditions, chemical exposure, traffic, slip needs, color or finish, and timeline.", placeholder: "e.g. forklift traffic, occasional caustic spills, want a flake finish, occupied plant so weekend work only…" },
       { kind: "contact" },
     ],
   },
   inquiry: {
-    label: "General inquiry",
-    blurb: "Ask about a product, a spec, or a problem you're seeing in the field.",
-    icon: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z",
+    label: "General / technical inquiry",
+    blurb: "Ask about a seismic standard, a coating system, our service area, or anything else.",
+    icon: "M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z",
     steps: [
-      { kind: "single", id: "problem", q: "What are you dealing with?", help: "Pick the closest match — our engineers refine it from there.", options: PROBLEM },
-      { kind: "single", id: "asset", q: "Which equipment or surface?", options: ASSET },
-      { kind: "single", id: "industry", q: "What's your industry?", options: INDUSTRY },
-      { kind: "single", id: "scope", q: "What do you need?", options: ["Material", "Material plus training", "Material plus application", "Not sure"] },
-      { kind: "textarea", id: "details", q: "Anything else we should know?", help: "Optional — dimensions, temperatures, timeline, or photos you can send.", placeholder: "e.g. 24-inch carbon-steel line, ~180°F, sulfuric service…" },
+      { kind: "single", id: "topic", q: "What's your question about?", options: INQUIRY_TOPIC },
+      { kind: "single", id: "role", q: "What best describes you?", options: ROLE },
+      { kind: "textarea", id: "details", q: "What would you like to know?", help: "Give us enough to answer accurately — the more specific, the better.", placeholder: "e.g. does your Tyfo FRP work carry an ICC-ES report we can reference in our submittal?" },
       { kind: "contact" },
     ],
   },
 };
 
-const PATH_ORDER: PathId[] = ["product", "survey", "lunch", "inquiry"];
-const ANSWER_IDS = ["company", "industry", "worked", "problem", "asset", "scope", "learn", "audience", "goals", "use", "details"];
-const isOther = (v: unknown) => v === "Other" || v === "Something else" || v === "Something specific";
+const PATH_ORDER: PathId[] = ["bid", "drawings", "samples", "inquiry"];
+// Every non-contact answer id used across all paths (for the submit payload).
+const ANSWER_IDS = [
+  "serviceLine",
+  "projectType",
+  "company",
+  "location",
+  "role",
+  "drawingStage",
+  "market",
+  "system",
+  "squareFootage",
+  "facilityType",
+  "topic",
+  "details",
+];
+const isOther = (v: unknown) => v === "Other" || v === "Something else";
 
 type Answers = Record<string, string>;
-type Contact = { name: string; company: string; role: string; email: string; phone: string };
-type CartItem = { slug: string; name: string; subtitle: string; qty: number };
+type Contact = { name: string; company: string; role: string; email: string; phone: string; message: string };
 type Status = "idle" | "sending" | "success" | "error";
 
 export function QuoteWizard({
-  label = "Contact Us",
+  label = "Request a Bid",
   triggerClassName = "btn btn-primary",
   withArrow = true,
   children,
@@ -118,10 +181,7 @@ export function QuoteWizard({
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answers>({});
   const [others, setOthers] = useState<Record<string, string>>({});
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [query, setQuery] = useState("");
-  const [contact, setContact] = useState<Contact>({ name: "", company: "", role: "", email: "", phone: "" });
-  const [marketingOptIn, setMarketingOptIn] = useState(true);
+  const [contact, setContact] = useState<Contact>({ name: "", company: "", role: "", email: "", phone: "", message: "" });
   const [website, setWebsite] = useState(""); // honeypot
   const [status, setStatus] = useState<Status>("idle");
   const [touched, setTouched] = useState(false);
@@ -134,29 +194,18 @@ export function QuoteWizard({
     if (advanceTimer.current) clearTimeout(advanceTimer.current);
   };
 
-  const seedFromContext = useCallback((): { path: PathId | null; cart: CartItem[] } => {
-    if (!context) return { path: null, cart: [] };
-    const hit = ALL_PRODUCTS.find((p) => p.name.toLowerCase() === context.toLowerCase());
-    if (hit) return { path: "product", cart: [{ slug: hit.slug, name: hit.name, subtitle: hit.subtitle, qty: 1 }] };
-    return { path: null, cart: [] };
-  }, [context]);
-
   const reset = useCallback(() => {
-    const seed = seedFromContext();
-    setPath(seed.path);
-    setStarted(Boolean(seed.path));
+    setPath(null);
+    setStarted(false);
     setStep(0);
     setAnswers({});
     setOthers({});
-    setCart(seed.cart);
-    setQuery("");
-    setContact({ name: "", company: "", role: "", email: "", phone: "" });
-    setMarketingOptIn(true);
+    setContact({ name: "", company: "", role: "", email: "", phone: "", message: "" });
     setWebsite("");
     setStatus("idle");
     setTouched(false);
     setConfirmExit(false);
-  }, [seedFromContext]);
+  }, []);
 
   const doClose = useCallback(() => {
     clearTimer();
@@ -172,11 +221,11 @@ export function QuoteWizard({
     else setConfirmExit(true);
   }, [status, started, path, doClose]);
 
-  useEffect(() => setMounted(true), []);
-  // inline lives on the page — seed it once on mount (e.g. a product context)
+  // Mark as mounted after hydration so the portal only renders client-side.
+  // Queued (not a synchronous effect-body setState) to avoid cascading renders.
   useEffect(() => {
-    if (inline) reset();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   // body scroll lock + Esc (modal only)
@@ -203,31 +252,11 @@ export function QuoteWizard({
   const stepNo = step + 1;
   const progress = path ? (stepNo / total) * 100 : 0;
 
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return ALL_PRODUCTS;
-    return ALL_PRODUCTS.filter(
-      (p) =>
-        p.name.toLowerCase().includes(q) ||
-        p.subtitle.toLowerCase().includes(q) ||
-        p.fn.toLowerCase().includes(q) ||
-        seriesLabel(p.series).toLowerCase().includes(q),
-    );
-  }, [query]);
-
   const choosePath = (id: PathId) => {
     setPath(id);
     setStep(0);
     setTouched(false);
   };
-
-  const addItem = (p: SlimProduct) => {
-    setTouched(true);
-    setCart((c) => (c.some((i) => i.slug === p.slug) ? c : [...c, { slug: p.slug, name: p.name, subtitle: p.subtitle, qty: 1 }]));
-  };
-  const removeItem = (slug: string) => setCart((c) => c.filter((i) => i.slug !== slug));
-  const setQty = (slug: string, qty: number) =>
-    setCart((c) => c.map((i) => (i.slug === slug ? { ...i, qty: Math.max(1, qty) } : i)));
 
   const setSingle = (id: string, value: string) => {
     setTouched(true);
@@ -240,7 +269,6 @@ export function QuoteWizard({
 
   const canAdvance = (): boolean => {
     if (!current) return false;
-    if (current.kind === "products") return cart.length > 0;
     if (current.kind === "single") {
       const v = answers[current.id];
       if (!v) return false;
@@ -295,10 +323,6 @@ export function QuoteWizard({
       if (isOther(v) && others[id]?.trim()) resolved[id] = others[id].trim();
       else if (v) resolved[id] = v;
     });
-    const products =
-      cart.length > 0
-        ? cart.map((i) => `${i.qty}× ${i.name}${i.subtitle ? ` (${i.subtitle})` : ""}`).join("; ")
-        : undefined;
     try {
       const res = await fetch("/api/quote", {
         method: "POST",
@@ -307,11 +331,9 @@ export function QuoteWizard({
           path,
           pathLabel: PATHS[path].label,
           ...resolved,
-          products,
           ...contact,
-          marketingOptIn,
           website,
-          product: context,
+          context,
         }),
       });
       const json = (await res.json().catch(() => ({}))) as { ok?: boolean };
@@ -322,7 +344,7 @@ export function QuoteWizard({
   };
 
   const onEnter = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && current?.kind !== "textarea" && current?.kind !== "products") {
+    if (e.key === "Enter" && current?.kind !== "textarea") {
       e.preventDefault();
       next();
     }
@@ -338,9 +360,20 @@ export function QuoteWizard({
         </div>
         <h2>Request received.</h2>
         <p>
-          Thanks{contact.name ? `, ${contact.name.split(" ")[0]}` : ""} — a local, authorized Belzona engineer will
-          review your request and reach out within one business day. For an active failure, call us now at{" "}
-          <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>.
+          Thanks{contact.name ? `, ${contact.name.split(" ")[0]}` : ""} — we&rsquo;ll review your request and reply with
+          a written, itemized response, usually inside 1 to 2 business days.
+          {path === "drawings" ? (
+            <>
+              {" "}
+              You can send drawings now by replying to our email at{" "}
+              <a href={CONTACT.emailHref}>{CONTACT.email}</a>.
+            </>
+          ) : (
+            <>
+              {" "}
+              Need to talk it through sooner? Call us at <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>.
+            </>
+          )}
         </p>
         <button type="button" className="btn btn-primary" onClick={doClose}>
           Done
@@ -355,7 +388,7 @@ export function QuoteWizard({
         </div>
         <h2>We couldn&rsquo;t submit that online.</h2>
         <p>
-          Please reach our team directly — call <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> or email{" "}
+          Please reach us directly — call <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> or email{" "}
           <a href={CONTACT.emailHref}>{CONTACT.email}</a>.
         </p>
         <div className="qw-nav-row">
@@ -370,26 +403,26 @@ export function QuoteWizard({
     ) : !started ? (
       /* ───── intro / welcome (first screen) ───── */
       <div className="qw-welcome qw-intro">
-        <div className="qw-eyebrow">{context ? `Quote · ${context}` : "Get started"}</div>
-        <h2>{context ? `Let's scope ${context} for your asset.` : "How can we help?"}</h2>
+        <div className="qw-eyebrow">{context ? `Request a bid · ${context}` : "Get started"}</div>
+        <h2>{context ? `Let's scope ${context}.` : "How can we help?"}</h2>
         <p>
-          Tell us what you need and a local, authorized Belzona team follows up — usually the same
-          business day. It takes about a minute.
+          Tell us about the building and we&rsquo;ll send back a written, itemized bid — usually inside 1 to 2 business
+          days. It takes about a minute.
         </p>
         <button type="button" className="btn btn-primary qw-start" onClick={() => setStarted(true)}>
           Start <span className="ar" aria-hidden="true">→</span>
         </button>
         <ul className="qw-trust">
-          <li>Authorized Belzona distributor since 1991</li>
-          <li>Supply &amp; apply, with 24-hour support</li>
-          <li>Serving South &amp; Central Louisiana</li>
+          <li>California B1 #{CONTACT.license.replace(/\D/g, "")}</li>
+          <li>Seismic FRP &amp; industrial coatings since {CONTACT.since}</li>
+          <li>Statewide California</li>
         </ul>
         <div className="qw-choose-foot">
           <Link href="/contact" className="qw-choose-link" onClick={doClose}>
             Prefer another way to reach us? Contact us →
           </Link>
           <span className="qw-choose-911">
-            Active leak or emergency? Call <a href={CONTACT.phone247Href}>{CONTACT.phone247}</a> — 24/7.
+            Or call <a href={CONTACT.phoneHref}>{CONTACT.phone}</a> directly.
           </span>
         </div>
       </div>
@@ -398,7 +431,7 @@ export function QuoteWizard({
       <div className="qw-welcome qw-choose">
         <div className="qw-eyebrow">What do you need?</div>
         <h2>Pick the path that fits.</h2>
-        <p>Every request reaches a local, authorized Belzona team. No obligation.</p>
+        <p>Every request reaches us directly. No obligation.</p>
         <div className="qw-paths">
           {PATH_ORDER.map((id) => (
             <button type="button" key={id} className="qw-path" onClick={() => choosePath(id)}>
@@ -418,97 +451,6 @@ export function QuoteWizard({
         <button type="button" className="btn btn-outline qw-choose-back" onClick={() => setStarted(false)}>
           <span className="ar" aria-hidden="true">←</span> Back
         </button>
-      </div>
-    ) : current?.kind === "products" ? (
-      /* ───── product / kit picker ───── */
-      <div className="qw-q qw-prod">
-        <div className="qw-q-head">
-          <span className="qw-path-tag">{PATHS[path].label}</span>
-          <span className="qw-q-no">
-            {stepNo} <span>/ {total}</span>
-          </span>
-        </div>
-        <h2>Build your quote</h2>
-        <p className="qw-q-help">Add the Belzona products or repair kits you need and set quantities — we&rsquo;ll price them and confirm pack sizes.</p>
-
-        {cart.length > 0 ? (
-          <div className="qw-cart">
-            {cart.map((item) => (
-              <div className="qw-cart-row" key={item.slug}>
-                <span className="qw-cart-tx">
-                  <span className="qw-cart-name">{item.name}</span>
-                  {item.subtitle ? <span className="qw-cart-sub">{item.subtitle}</span> : null}
-                </span>
-                <span className="qw-qty">
-                  <button type="button" onClick={() => setQty(item.slug, item.qty - 1)} aria-label={`Decrease ${item.name}`}>
-                    −
-                  </button>
-                  <span className="qw-qty-n">{item.qty}</span>
-                  <button type="button" onClick={() => setQty(item.slug, item.qty + 1)} aria-label={`Increase ${item.name}`}>
-                    +
-                  </button>
-                </span>
-                <button type="button" className="qw-cart-x" onClick={() => removeItem(item.slug)} aria-label={`Remove ${item.name}`}>
-                  ✕
-                </button>
-              </div>
-            ))}
-          </div>
-        ) : null}
-
-        <div className="qw-prod-search">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search products or kits — e.g. 1111, Super Metal, tank lining…"
-            aria-label="Search products"
-          />
-        </div>
-
-        <div className="qw-prod-list">
-          {filtered.length === 0 ? (
-            <p className="qw-prod-empty">No matches. Try a product number (e.g. 1111) or a name.</p>
-          ) : (
-            filtered.map((p) => {
-              const inCart = cart.some((c) => c.slug === p.slug);
-              return (
-                <button
-                  type="button"
-                  key={p.slug}
-                  className={`qw-prod-item${inCart ? " is-in" : ""}`}
-                  onClick={() => (inCart ? removeItem(p.slug) : addItem(p))}
-                >
-                  <span className="qw-prod-tx">
-                    <span className="qw-prod-name">
-                      {p.name}
-                      {p.subtitle ? <span className="qw-prod-sub"> · {p.subtitle}</span> : null}
-                    </span>
-                    <span className="qw-prod-series">
-                      {seriesLabel(p.series)}
-                      {p.fn ? ` · ${p.fn}` : ""}
-                    </span>
-                  </span>
-                  <span className="qw-prod-add">{inCart ? "Added ✓" : "Add +"}</span>
-                </button>
-              );
-            })
-          )}
-        </div>
-
-        {touched && cart.length === 0 ? <p className="qw-err">Add at least one product to continue.</p> : null}
-        <div className="qw-nav-row">
-          <button type="button" className="btn btn-outline" onClick={back}>
-            Back
-          </button>
-          <button type="button" className="btn btn-primary" onClick={next} disabled={cart.length === 0}>
-            Next <span className="ar" aria-hidden="true">→</span>
-          </button>
-        </div>
       </div>
     ) : current?.kind === "single" ? (
       <div className="qw-q">
@@ -617,7 +559,7 @@ export function QuoteWizard({
           <span className="qw-path-tag">{PATHS[path].label}</span>
           <span className="qw-q-no">Almost done</span>
         </div>
-        <h2>Where should we send your response?</h2>
+        <h2>Where should we send your bid?</h2>
         <p className="qw-q-help">We&rsquo;ll only use this to follow up on your request.</p>
         <input
           type="text"
@@ -648,13 +590,20 @@ export function QuoteWizard({
           </label>
           <label className="qw-field qw-field--wide">
             <span>Role</span>
-            <input value={contact.role} onChange={(e) => setContact((c) => ({ ...c, role: e.target.value }))} placeholder="e.g. Maintenance Manager, Engineer, Contractor" />
+            <input value={contact.role} onChange={(e) => setContact((c) => ({ ...c, role: e.target.value }))} placeholder="e.g. Structural Engineer, GC, Owner, Facilities" />
+          </label>
+          <label className="qw-field qw-field--wide">
+            <span>Message</span>
+            <textarea
+              className="qw-textarea"
+              rows={3}
+              style={{ marginTop: 0 }}
+              value={contact.message}
+              onChange={(e) => setContact((c) => ({ ...c, message: e.target.value }))}
+              placeholder="Anything else we should know? (optional)"
+            />
           </label>
         </div>
-        <label className="qw-optin">
-          <input type="checkbox" checked={marketingOptIn} onChange={(e) => setMarketingOptIn(e.target.checked)} />
-          <span>Keep me posted with Belzona tips, case studies, and the occasional offer. You can unsubscribe anytime.</span>
-        </label>
         {touched && !canAdvance() ? <p className="qw-err">Please add your name, a valid email, and a phone number.</p> : null}
         <div className="qw-nav-row">
           <button type="button" className="btn btn-outline" onClick={back}>
@@ -696,11 +645,11 @@ export function QuoteWizard({
         if (e.target === e.currentTarget) requestClose();
       }}
     >
-      <div className="qw-modal" role="dialog" aria-modal="true" aria-label="Contact Belzona of Baton Rouge" onClick={(e) => e.stopPropagation()}>
+      <div className="qw-modal" role="dialog" aria-modal="true" aria-label="Request a bid from Salyers Construction" onClick={(e) => e.stopPropagation()}>
         {/* header */}
         <div className="qw-head">
           <div className="qw-brand">
-            <Image src="/assets/brand/br-logo-white.png" alt="Belzona of Baton Rouge" width={330} height={80} priority />
+            <Logo light />
           </div>
           <button type="button" className="qw-x" onClick={requestClose} aria-label="Close">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -725,7 +674,7 @@ export function QuoteWizard({
             <button type="button" className="qw-close-link" onClick={requestClose}>
               Close
             </button>
-            <span className="qw-foot-trust">Authorized Belzona distributor · No obligation</span>
+            <span className="qw-foot-trust">California B1 #{CONTACT.license.replace(/\D/g, "")} · No obligation</span>
           </div>
         ) : null}
       </div>

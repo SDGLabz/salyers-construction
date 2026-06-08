@@ -1,0 +1,121 @@
+/* Projects page — page-specific styles, namespaced .pj-* to avoid global
+   collisions. Reuses the shared SHARED SECTIONS primitives (.sec, .sec-head,
+   .feature, .mkt-grid, .cta-band) from globals.css; only adds what those
+   classes don't already cover. Brand CSS variables only — never hardcoded hex. */
+
+/* ---- featured-retrofit photo cluster (3-up beside the prose) ---- */
+.pj-feature-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 14px;
+}
+.pj-shot {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px -24px rgba(21, 38, 63, 0.42);
+  background: var(--surface);
+}
+/* the lead shot spans both columns and reads as the hero of the cluster */
+.pj-shot--lead {
+  grid-column: span 2;
+  aspect-ratio: 16 / 10;
+}
+.pj-shot--sm {
+  aspect-ratio: 4 / 3;
+}
+.pj-shot img {
+  object-fit: cover;
+}
+
+/* ---- phase chips: the real prep / install / cure sequence ---- */
+.pj-phases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0 6px;
+  padding: 0;
+  list-style: none;
+}
+.pj-phase {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 16px 9px 12px;
+  font-size: 13.5px;
+  color: var(--text-2);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.pj-phase b {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--orange-ink);
+  background: rgba(160, 40, 40, 0.08);
+  border-radius: 6px;
+  padding: 3px 7px;
+}
+
+/* ---- honest "more on request" note card ---- */
+.pj-note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: clamp(26px, 3.4vw, 40px) clamp(24px, 3vw, 44px);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px clamp(20px, 2.6vw, 32px);
+  align-items: start;
+}
+.pj-note-ico {
+  width: 52px;
+  height: 52px;
+  flex: none;
+  border-radius: 14px;
+  background: var(--belzona-blue);
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+.pj-note-ico svg {
+  width: 26px;
+  height: 26px;
+}
+.pj-note h3 {
+  font-size: clamp(20px, 2.4vw, 26px);
+  color: var(--belzona-blue);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.pj-note p {
+  color: var(--text-2);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 60ch;
+}
+.pj-note p + p {
+  margin-top: 12px;
+}
+.pj-note-cta {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 560px) {
+  .pj-note {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* the gallery sits below the section head with a little breathing room */
+.pj-gallery {
+  margin-top: clamp(10px, 2vw, 18px);
+}

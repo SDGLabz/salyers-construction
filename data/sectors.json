@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "commercial",
+    "name": "Commercial",
+    "blurb": "Older commercial buildings facing a code-triggered upgrade or a tenant-driven change in loading. Concrete and masonry strengthening sized to the engineer of record's drawings."
+  },
+  {
+    "slug": "industrial",
+    "name": "Industrial",
+    "blurb": "Plants and facilities where columns, beams, and slabs carry equipment and process loads. FRP strengthening and industrial floor coatings in one mobilization where the scope allows."
+  },
+  {
+    "slug": "multifamily",
+    "name": "Multifamily",
+    "blurb": "Apartment and mixed-use assets, including unreinforced masonry and soft-story stock subject to California retrofit ordinances. FRP often forms part of a larger envelope upgrade."
+  },
+  {
+    "slug": "infrastructure",
+    "name": "Infrastructure",
+    "blurb": "Bridges, pier caps, parking decks, and marine structures for public works and transit owners. FRP extends service life and meets current seismic demand without adding meaningful mass."
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "epoxy",
+    "name": "Epoxies",
+    "summary": "100% solids, self-leveling, broadcast",
+    "body": "The workhorse of resinous flooring: durable, chemical-resistant, and ideal for warehouses, manufacturing plants, and commercial garages. Self-leveling formulations create a smooth monolithic surface, while broadcast systems add slip resistance and visual depth.",
+    "bestFor": ["Warehouses", "Manufacturing plants", "Commercial garages"]
+  },
+  {
+    "slug": "polyaspartic-polyurea",
+    "name": "Polyaspartic / Polyurea",
+    "summary": "Fast-cure topcoats",
+    "body": "Engineered for projects that can't afford downtime, these topcoats cure in hours instead of days and can be installed in temperature extremes where epoxies struggle. UV-stable and abrasion-resistant, they're a go-to finish for showrooms, garages, and any facility needing a fast return to service.",
+    "bestFor": ["Showrooms", "Garages", "Fast return-to-service facilities"]
+  },
+  {
+    "slug": "polyurethane",
+    "name": "Polyurethane",
+    "summary": "High-build, abrasion-resistant",
+    "body": "A tougher, more flexible topcoat built to absorb impact and resist heavy mechanical wear in industrial environments. Ideal for high-traffic production floors, loading docks, and any surface that takes a beating from forklifts, pallets, and dropped tools.",
+    "bestFor": ["High-traffic production floors", "Loading docks", "Forklift-traffic areas"]
+  },
+  {
+    "slug": "urethane-concrete",
+    "name": "Urethane Concrete",
+    "summary": "Thermal shock, food and beverage",
+    "body": "The standard for breweries, dairies, commercial kitchens, and food processing plants where floors face boiling water, freezing temps, and aggressive washdowns. Withstands extreme thermal cycling and organic acids that would destroy a standard epoxy system.",
+    "bestFor": ["Breweries and dairies", "Commercial kitchens", "Food processing plants"]
+  },
+  {
+    "slug": "patching-joint",
+    "name": "Patching / Joint",
+    "summary": "Surface repair and joint fill",
+    "body": "Foundational substrate prep used to repair spalled concrete, fill control joints, and create a sound base before a coating system goes down. Skipping this step is the fastest way to a failed floor, so we never do.",
+    "bestFor": ["Spalled concrete repair", "Control joint fill", "Substrate preparation"]
+  },
+  {
+    "slug": "chemical-resistant",
+    "name": "Chemical Resistant",
+    "summary": "Specialty coatings",
+    "body": "Engineered for aggressive chemical exposure: secondary containment, battery rooms, chemical processing, and pharmaceutical manufacturing. These systems resist acids, caustics, and solvents that would etch or strip standard coatings within months.",
+    "bestFor": ["Secondary containment", "Battery rooms", "Chemical and pharmaceutical processing"]
+  },
+  {
+    "slug": "decorative",
+    "name": "Decorative",
+    "summary": "Flake, quartz, metallic",
+    "body": "Where performance meets aesthetics, used in showrooms, retail spaces, hospitality interiors, and high-end residential garages. Flake and quartz systems add slip resistance and hide wear, while metallic finishes deliver a one-of-a-kind designer floor with industrial-grade durability underneath.",
+    "bestFor": ["Showrooms and retail", "Hospitality interiors", "High-end residential garages"]
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "animal-care",
+    "name": "Animal Care",
+    "blurb": "Veterinary clinics, animal hospitals, kennels, wash bays, grooming areas, shelters, boarding facilities."
+  },
+  {
+    "slug": "automotive",
+    "name": "Automotive",
+    "blurb": "Service bays, dealership showrooms, body shops, automotive manufacturing floors, parts warehouses, lube pits."
+  },
+  {
+    "slug": "commercial-industrial",
+    "name": "Commercial & Industrial",
+    "blurb": "Warehouses, distribution centers, loading docks, mechanical rooms, production floors, maintenance shops."
+  },
+  {
+    "slug": "corrections",
+    "name": "Corrections",
+    "blurb": "Cells, dayrooms, intake areas, correctional kitchens, showers, sallyports, holding cells."
+  },
+  {
+    "slug": "food-beverage",
+    "name": "Food & Beverage",
+    "blurb": "Commercial kitchens, prep areas, walk-in coolers, breweries, bottling lines, food processing plants, dish rooms."
+  },
+  {
+    "slug": "grocery-retail",
+    "name": "Grocery & Retail",
+    "blurb": "Back-of-house, deli and butcher floors, refrigerated sections, checkout zones, showroom floors, stockrooms."
+  },
+  {
+    "slug": "healthcare-fitness",
+    "name": "Healthcare & Fitness",
+    "blurb": "Operating rooms, patient rooms, MRI suites, hospital corridors, locker rooms, gym floors, physical therapy spaces."
+  },
+  {
+    "slug": "hospitality-entertainment",
+    "name": "Hospitality & Entertainment",
+    "blurb": "Hotel lobbies, restaurant floors, bar areas, ballrooms, theaters, casinos, back-of-house kitchens."
+  },
+  {
+    "slug": "manufacturing",
+    "name": "Manufacturing",
+    "blurb": "Production lines, assembly areas, machine shops, welding floors, chemical processing zones, finishing rooms."
+  },
+  {
+    "slug": "municipalities",
+    "name": "Municipalities",
+    "blurb": "Fire stations, public works garages, water treatment facilities, sanitation buildings, government offices, transit depots."
+  },
+  {
+    "slug": "pharmaceutical-biotech",
+    "name": "Pharmaceutical & Biotech",
+    "blurb": "Cleanrooms, BSL research labs, sterile production suites, packaging areas, controlled-environment storage."
+  },
+  {
+    "slug": "aviation-transportation",
+    "name": "Aviation & Transportation",
+    "blurb": "Aircraft hangars, MRO facilities, transit stations, parking decks, vehicle maintenance bays, airport terminals."
+  }
+]

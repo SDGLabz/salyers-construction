@@ -1,0 +1,135 @@
+/* Page-specific styles for /service-area. Namespaced .sa- to avoid global
+   collisions. Reuses brand CSS variables only — never hardcoded hex. The bulk
+   of the layout uses shared primecoat-modern classes from globals.css
+   (.sec, .sec-head, .bento, .feat3, .cta-band, .feature, etc.). */
+
+/* ---- two-policy explainer: side-by-side policy cards ---- */
+.sa-policies {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.sa-policy {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 30px 28px;
+  box-shadow: 0 8px 24px rgba(21, 38, 63, 0.1);
+}
+.sa-policy .eyebrow {
+  margin-bottom: 12px;
+}
+.sa-policy h3 {
+  font-size: 22px;
+  color: var(--belzona-blue);
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.sa-policy p {
+  color: var(--text-2);
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+.sa-policy .sa-scope {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--belzona-blue);
+  background: rgba(21, 38, 63, 0.07);
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+@media (max-width: 760px) {
+  .sa-policies {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- tier section heading row (tier badge + label) ---- */
+.sa-tier-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.sa-tier-badge {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: var(--belzona-blue);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+
+/* ---- metro chip row (named metros under a tier) ---- */
+.sa-metros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(28px, 4vw, 40px);
+}
+.sa-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 16px;
+  min-height: 38px;
+}
+.sa-chip svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--orange-ink);
+}
+.sec--cream .sa-chip {
+  background: var(--bg);
+}
+
+/* ---- HQ callout block ---- */
+.sa-hq {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-top: 22px;
+  padding: 18px 20px;
+  background: rgba(21, 38, 63, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.sa-hq svg {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--belzona-blue);
+  margin-top: 2px;
+}
+.sa-hq b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--belzona-blue);
+  letter-spacing: -0.005em;
+  margin-bottom: 4px;
+}
+.sa-hq span {
+  display: block;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-2);
+}

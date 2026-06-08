@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "statewide-ca",
+    "name": "Seismic FRP — Statewide California",
+    "tier": "A",
+    "blurb": "Seismic FRP travels anywhere in California. Engineered structural strengthening goes where the project is, from the Bay Area and Sacramento through the Central Valley to Greater Los Angeles, the Inland Empire, and San Diego.",
+    "counties": ["Merced County"],
+    "cities": [
+      "Bay Area",
+      "Sacramento",
+      "Central Valley",
+      "Greater Los Angeles",
+      "Inland Empire",
+      "San Diego",
+      "Central Coast"
+    ]
+  },
+  {
+    "slug": "norcal-primary",
+    "name": "Industrial Coatings — Northern California",
+    "tier": "B",
+    "blurb": "Industrial coatings is centered in Northern California and will travel for a right-sized job. The focus is the Bay Area, Sacramento, and the Central Valley, with statewide availability when the project warrants it.",
+    "counties": [],
+    "cities": ["Bay Area", "Sacramento", "Central Valley"]
+  }
+]

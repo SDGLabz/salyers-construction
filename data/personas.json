@@ -1,0 +1,22 @@
+[
+  {
+    "slug": "structural-engineer-of-record",
+    "name": "Structural Engineer of Record",
+    "blurb": "The EOR produces the design intent: members, demand, target capacity, and performance objective. We read those drawings, install to the manufacturer's application package, and document QA so the paper trail closes."
+  },
+  {
+    "slug": "general-contractor",
+    "name": "General Contractor",
+    "blurb": "On a multi-trade project we sub the structural strengthening or coatings scope under your prime, mobilize without a months-long lead time, and issue a written, itemized bid you can schedule against."
+  },
+  {
+    "slug": "building-owner",
+    "name": "Building Owner",
+    "blurb": "Owners facing a code-mandated retrofit or a worn industrial floor get direct contact with the lead on the job, a bid that lists exactly what is installed, and warranty paperwork at handover where conditions qualify."
+  },
+  {
+    "slug": "public-agency",
+    "name": "Public Agency",
+    "blurb": "Public works and transit owners use FRP to extend service life and meet current seismic demand on bridges, pier caps, and facilities. Work is installed to the system the design references, with documentation for the building official."
+  }
+]

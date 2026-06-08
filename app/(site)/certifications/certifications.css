@@ -1,0 +1,169 @@
+/* Certifications page — page-specific styles (namespaced .cx-).
+   Uses ONLY the global brand CSS variables (navy --belzona-blue, deep-red
+   --orange/--orange-ink, cream --surface, --border, --text/-2/-3, --mono,
+   --font-display, --ease). Shared section primitives (.sec, .sec-head,
+   .cred-strip, .spec-list, .cta-band) live in globals.css and are reused
+   directly; these classes only cover the cert-card layout the shared kit
+   doesn't provide. */
+
+/* ---- cert card list (stacked, photo-forward) ---- */
+.cx-cards {
+  display: grid;
+  gap: clamp(20px, 3vw, 30px);
+}
+.cx-card {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(24px, 3.4vw, 48px);
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(21, 38, 63, 0.1);
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+/* alternate the photo side for rhythm */
+.cx-card:nth-child(even) {
+  grid-template-columns: 1.08fr 0.92fr;
+}
+.cx-card:nth-child(even) .cx-media {
+  order: 2;
+}
+
+.cx-media {
+  position: relative;
+  min-height: 280px;
+}
+.cx-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cx-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 29, 49, 0.34),
+    rgba(15, 29, 49, 0.05) 60%
+  );
+}
+
+.cx-body {
+  padding: clamp(28px, 3.2vw, 44px);
+  display: flex;
+  flex-direction: column;
+}
+.cx-index {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--orange-ink);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.cx-card h3 {
+  font-size: clamp(21px, 2.4vw, 28px);
+  color: var(--belzona-blue);
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  margin: 12px 0 14px;
+}
+.cx-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.cx-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  color: var(--belzona-blue);
+  background: rgba(21, 38, 63, 0.07);
+  border-radius: 999px;
+  padding: 6px 13px;
+}
+.cx-means-label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.cx-means {
+  color: var(--text-2);
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0 0 18px;
+}
+.cx-legal {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.cx-legal svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--orange-ink);
+}
+.cx-legal p {
+  margin: 0;
+  color: var(--text-3);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+@media (hover: hover) {
+  @media (prefers-reduced-motion: no-preference) {
+    .cx-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(21, 38, 63, 0.18);
+      border-color: var(--belzona-blue);
+    }
+  }
+}
+@media (hover: none) {
+  .cx-card:hover {
+    transform: none;
+    box-shadow: 0 8px 24px rgba(21, 38, 63, 0.1);
+    border-color: var(--border);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cx-card {
+    transition: none;
+  }
+}
+
+/* mobile: stack the photo above the body, keep media side consistent */
+@media (max-width: 760px) {
+  .cx-card,
+  .cx-card:nth-child(even) {
+    grid-template-columns: 1fr;
+  }
+  .cx-card:nth-child(even) .cx-media {
+    order: 0;
+  }
+  .cx-media {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+}

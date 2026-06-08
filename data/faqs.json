@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "frp-added-mass",
+    "name": "Does FRP strengthening add weight to the structure?",
+    "question": "Does FRP strengthening add weight to the structure?",
+    "answer": "No meaningful mass. Externally bonded fiber reinforced polymer is a thin composite of high-strength fibers in a polymer matrix bonded to the existing surface. It adds tensile capacity, confinement, and ductility without the added dead load of a concrete or steel jacket, which is one of the reasons engineers specify it on existing buildings.",
+    "topic": "seismic"
+  },
+  {
+    "slug": "frp-who-designs",
+    "name": "Who designs the FRP retrofit?",
+    "question": "Who designs the FRP retrofit?",
+    "answer": "The structural engineer of record produces the design intent, members, demand, target capacity, and performance objective. The system manufacturer's in-house engineering then produces the application-specific drawings, fabric, orientation, layers, overlap, and anchorage. We bid and install to that package. We are the licensed applicator, not the design engineer.",
+    "topic": "seismic"
+  },
+  {
+    "slug": "frp-standards",
+    "name": "What standards does the work follow?",
+    "question": "What standards does the FRP work follow?",
+    "answer": "FRP design follows ACI 440.2R, applied as part of an ASCE 41 seismic evaluation and retrofit or a code-triggered upgrade under the California Building Code. The Henkel and LOCTITE Tyfo system we install is covered by ICC-ES Evaluation Report ESR-2103, which documents tested properties, design assumptions, and conditions of use for the building official.",
+    "topic": "seismic"
+  },
+  {
+    "slug": "frp-occupancy",
+    "name": "Can the building stay occupied during a retrofit?",
+    "question": "Can the building stay occupied during an FRP retrofit?",
+    "answer": "It depends on the scope, the areas being worked, and the project conditions. FRP retrofit is often phased and localized to specific members, which can allow portions of a building to remain in use. Occupancy, access, and phasing are coordinated with the engineer of record and the owner, and we note our assumptions in the written bid.",
+    "topic": "seismic"
+  },
+  {
+    "slug": "coatings-return-to-service",
+    "name": "How long before a coated floor can be used again?",
+    "question": "How long before a coated floor can be used again?",
+    "answer": "Return-to-service time depends on the system. Fast-cure polyaspartic and polyurea topcoats can return to service in hours rather than days, while standard epoxies cure over a longer window. We match the system to your downtime tolerance and confirm cure and return-to-service timing per the manufacturer's data sheets in the bid.",
+    "topic": "coatings"
+  },
+  {
+    "slug": "coatings-substrate-prep",
+    "name": "Why does surface preparation matter so much?",
+    "question": "Why does surface preparation matter so much?",
+    "answer": "Skipping substrate prep is the fastest way to a failed floor. Before any coating goes down we profile the slab, repair spalled concrete, and fill control joints to create a sound, properly profiled base. The coating is only as durable as the bond beneath it, so we never skip this step.",
+    "topic": "coatings"
+  },
+  {
+    "slug": "lead-time",
+    "name": "How fast can you get a bid back?",
+    "question": "How fast can you get a bid back?",
+    "answer": "We issue written, itemized bids back inside 1 to 2 business days. The bid covers materials, labor, schedule, and our assumptions. Because we run a small, non-union shop, we can also mobilize without a months-long lead time once a project is awarded.",
+    "topic": "general"
+  },
+  {
+    "slug": "how-a-job-runs",
+    "name": "How does a typical project run start to finish?",
+    "question": "How does a typical project run start to finish?",
+    "answer": "Design intent comes in from the engineer of record, the manufacturer produces the application or system spec, and we issue a written, itemized bid. On award we mobilize, prepare the substrate, and install per the manufacturer's method, primer, fabric or body coat, saturant or topcoat, and anchorage where called for. We verify cure, document QA, and hand over with warranty paperwork where project conditions qualify.",
+    "topic": "general"
+  }
+]

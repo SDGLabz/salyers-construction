@@ -1,0 +1,187 @@
+/* Seismic FRP pillar — page-specific styles only.
+   All shared section primitives live in globals.css (SHARED SECTIONS block).
+   Everything here is namespaced `.sx-` to avoid global collisions and uses the
+   brand CSS variables (navy --belzona-blue, deep-red --orange/--orange-ink,
+   cream --surface, --border, --text/-2/-3) — never hardcoded brand hex. */
+
+/* ---- "what FRP is" overview aside: tight, scannable composite facts ---- */
+.sx-facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.sx-facts li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.sx-facts li b {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.15;
+  color: var(--belzona-blue);
+  letter-spacing: -0.01em;
+}
+.sx-facts li span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+.sx-facts li::before {
+  content: "";
+  margin-top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--orange-ink);
+  flex: none;
+}
+
+/* ---- structural-debt feature copy emphasis ---- */
+.sx-pull {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(20px, 2.6vw, 27px);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--belzona-blue);
+  max-width: 22ch;
+  margin: 0 0 18px;
+}
+
+/* ---- bento tiles for FRP service-types: photo header + body ---- */
+.sx-typecard {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+.sx-typemedia {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.sx-typemedia img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.sx-typebody {
+  padding: 24px 24px 26px;
+}
+.sx-typekick {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange-ink);
+  margin-bottom: 8px;
+}
+.sx-typebody h3 {
+  margin: 0 0 10px;
+}
+.sx-typebody p {
+  margin: 0;
+}
+
+/* ---- 4-step engineering workflow ---- */
+.sx-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  counter-reset: sx-step;
+}
+.sx-step {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px 26px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(21, 38, 63, 0.1);
+}
+.sx-step .sx-num {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--orange-ink);
+  display: block;
+  margin-bottom: 14px;
+}
+.sx-step h3 {
+  font-size: 18px;
+  color: var(--belzona-blue);
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+.sx-step p {
+  color: var(--text-2);
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+@media (max-width: 980px) {
+  .sx-flow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .sx-flow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Tyfo materials note (cream callout under the standards table) ---- */
+.sx-matnote {
+  margin-top: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 26px;
+}
+.sx-matnote h3 {
+  font-size: 17px;
+  color: var(--belzona-blue);
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+}
+.sx-matnote p {
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.62;
+  max-width: 72ch;
+  margin: 0;
+}
+.sx-matnote code {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--belzona-blue);
+  font-weight: 600;
+}
+
+/* hover/motion gating for the type-card photos */
+@media (hover: hover) {
+  @media (prefers-reduced-motion: no-preference) {
+    .sx-typecard:hover .sx-typemedia img {
+      transform: scale(1.06);
+    }
+  }
+}
+@media (hover: none) {
+  .sx-typecard:hover .sx-typemedia img {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sx-typemedia img {
+    transition: none;
+  }
+}

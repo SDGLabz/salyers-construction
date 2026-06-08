@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SearchTrigger } from "@/lib/components/search-trigger";
 import { MobileMenu } from "@/lib/components/mobile-menu";
 import { Logo } from "@/lib/components/logo";
+import { QuoteWizard } from "@/lib/components/quote-wizard";
 import { CONTACT } from "@/lib/contact";
 
 const COMPANY_LINKS = [
@@ -48,10 +49,8 @@ export function SiteHeader() {
           <CompanyDropdown />
         </nav>
         <SearchTrigger />
-        {/* B0: links to /contact. The launcher wizard is wired in a later batch. */}
-        <Link href="/contact" className="btn btn-primary site-cta">
-          Request a Bid
-        </Link>
+        {/* Primary CTA opens the multistep bid wizard (modal). */}
+        <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary site-cta" />
         <MobileMenu />
       </div>
     </header>

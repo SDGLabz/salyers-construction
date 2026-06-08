@@ -1,0 +1,89 @@
+[
+  {
+    "slug": "seismic-frp",
+    "name": "Seismic FRP Retrofit",
+    "eyebrow": "Engineered seismic strengthening",
+    "taglineHeadline": "Externally bonded fiber reinforced polymer for reinforced concrete and masonry.",
+    "overview": [
+      "Fiber reinforced polymer is a composite of high-strength fibers, carbon or glass, embedded in a polymer matrix. Externally bonded to existing reinforced concrete and masonry, FRP adds tensile capacity, confinement, and ductility without adding meaningful mass to the structure.",
+      "FRP fabric is saturated with epoxy and bonded to a prepared substrate. Under load, tensile stress transfers through the bond into the fibers. In confinement applications, hoop-direction fibers restrain lateral expansion of the concrete core, increasing axial capacity and displacement ductility.",
+      "Carbon and glass fabrics with epoxy are designed per ACI 440.2R, applied as part of an ASCE 41 retrofit or code-triggered upgrade, and installed to the Henkel and LOCTITE Tyfo certified system specification. The structural work is technical and the spec is written by other engineers: the structural engineer of record produces the design intent, the system manufacturer's in-house engineering produces the application drawings, and we bid and install to that package, with documented QA at handover."
+    ],
+    "workflow": [
+      {
+        "step": "01",
+        "title": "EOR Design Intent",
+        "detail": "Structural engineer of record issues drawings: members, demand, target capacity, performance objective, anchor calls."
+      },
+      {
+        "step": "02",
+        "title": "System Spec",
+        "detail": "Henkel and LOCTITE in-house engineers produce application-specific drawings off the EOR documents: fabric, orientation, layers, overlap, anchorage."
+      },
+      {
+        "step": "03",
+        "title": "Bid and Mobilize",
+        "detail": "We issue a written, itemized bid with materials, labor, schedule, and assumptions. On award, we mobilize and execute surface preparation."
+      },
+      {
+        "step": "04",
+        "title": "Install and QA",
+        "detail": "Primer, fabric, saturant, anchorage. Cure verification. QA documentation. Sign-off and handover, including warranty paperwork where applicable."
+      }
+    ],
+    "related": [
+      "column-jacketing",
+      "beam-column-joints",
+      "shear-strengthening",
+      "flexural-strengthening",
+      "masonry-retrofit",
+      "infrastructure"
+    ],
+    "metaTitle": "Seismic FRP Retrofit California | Carbon Fiber Strengthening",
+    "metaDescription": "Externally bonded carbon and glass FRP seismic retrofit for concrete and masonry across California. Designed per ACI 440.2R and ASCE 41, installed to the Henkel and LOCTITE Tyfo system (ICC-ES ESR-2103)."
+  },
+  {
+    "slug": "coatings",
+    "name": "Industrial Epoxy Coatings",
+    "eyebrow": "Industrial Epoxy Coatings California · Polymer Nation Systems",
+    "taglineHeadline": "Resinous floor systems. American-made resins.",
+    "overview": [
+      "American made epoxy, polyaspartic, polyurethane, and urethane concrete systems for industrial floors, parking decks, residential, and high-traffic commercial. We build floors for industrial and commercial environments where the floor is part of the operation, not decoration: substrate-specific surface preparation, and a system spec to match the wear, chemical, and traffic profile.",
+      "We install resinous coating systems built for real-world demands: 100 percent solids epoxies, polyaspartics and polyureas, high-performance waterborne and solvent-borne topcoats, urethane concrete, patching and joint repair, and chemical-resistant systems. Our crews are factory-trained and certified on every system we install.",
+      "The resins are American-made. The applicator path is direct: we order from the manufacturer, install per their data sheets, and back the work with their warranty when project conditions qualify. Industrial coatings rounds out the seismic work, with the focus in Northern California and statewide availability for the right job."
+    ],
+    "workflow": [
+      {
+        "step": "01",
+        "title": "Assess the Substrate",
+        "detail": "We profile the existing slab: moisture, soundness, contamination, and the wear, chemical, and traffic the floor actually sees."
+      },
+      {
+        "step": "02",
+        "title": "Spec the System",
+        "detail": "We match a Polymer Nation system to the demand and list specific products against the manufacturer's data sheets in a written, itemized bid."
+      },
+      {
+        "step": "03",
+        "title": "Prepare and Repair",
+        "detail": "Mechanical surface preparation, then patching and joint fill to create a sound base before any coating goes down."
+      },
+      {
+        "step": "04",
+        "title": "Install and Cure",
+        "detail": "Primer, body coat, broadcast or decorative media, and topcoat installed per the manufacturer's method, with cure verification and return-to-service handoff."
+      }
+    ],
+    "related": [
+      "epoxy",
+      "polyaspartic-polyurea",
+      "polyurethane",
+      "urethane-concrete",
+      "patching-joint",
+      "chemical-resistant",
+      "decorative"
+    ],
+    "metaTitle": "Industrial Epoxy & Resinous Floor Coatings | Northern California",
+    "metaDescription": "Polymer Nation American-made epoxy, polyaspartic, polyurethane, and urethane concrete floor systems for industrial, commercial, and parking decks across Northern California and statewide for the right job."
+  }
+]

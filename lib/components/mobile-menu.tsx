@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { CONTACT } from "@/lib/contact";
@@ -26,11 +26,17 @@ const COMPANY = [
   { href: "/faq", label: "FAQ" },
 ];
 
+const emptySubscribe = () => () => {};
+
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  // Hydration-safe "am I on the client" flag without setState-in-effect:
+  // server snapshot is false, client snapshot is true.
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
 
   useEffect(() => {
     if (!open) return;

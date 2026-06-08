@@ -1,0 +1,74 @@
+/* Page-specific styles for /faq. Namespaced `.fq-` to avoid global collisions.
+   Reuses the shared .faq / .faq-item / .sec / .cred-strip / .cta-band primitives;
+   these classes only add the per-topic group headers and the intro media row. */
+
+/* ---- intro: short lede photo row (sets the technical, plainspoken tone) ---- */
+.fq-intro {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+}
+.fq-intro-body p {
+  color: var(--text-2);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 56ch;
+}
+.fq-intro-body p + p {
+  margin-top: 16px;
+}
+.fq-intro-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px -28px rgba(21, 38, 63, 0.42);
+}
+.fq-intro-media img {
+  object-fit: cover;
+}
+@media (max-width: 900px) {
+  .fq-intro {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}
+
+/* ---- per-topic group (eyebrow + h2 + lede over a native <details> accordion) ---- */
+.fq-group + .fq-group {
+  margin-top: clamp(40px, 5.5vw, 72px);
+}
+.fq-group-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(20px, 2.6vw, 30px);
+}
+.fq-group-head h2 {
+  font-size: clamp(26px, 3.4vw, 38px);
+  color: var(--belzona-blue);
+  letter-spacing: -0.03em;
+  margin-top: 12px;
+}
+.fq-group-head .eyebrow {
+  color: var(--orange-ink);
+}
+.fq-group-count {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+  padding-bottom: 4px;
+}
+@media (max-width: 600px) {
+  .fq-group-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

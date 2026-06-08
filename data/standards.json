@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "aci-440-2r-17",
+    "name": "ACI 440.2R-17",
+    "code": "ACI 440.2R-17",
+    "title": "Guide for the Design and Construction of Externally Bonded FRP Systems for Strengthening Concrete Structures",
+    "whatItIs": "Primary U.S. design reference for FRP on concrete, issued by the American Concrete Institute, Committee 440.",
+    "category": "design"
+  },
+  {
+    "slug": "aci-440-family",
+    "name": "ACI 440 family",
+    "code": "ACI 440 family",
+    "title": "FRP-related suite",
+    "whatItIs": "Covers FRP bars, prestressing, and durability; the broader technical reference set behind FRP for concrete.",
+    "category": "design"
+  },
+  {
+    "slug": "asce-41-23",
+    "name": "ASCE 41-23",
+    "code": "ASCE 41-23",
+    "title": "Seismic Evaluation and Retrofit of Existing Buildings",
+    "whatItIs": "Performance-based standard classifying deficiencies and targeting retrofit performance levels.",
+    "category": "evaluation"
+  },
+  {
+    "slug": "atc-40",
+    "name": "ATC-40",
+    "code": "ATC-40",
+    "title": "Seismic Evaluation and Retrofit of Concrete Buildings",
+    "whatItIs": "Applied Technology Council methodology developed under the California Seismic Safety Commission; performance-based focus on concrete buildings.",
+    "category": "evaluation"
+  },
+  {
+    "slug": "cbc-ch16a",
+    "name": "CBC Chapter 16A",
+    "code": "CBC, Chapter 16A",
+    "title": "California Building Code, Title 24 Part 2",
+    "whatItIs": "Structural design framework including seismic retrofit; retrofits permitted to follow ASCE 41.",
+    "category": "code"
+  },
+  {
+    "slug": "cebc-app-a",
+    "name": "CEBC Appendix A",
+    "code": "CEBC, Appendix A",
+    "title": "California Existing Building Code, Appendix A",
+    "whatItIs": "Guidelines for the seismic retrofit of existing buildings across building types.",
+    "category": "code"
+  },
+  {
+    "slug": "astm-frp",
+    "name": "ASTM (FRP-related)",
+    "code": "ASTM (FRP-related)",
+    "title": "Various ASTM test methods",
+    "whatItIs": "Cover tensile, bond, environmental durability, and short-beam shear for the laminate and substrate interface.",
+    "category": "test"
+  },
+  {
+    "slug": "icc-es-esr-2103",
+    "name": "ICC-ES ESR-2103",
+    "code": "ICC-ES ESR-2103",
+    "title": "ICC Evaluation Service Report",
+    "whatItIs": "LOCTITE Tyfo system for concrete and masonry strengthening; documents tested properties, design assumptions, and conditions of use.",
+    "category": "evaluation-report"
+  }
+]

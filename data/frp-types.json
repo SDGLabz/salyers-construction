@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "column-jacketing",
+    "name": "Column Jacketing",
+    "summary": "Confinement wraps",
+    "body": "Hoop-direction carbon or glass fiber wraps on reinforced concrete columns. Increases axial capacity, clamps lap splices, and raises displacement ductility from brittle behavior toward ductile under cyclic load.",
+    "whatItDoes": "Confines the concrete core so it can carry more axial load and deform without losing capacity, while restraining lap-splice failure in older, lightly detailed columns.",
+    "relatedStandards": ["aci-440-2r-17", "asce-41-23"]
+  },
+  {
+    "slug": "beam-column-joints",
+    "name": "Beam-Column Joints",
+    "summary": "Non-ductile frame joints",
+    "body": "Older pre-code concrete frames often have under-detailed joints flagged in ASCE 41 review. Targeted bidirectional fabric and anchorage adds joint shear and confinement where stirrups are deficient.",
+    "whatItDoes": "Adds shear capacity and confinement at the joint region of non-ductile moment frames, addressing a common deficiency identified during a seismic evaluation.",
+    "relatedStandards": ["asce-41-23", "aci-440-2r-17"]
+  },
+  {
+    "slug": "shear-strengthening",
+    "name": "Shear Strengthening",
+    "summary": "Beams, walls, columns",
+    "body": "U-wraps, side bonding, or full wraps on the web of beams and on columns and shear walls. Adds shear capacity where stirrups are spaced too far, where loads have grown, or where the seismic demand changed.",
+    "whatItDoes": "Supplies additional shear reinforcement to beams, columns, and walls when transverse steel is insufficient for current loads or revised seismic demand.",
+    "relatedStandards": ["aci-440-2r-17", "asce-41-23"]
+  },
+  {
+    "slug": "flexural-strengthening",
+    "name": "Flexural Strengthening",
+    "summary": "Tension face of slabs and beams",
+    "body": "FRP fabric bonded to the tension side of slabs, joists, and beams adds tensile reinforcement. Used where rebar is deficient, where flexural demand has increased, or where deterioration has reduced section capacity.",
+    "whatItDoes": "Increases bending capacity by adding externally bonded tensile reinforcement to the tension face of flexural members.",
+    "relatedStandards": ["aci-440-2r-17", "astm-frp"]
+  },
+  {
+    "slug": "masonry-retrofit",
+    "name": "Masonry Retrofit",
+    "summary": "Unreinforced masonry walls",
+    "body": "FRP-strengthened URM walls resist in-plane and out-of-plane demand under code-mandated retrofit. Often a piece of a larger envelope upgrade in older commercial and multifamily.",
+    "whatItDoes": "Strengthens unreinforced masonry to resist in-plane and out-of-plane seismic demand, a common requirement of California URM retrofit ordinances.",
+    "relatedStandards": ["cebc-app-a", "cbc-ch16a", "asce-41-23"]
+  },
+  {
+    "slug": "infrastructure",
+    "name": "Infrastructure",
+    "summary": "Bridges, pier caps, marine",
+    "body": "Column wraps, beam strengthening, pier cap repair, splash zone and marine substrate work. Public works and transit owners use FRP to extend service life and meet current seismic demand.",
+    "whatItDoes": "Extends service life and restores or increases capacity on bridges, pier caps, and marine structures while meeting current seismic demand.",
+    "relatedStandards": ["aci-440-2r-17", "aci-440-family", "astm-frp"]
+  }
+]
