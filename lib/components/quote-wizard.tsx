@@ -719,6 +719,11 @@ export function QuoteWizard({
           </label>
         </div>
         {touched && !canAdvance() ? <p className="qw-err">Please add your name, a valid email, and a phone number.</p> : null}
+        <p className="qw-agree">
+          By submitting, you confirm you are at least 18 years old and agree to our{" "}
+          <a href="/terms" target="_blank" rel="noopener noreferrer">Terms</a> and{" "}
+          <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+        </p>
         <div className="qw-nav-row">
           <button type="button" className="btn btn-outline" onClick={back}>
             Back

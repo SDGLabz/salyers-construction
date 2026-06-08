@@ -5068,6 +5068,19 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
   }
 }
 
+/* ---- Wizard: age + agreement affirmation on the contact step ---- */
+.qw-agree {
+  margin-top: 16px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+.qw-agree a {
+  color: var(--orange-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ---- Wizard: drawings upload step ---- */
 .qw-file-drop {
   display: flex;

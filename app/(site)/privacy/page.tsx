@@ -387,12 +387,27 @@ export default function PrivacyPage() {
 
           <h2>13. Children&rsquo;s privacy</h2>
           <p>
-            The Site is intended for businesses and the people who build, own, design,
-            and approve construction projects. It is not directed to children, and we do
-            not knowingly collect personal information from anyone under 16 (or under 13
-            within the meaning of the U.S. Children&rsquo;s Online Privacy Protection
-            Act). If you believe a child has provided personal information, contact us and
-            we will delete it.
+            The Site is a general-audience business website intended for adults — the
+            engineers, contractors, building owners, and public agencies who source,
+            design, and approve construction projects. It is not directed to, or intended
+            for use by, children.
+          </p>
+          <p>
+            Consistent with the U.S. Children&rsquo;s Online Privacy Protection Act
+            (COPPA), we do <strong>not knowingly collect personal information from
+            children under 13</strong>, and we do not ask for a date of birth or
+            otherwise request information that would tell us a visitor is under 13. Our
+            forms ask each person to confirm they are at least 18 years old before
+            submitting. We also do not knowingly collect, sell, or share the personal
+            information of minors under 16, as addressed by California law (and we do not
+            sell or share personal information at all).
+          </p>
+          <p>
+            We do not want personal information from children. If you are a parent or
+            guardian and believe a child under 13 has provided us personal information,
+            or if you otherwise become aware that we may have it, contact us at{" "}
+            <a href={CONTACT.emailHref}>{CONTACT.email}</a> and we will promptly delete it
+            and stop any further collection or use.
           </p>
 
           <h2>14. Automated decision-making</h2>
