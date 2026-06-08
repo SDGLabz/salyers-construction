@@ -6,6 +6,7 @@ import { PageHero } from "@/lib/components/page-hero";
 import { getFrpTypes, getSectors, getMarketBySlug } from "@/lib/catalog";
 import { CONTACT } from "@/lib/contact";
 import { SITE_URL, seoTitle } from "@/lib/site";
+import TiltCards from "@/lib/components/tilt-cards";
 import "./home.css";
 
 export const metadata: Metadata = {
@@ -222,7 +223,7 @@ export default function HomePage() {
                 the engineer of record calls for it.
               </p>
             </div>
-            <div className="mkt-grid">
+            <div className="mkt-grid hx-frp4">
               {frpFour.map((t) => {
                 const photo = FRP_PHOTO[t.slug];
                 return (
@@ -433,6 +434,7 @@ export default function HomePage() {
         </section>
       </main>
       <SiteFooter />
+      <TiltCards />
     </>
   );
 }

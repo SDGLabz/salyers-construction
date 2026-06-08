@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     // Pure byte savings on every optimized image — improves LCP/total weight
     // with no visual change.
     formats: ["image/avif", "image/webp"],
+    qualities: [40, 75],
     // All CMS imagery is localized into our public Vercel Blob store
     // (scripts/localize-assets.mjs). Allow next/Image to optimize from there.
     remotePatterns: [

@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Inter } from "next/font/google";
+import { Google_Sans, Google_Sans_Code } from "next/font/google";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
-// Display / headings / logo wordmark — Archivo Black (official Salyers brand
-// kit). Exposed to globals.css as --font-archivo-black.
-const archivoBlack = Archivo_Black({
+// Display + body — Google Sans (now public on Google Fonts). Exposed to
+// globals.css as --font-google-sans.
+const googleSans = Google_Sans({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-archivo-black",
+  weight: ["400", "500", "700"],
+  variable: "--font-google-sans",
   display: "swap",
 });
 
-// Body / UI / eyebrows — Inter.
-const inter = Inter({
+// Mono for specs, standards codes, and labels — Google Sans Code.
+const googleSansCode = Google_Sans_Code({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600"],
+  variable: "--font-google-sans-code",
   display: "swap",
 });
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${archivoBlack.variable} ${inter.variable}`}>
+    <html lang="en" className={`${googleSans.variable} ${googleSansCode.variable}`}>
       <body>
         <a href="#main" className="skip-link">
           Skip to content

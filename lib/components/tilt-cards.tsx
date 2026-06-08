@@ -20,11 +20,14 @@ import { usePathname } from "next/navigation";
  * second instance with its own selector (its cards live outside this layout).
  */
 const DEFAULT_SELECTOR = [
-  ".pi-card", // /products catalog cards
-  ".aa-card", // /industries (and /application-areas) index cards
-  ".apx-feat", // /applications featured "most requested" bento
-  ".apx-area", // /applications "browse by equipment area" cards
-  ".apx-allcard", // /applications full application list
+  ".bento-card", // shared bento cards (most pages)
+  ".mkt-tile", // markets / sectors photo tiles
+  ".feat-card", // 3-up feature cards
+  ".hx-svc-card", // homepage service cards
+  ".ab-pos-card", // about positioning cards
+  ".cx-card", // certifications cards
+  ".cx-note-card", // certifications note cards
+  ".pg-card", // 404 + misc destination cards
 ].join(",");
 
 export default function TiltCards({ selector = DEFAULT_SELECTOR }: { selector?: string }) {
