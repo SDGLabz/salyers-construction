@@ -7,7 +7,7 @@
     "overview": [
       "Fiber reinforced polymer is a composite of high-strength fibers, carbon or glass, embedded in a polymer matrix. Externally bonded to existing reinforced concrete and masonry, FRP adds tensile capacity, confinement, and ductility without adding meaningful mass to the structure.",
       "FRP fabric is saturated with epoxy and bonded to a prepared substrate. Under load, tensile stress transfers through the bond into the fibers. In confinement applications, hoop-direction fibers restrain lateral expansion of the concrete core, increasing axial capacity and displacement ductility.",
-      "Carbon and glass fabrics with epoxy are designed per ACI 440.2R, applied as part of an ASCE 41 retrofit or code-triggered upgrade, and installed to the Henkel and LOCTITE Tyfo certified system specification. The structural work is technical and the spec is written by other engineers: the structural engineer of record produces the design intent, the system manufacturer's in-house engineering produces the application drawings, and we bid and install to that package, with documented QA at handover."
+      "Carbon and glass fabrics with epoxy are designed per ACI 440.2R, applied as part of an ASCE 41 retrofit or code-triggered upgrade, and installed to the Henkel and LOCTITE Tyfo certified system specification. The structural work is technical and the spec is written by other engineers: the structural engineer of record produces the design intent, Fyfe Engineering on the materials side works with the engineer of record to produce the application drawings, and we bid and install to that package, with documented QA at handover."
     ],
     "workflow": [
       {
@@ -18,7 +18,7 @@
       {
         "step": "02",
         "title": "System Spec",
-        "detail": "Henkel and LOCTITE in-house engineers produce application-specific drawings off the EOR documents: fabric, orientation, layers, overlap, anchorage."
+        "detail": "Fyfe Engineering, on the materials side, works with the engineer of record to produce application-specific drawings off the EOR documents: fabric, orientation, layers, overlap, anchorage."
       },
       {
         "step": "03",
@@ -36,8 +36,7 @@
       "beam-column-joints",
       "shear-strengthening",
       "flexural-strengthening",
-      "masonry-retrofit",
-      "infrastructure"
+      "masonry-retrofit"
     ],
     "metaTitle": "Seismic FRP Retrofit California | Carbon Fiber Strengthening",
     "metaDescription": "Externally bonded carbon and glass FRP seismic retrofit for concrete and masonry across California. Designed per ACI 440.2R and ASCE 41, installed to the Henkel and LOCTITE Tyfo system (ICC-ES ESR-2103)."

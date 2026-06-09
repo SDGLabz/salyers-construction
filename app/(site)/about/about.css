@@ -83,6 +83,18 @@
 .ab-honest-row--out b {
   color: var(--orange-ink);
 }
+/* Uniform hover for ALL four straight-talk rows.
+   The .ab-honest container is `overflow: hidden`, so the default .fb-card drop
+   shadow gets clipped and never shows; and one row is cream at rest. A single
+   shared, opaque hover tint (neutral cool grey — not a brand color) makes every
+   row react identically on hover, regardless of its resting background. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .ab-honest-row.fb-card:hover {
+    background: #eef2f7;
+    box-shadow: none;
+    border-color: var(--border);
+  }
+}
 @media (max-width: 600px) {
   .ab-honest-row {
     grid-template-columns: 1fr;

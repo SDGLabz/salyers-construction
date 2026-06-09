@@ -143,7 +143,7 @@ export default function ServiceAreaPage() {
                 documented at handover. The structure decides where we go — Bay
                 Area, Sacramento, the Central Valley, Greater Los Angeles, the
                 Inland Empire, San Diego, the Central Coast, and points in
-                between. Public infrastructure follows the asset wherever it is.
+                between.
               </p>
               <span className="sa-scope">Statewide California</span>
             </article>

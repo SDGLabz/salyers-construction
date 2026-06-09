@@ -70,11 +70,6 @@ const SECTOR_PHOTO: Record<string, { src: string; alt: string; objPos: string }>
     alt: "FRP fabric bonded to the masonry base of a wood-sided multifamily building exterior",
     objPos: "center 45%",
   },
-  infrastructure: {
-    src: "/images/jobs/job-f.jpg",
-    alt: "Externally bonded carbon fiber strips on the underside of a concrete parking-deck soffit",
-    objPos: "center 35%",
-  },
 };
 
 export default function HomePage() {
@@ -136,7 +131,7 @@ export default function HomePage() {
               Engineered to <em>strengthen</em>. Built to spec.
             </>
           }
-          lead="Seismic FRP retrofit and industrial coatings, statewide California. We install Henkel and LOCTITE Tyfo composite systems and American-made resinous floors from engineer-of-record drawings — on commercial, industrial, multifamily, and infrastructure assets."
+          lead="Seismic FRP retrofit and industrial coatings, statewide California. We install Henkel and LOCTITE Tyfo composite systems and American-made resinous floors from engineer-of-record drawings — on commercial, industrial, and multifamily assets."
         >
           <QuoteWizard label="Request a Bid" triggerClassName="btn btn-primary" />
           <QuoteWizard label="Send Drawings" triggerClassName="btn btn-ghost" initialPath="drawings" />
@@ -202,7 +197,7 @@ export default function HomePage() {
                   <p>
                     Carbon and glass fabric, structurally bonded — column
                     jacketing, shear and flexural strengthening, beam-column
-                    joints, masonry retrofit, and infrastructure, installed from
+                    joints, and masonry retrofit, installed from
                     EOR drawings to the Henkel and LOCTITE Tyfo system.
                   </p>
                   <span className="hx-svc-go">
@@ -286,7 +281,7 @@ export default function HomePage() {
               <p className="lede">
                 Structural strengthening and industrial floors for the people who
                 own, design, and approve the work — commercial, industrial,
-                multifamily, infrastructure, and the facilities behind them.
+                multifamily, and the facilities behind them.
               </p>
             </div>
             <div className="mkt-grid hx-serve4">

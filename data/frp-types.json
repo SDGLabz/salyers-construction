@@ -38,13 +38,5 @@
     "body": "FRP-strengthened URM walls resist in-plane and out-of-plane demand under code-mandated retrofit. Often a piece of a larger envelope upgrade in older commercial and multifamily.",
     "whatItDoes": "Strengthens unreinforced masonry to resist in-plane and out-of-plane seismic demand, a common requirement of California URM retrofit ordinances.",
     "relatedStandards": ["cebc-app-a", "cbc-ch16a", "asce-41-23"]
-  },
-  {
-    "slug": "infrastructure",
-    "name": "Infrastructure",
-    "summary": "Bridges, pier caps, marine",
-    "body": "Column wraps, beam strengthening, pier cap repair, splash zone and marine substrate work. Public works and transit owners use FRP to extend service life and meet current seismic demand.",
-    "whatItDoes": "Extends service life and restores or increases capacity on bridges, pier caps, and marine structures while meeting current seismic demand.",
-    "relatedStandards": ["aci-440-2r-17", "aci-440-family", "astm-frp"]
   }
 ]

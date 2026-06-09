@@ -54,11 +54,6 @@ const FRP_PHOTO: Record<
     alt: "Historic Merced County Courthouse, a masonry building of the type addressed by California URM seismic retrofit work",
     pos: "center 35%",
   },
-  infrastructure: {
-    src: "/images/jobs/job-3850.jpg",
-    alt: "Concrete structural member on an infrastructure retrofit prepared for fiber reinforced polymer strengthening",
-    pos: "center 50%",
-  },
 };
 
 export default function SeismicPage() {
@@ -238,7 +233,7 @@ export default function SeismicPage() {
         <div className="wrap">
           <div className="sec-head">
             <p className="eyebrow">FRP retrofit, by member</p>
-            <h2>Six ways we apply fiber reinforced polymer</h2>
+            <h2>Five ways we apply fiber reinforced polymer</h2>
             <p className="lede">
               The fabric, orientation, and anchorage change with the deficiency. These
               are the applications we install most across concrete and masonry.
@@ -325,8 +320,10 @@ export default function SeismicPage() {
               strengthening system — the same composite the design references. It is
               covered by ICC-ES Evaluation Report <code>ESR-2103</code>, which
               documents the tested properties, design assumptions, and conditions of
-              use for concrete and masonry. We order from the manufacturer, install per
-              their application drawings, and close the QA paper trail at handover.
+              use for concrete and masonry. Fyfe Engineering, on the materials side,
+              works with the structural engineer of record to produce those
+              application drawings. We order from the manufacturer, install per their
+              application drawings, and close the QA paper trail at handover.
             </p>
           </div>
         </div>
@@ -344,7 +341,7 @@ export default function SeismicPage() {
               people accountable for the building.
             </p>
           </div>
-          <div className="sx-adds">
+          <div className="sx-people">
             {personas.map((p) => (
               <article key={p.slug} className="feat-card">
                 <h3>{p.name}</h3>

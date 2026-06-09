@@ -119,11 +119,12 @@ export default function AboutPage() {
             <div className="eyebrow">Where we fit</div>
             <h2>Built for the work bigger contractors will not bid.</h2>
             <p className="lede">
-              The bigger seismic and structural strengthening shops in California —
-              Penhall, Pullman Services (which absorbed FT Thomas), Structural
-              Technologies, and the broader union sector — focus on the largest
-              infrastructure and concrete restoration contracts. We pick up the
-              engineered work that sits beneath that threshold.
+              The bigger structural strengthening and concrete-restoration
+              contractors in California — Pullman and Structural Technologies (both
+              Structural Group companies), Penhall&rsquo;s seismic-retrofit division,
+              and the broader union sector — are built around the largest
+              infrastructure and restoration programs. We pick up the engineered
+              work that sits beneath that threshold.
             </p>
           </div>
           <div className="ab-pos">
@@ -161,9 +162,9 @@ export default function AboutPage() {
               <p>
                 The structural work is technical and the spec is written by other
                 engineers. The structural engineer of record produces the design
-                intent. The system manufacturer&rsquo;s in-house engineering produces
-                the application drawings. We bid and install to that package, with
-                documented QA at handover.
+                intent. Fyfe Engineering, on the materials side, works with the
+                engineer of record to produce the application drawings. We bid and
+                install to that package, with documented QA at handover.
               </p>
               <p>
                 Salyers does not pretend to be a 200-person concrete restoration
@@ -174,10 +175,9 @@ export default function AboutPage() {
               </p>
               <h3>What that looks like in scope</h3>
               <p>
-                <strong>Seismic FRP</strong> covers commercial, industrial,
-                multifamily, and infrastructure — concrete and masonry strengthening,
-                column wraps, pier caps, and beam strengthening, including marine
-                substrates under public works contracts. <strong>Industrial
+                <strong>Seismic FRP</strong> covers commercial, industrial, and
+                multifamily — concrete and masonry strengthening, column wraps, beam
+                strengthening, and shear and flexural strengthening. <strong>Industrial
                 coatings</strong> are epoxy and resinous systems for industrial floors,
                 parking decks, and high-traffic commercial. Seismic is statewide;
                 coatings are tighter, with Northern California as the base.
@@ -357,8 +357,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ---- Closing CTA band ---- */}
-      <section className="sec" style={{ paddingTop: 0 }}>
+      {/* ---- Closing CTA band (full section padding = white space all around) ---- */}
+      <section className="sec">
         <div className="wrap">
           <div className="cta-band">
             <div className="cta-band-inner">
