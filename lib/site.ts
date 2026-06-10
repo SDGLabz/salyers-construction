@@ -1,7 +1,6 @@
 // Canonical site URL for metadata, canonical tags, sitemap, and JSON-LD.
-// TODO(launch): swap to the production domain (e.g. salyersconstruction.com)
-// once DNS points at Vercel.
-export const SITE_URL = "https://salyers-construction.vercel.app";
+// Production domain — live as of the 2026-06 DNS cutover to Vercel.
+export const SITE_URL = "https://salyersgc.com";
 export const SITE_NAME = "Salyers Construction";
 
 /**
