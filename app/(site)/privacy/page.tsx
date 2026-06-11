@@ -86,9 +86,9 @@ export default function PrivacyPage() {
             <article className="bento-card">
               <h3>Tracking</h3>
               <p>
-                No third-party analytics or ad pixel runs today. If one is ever
-                added, the consent banner gates it and we honor Global Privacy
-                Control.
+                We use Google Analytics to understand how the Site is used. It runs
+                only when you have not declined and no Global Privacy Control signal
+                is present &mdash; the consent banner gates it.
               </p>
             </article>
             <article className="bento-card">
@@ -235,9 +235,10 @@ export default function PrivacyPage() {
             <li>
               <strong>Service providers / processors.</strong> A small number of vendors
               process information on our behalf, under contract, solely to provide their
-              service — including our hosting and infrastructure provider (Vercel) and
-              our email-delivery provider (Resend), which transmits your form submission
-              to us.
+              service — including our hosting and infrastructure provider (Vercel), our
+              email-delivery provider (Resend), which transmits your form submission to
+              us, and Google LLC, which provides Google Analytics (website-usage
+              measurement) subject to your analytics consent.
             </li>
             <li>
               <strong>Project participants.</strong> When necessary to do the work you
@@ -273,14 +274,21 @@ export default function PrivacyPage() {
             choice and is not used to track you.
           </p>
           <p>
-            <strong>Analytics and advertising.</strong> The Site is built to support, but
-            does <strong>not currently run</strong>, any third-party analytics or
-            identity/advertising pixel, and we do not use cookies for cross-site tracking
-            or targeted advertising. If we enable such technologies in the future, the
-            consent banner lets you decline them, and we will honor your
-            &ldquo;Decline&rdquo; choice, your browser settings, and the Global Privacy
-            Control (GPC) signal — a GPC signal detected in your browser is treated as a
-            decline automatically.
+            <strong>Analytics.</strong> The Site uses <strong>Google Analytics 4</strong>,
+            a web-analytics service provided by Google LLC, to measure traffic and
+            understand how visitors use the Site — for example, pages viewed, referring
+            links, and the approximate region and device/browser type derived from your IP
+            address (Google Analytics 4 does not log or store your full IP address). Google
+            Analytics sets first-party cookies and processes this usage data on our behalf
+            as a service provider. We have <strong>not</strong> enabled Google Analytics
+            advertising features, and we do not use it for cross-context behavioral
+            advertising or to build cross-site profiles of you. Google Analytics loads
+            through Google Consent Mode and runs <strong>only when analytics consent is
+            granted</strong> — that is, when you have not clicked &ldquo;Decline&rdquo; and
+            no Global Privacy Control (GPC) signal is present. A &ldquo;Decline&rdquo;
+            choice or a GPC signal detected in your browser is treated as a decline
+            automatically, and no analytics cookies are set. You can also opt out using
+            Google&rsquo;s browser add-on at tools.google.com/dlpage/gaoptout.
           </p>
           <p>
             <strong>Your controls.</strong> Use the banner&rsquo;s Accept / Decline
@@ -423,12 +431,13 @@ export default function PrivacyPage() {
           <h2>15. Do Not Track and Global Privacy Control</h2>
           <p>
             Some browsers offer &ldquo;Do Not Track&rdquo; signals and a Global Privacy
-            Control (GPC) signal. Because the Site does not run cross-context behavioral
-            advertising or third-party analytics today, there is currently nothing for
-            these signals to disable; however, where a GPC signal is present, we treat it
-            as a valid request to opt out of any sale or sharing and to decline
-            non-essential technologies, and we would honor it automatically if such
-            technologies were ever enabled.
+            Control (GPC) signal. The Site runs Google Analytics but does not run
+            cross-context behavioral advertising. Where a GPC signal is present, we treat
+            it as a valid request to opt out of any sale or sharing and to decline
+            non-essential technologies, and we honor it automatically — Google Analytics is
+            not loaded and no analytics cookies are set. Because we do not run
+            cross-context behavioral advertising, we do not respond differently to legacy
+            &ldquo;Do Not Track&rdquo; headers.
           </p>
 
           <h2>16. Changes to this Policy</h2>

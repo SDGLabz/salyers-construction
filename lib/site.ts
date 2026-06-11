@@ -1,6 +1,9 @@
 // Canonical site URL for metadata, canonical tags, sitemap, and JSON-LD.
 // Production domain — live as of the 2026-06 DNS cutover to Vercel.
-export const SITE_URL = "https://salyersgc.com";
+// Uses the www form because Vercel serves www as the primary domain
+// (apex salyersgc.com 308-redirects to www) — keeps the sitemap/canonical
+// URLs matching the URLs that actually return 200.
+export const SITE_URL = "https://www.salyersgc.com";
 export const SITE_NAME = "Salyers Construction";
 
 /**

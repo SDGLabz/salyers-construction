@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Google_Sans, Google_Sans_Code } from "next/font/google";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { CookieConsent } from "@/lib/components/cookie-consent";
+import { Analytics } from "@/lib/components/analytics";
 import "./globals.css";
 
 // Display + body — Google Sans (now public on Google Fonts). Exposed to
@@ -45,6 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${googleSans.variable} ${googleSansCode.variable}`}>
       <body>
+        <Analytics />
         <a href="#main" className="skip-link">
           Skip to content
         </a>

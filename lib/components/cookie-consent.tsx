@@ -33,6 +33,14 @@ export function isTrackingAllowed(): boolean {
   return status !== "declined";
 }
 
+/** Push a live Consent Mode update to Google Analytics, if it has loaded. */
+function updateAnalyticsConsent(state: "granted" | "denied") {
+  const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+  if (typeof w.gtag === "function") {
+    w.gtag("consent", "update", { analytics_storage: state });
+  }
+}
+
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
@@ -54,11 +62,13 @@ export function CookieConsent() {
 
   const accept = () => {
     localStorage.setItem(CONSENT_KEY, "accepted");
+    updateAnalyticsConsent("granted");
     setVisible(false);
   };
 
   const decline = () => {
     localStorage.setItem(CONSENT_KEY, "declined");
+    updateAnalyticsConsent("denied");
     setVisible(false);
   };
 
@@ -66,9 +76,9 @@ export function CookieConsent() {
     <div className="cc-banner" role="dialog" aria-label="Cookie consent">
       <div className="cc-inner">
         <p className="cc-text">
-          We store one small preference to remember your cookie choice. This site
-          doesn&rsquo;t currently run third-party analytics or advertising &mdash; and
-          if that ever changes, you can decline it here.{" "}
+          We use Google Analytics to understand how visitors use this site, plus one
+          small preference cookie to remember your choice. You can decline
+          non-essential analytics here &mdash; we also honor Global Privacy Control.{" "}
           <Link href="/privacy" className="cc-link">
             Privacy Policy
           </Link>

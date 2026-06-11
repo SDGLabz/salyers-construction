@@ -7,8 +7,8 @@ import { CONTACT } from "@/lib/contact";
  *
  * Required env (set in Vercel → Project → Environment Variables):
  *   RESEND_API_KEY  — your Resend API key
- *   RESEND_FROM     — verified sender, e.g. "Salyers Construction <bids@salyersconstruction.com>"
- *   RESEND_TO       — (optional) inbox; defaults to the company email
+ *   RESEND_FROM     — verified sender, e.g. "Salyers Construction <bids@salyersgc.com>"
+ *   RESEND_TO       — (optional) inbox; defaults to CONTACT.email (nick@salyersgc.com)
  */
 export const runtime = "nodejs";
 
