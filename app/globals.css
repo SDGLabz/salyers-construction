@@ -5317,39 +5317,54 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
   from { opacity: 1; }
   to { opacity: 0; }
 }
-/* Genie effect — the panel funnels out of / back into the launcher corner
-   (origin bottom-right): a point → thin tall strip → full panel, with a slight
-   skew warp at the collapsed end. */
+/* Genie effect (macOS Dock style) — origin is the launcher corner. The motion
+   is two-stage like the real Dock: RESTORE = a skewed point at the launcher →
+   rises into a thin full-height "neck" → unfurls wide with a soft settle.
+   MINIMIZE = the reverse: width pulls into the neck, then the body slurps down
+   the neck and sucks into the point. The skewX gives the curved-funnel lean and
+   the translate makes it travel into/out of the dock. */
 @keyframes awPanelIn {
   0% {
     opacity: 0;
-    transform: scale(0.04, 0.015) skewY(9deg);
+    transform: translate(-34px, -34px) scaleX(0.05) scaleY(0.02) skewX(-10deg);
   }
-  38% {
+  14% {
     opacity: 1;
-    transform: scale(0.2, 1) skewY(0);
+    transform: translate(0, 0) scaleX(0.1) scaleY(0.5) skewX(-6deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(0.16) scaleY(1) skewX(0deg);
+  }
+  80% {
+    opacity: 1;
+    transform: scaleX(1.015) scaleY(1) skewX(0deg);
   }
   100% {
     opacity: 1;
-    transform: scale(1, 1) skewY(0);
+    transform: scaleX(1) scaleY(1);
   }
 }
 @keyframes awPanelOut {
   0% {
     opacity: 1;
-    transform: scale(1, 1) skewY(0);
+    transform: scaleX(1) scaleY(1);
+  }
+  24% {
+    opacity: 1;
+    transform: scaleX(0.16) scaleY(1) skewX(0deg);
   }
   55% {
     opacity: 1;
-    transform: scale(0.2, 1) skewY(0);
+    transform: translate(0, 0) scaleX(0.1) scaleY(0.5) skewX(-6deg);
   }
   100% {
     opacity: 0;
-    transform: scale(0.04, 0.015) skewY(9deg);
+    transform: translate(-34px, -34px) scaleX(0.05) scaleY(0.02) skewX(-10deg);
   }
 }
 .aw-fade-in { animation: awFadeIn 0.3s var(--ease) both; }
-.aw-fade-out { animation: awFadeOut 0.4s var(--ease) both; }
+.aw-fade-out { animation: awFadeOut 0.5s var(--ease) both; }
 .aw-panel {
   position: relative;
   z-index: 1;
@@ -5368,8 +5383,8 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
     0 12px 32px -18px rgba(4, 30, 66, 0.4);
   font-family: var(--font);
 }
-.aw-panel-in { animation: awPanelIn 0.5s cubic-bezier(0.5, 0, 0.2, 1) both; }
-.aw-panel-out { animation: awPanelOut 0.42s cubic-bezier(0.5, 0, 0.5, 1) both; }
+.aw-panel-in { animation: awPanelIn 0.62s cubic-bezier(0.32, 0.72, 0, 1) both; }
+.aw-panel-out { animation: awPanelOut 0.54s cubic-bezier(0.5, 0, 0.84, 0.25) both; }
 @media (max-width: 560px) {
   .aw-panel {
     width: 100vw;

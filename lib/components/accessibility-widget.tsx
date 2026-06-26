@@ -408,7 +408,7 @@ function Widget() {
     window.setTimeout(() => {
       setOpen(false);
       setClosing(false);
-    }, 440);
+    }, 560);
   }, []);
 
   // "Hide Interface" removes the widget for this page session; a reload
