@@ -401,13 +401,14 @@ function Widget() {
   const { settings, activeCount } = useA11y();
   const launcherRef = useRef<HTMLButtonElement>(null);
 
-  // Close with a brief slide-out before unmounting the panel.
+  // Close with the genie-out animation before unmounting the panel (timeout
+  // matches the .aw-panel-out animation duration in globals.css).
   const close = useCallback(() => {
     setClosing(true);
     window.setTimeout(() => {
       setOpen(false);
       setClosing(false);
-    }, 280);
+    }, 440);
   }, []);
 
   // "Hide Interface" removes the widget for this page session; a reload
