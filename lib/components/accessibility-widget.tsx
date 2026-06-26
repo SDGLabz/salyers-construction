@@ -797,6 +797,15 @@ function Panel({
 
         {/* Footer */}
         <div className="aw-foot">
+          <button
+            type="button"
+            onClick={reset}
+            disabled={activeCount === 0}
+            className="aw-foot__reset"
+          >
+            <RotateCcw aria-hidden />
+            Reset all settings
+          </button>
           <div className="aw-foot__row">
             <Link href="/accessibility" onClick={onClose} className="aw-foot__link">
               Accessibility Statement

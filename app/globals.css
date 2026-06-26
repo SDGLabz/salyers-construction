@@ -5924,6 +5924,47 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
   border-top: 1px solid var(--border);
   background: var(--surface);
 }
+.aw-foot__reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--belzona-blue);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color 0.2s var(--ease),
+    background 0.2s var(--ease),
+    color 0.2s var(--ease),
+    transform 0.2s var(--spring);
+}
+.aw-foot__reset svg {
+  width: 16px;
+  height: 16px;
+}
+.aw-foot__reset:hover:not(:disabled) {
+  border-color: var(--belzona-blue);
+  background: var(--belzona-blue);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.aw-foot__reset:focus-visible {
+  box-shadow: 0 0 0 2.5px rgba(21, 38, 63, 0.3);
+}
+.aw-foot__reset:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
 .aw-foot__row {
   display: flex;
   align-items: center;
