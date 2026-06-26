@@ -9,13 +9,18 @@
 import Image from "next/image";
 
 export function Logo({ light = false }: { light?: boolean }) {
-  // Single all-red (monochrome) logo — works on both the white nav/menu and the
-  // navy footer/widget chrome, so the same file is used everywhere. The `light`
-  // prop is kept for call-site compatibility (style-only class hook).
+  // Two-tone logo so the wordmark stays legible: dark chrome (footer, mobile
+  // menu, quote-wizard + widget headers) uses the white-wordmark variant; the
+  // light top nav uses the navy-wordmark variant. SC + skyline are brand red in
+  // both. (All-red was unreadable — the same-color letters merged together.)
   return (
-    <span className={`sc-logo${light ? " sc-logo--light" : ""}`} aria-hidden="true">
+    <span className="sc-logo" aria-hidden="true">
       <Image
-        src="/images/brand/salyers-logo.png"
+        src={
+          light
+            ? "/images/brand/salyers-logo.png"
+            : "/images/brand/salyers-logo-light.png"
+        }
         alt=""
         width={230}
         height={340}
