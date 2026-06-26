@@ -39,7 +39,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="wrap site-nav">
         <Link href="/" className="site-logo" aria-label="Salyers Construction — home">
-          <Logo />
+          <Logo legacy />
         </Link>
         <nav className="site-links" aria-label="Primary">
           <Link href="/seismic">Seismic FRP</Link>
