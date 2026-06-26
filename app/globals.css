@@ -1614,14 +1614,14 @@ section {
   display: flex;
   align-items: center;
   gap: 28px;
-  height: 72px;
+  height: 80px;
 }
 .site-logo {
   display: inline-flex;
   align-items: center;
 }
 .site-logo img {
-  height: 48px;
+  height: 66px;
   width: auto;
   display: block;
 }

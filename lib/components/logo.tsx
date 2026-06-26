@@ -9,13 +9,20 @@
 import Image from "next/image";
 
 export function Logo({ light = false }: { light?: boolean }) {
+  // Dark chrome (footer, mobile menu, quote-wizard + widget headers) uses the
+  // white-wordmark variant; the light top nav uses the navy-wordmark variant so
+  // it stays legible on white.
   return (
-    <span className={`sc-logo${light ? " sc-logo--light" : ""}`} aria-hidden="true">
+    <span className="sc-logo" aria-hidden="true">
       <Image
-        src="/images/brand/salyers-logo.png"
+        src={
+          light
+            ? "/images/brand/salyers-logo.png"
+            : "/images/brand/salyers-logo-light.png"
+        }
         alt=""
-        width={425}
-        height={404}
+        width={230}
+        height={340}
         className="sc-logo-img"
         priority
         unoptimized
