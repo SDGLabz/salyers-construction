@@ -1619,13 +1619,9 @@ section {
 .site-logo {
   display: inline-flex;
   align-items: center;
-  padding: 6px 10px;
-  border-radius: 11px;
-  /* the logo's own navy — keeps its white wordmark legible on the light nav */
-  background: #002134;
 }
 .site-logo img {
-  height: 46px;
+  height: 48px;
   width: auto;
   display: block;
 }
@@ -4591,7 +4587,8 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
 
 /* ---- Footer: bigger real logo + a second "Request a Bid" CTA ---- */
 .sf-brand .sc-logo-img {
-  height: 58px;
+  height: 86px;
+  margin-bottom: 16px;
 }
 .sf-cta {
   margin-top: 20px;
