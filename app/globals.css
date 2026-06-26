@@ -65,10 +65,10 @@
   width: auto;
   display: block;
 }
-/* Source art is solid black on transparent → invert to white on dark chrome. */
-.sc-logo--light .sc-logo-img {
-  filter: brightness(0) invert(1);
-}
+/* The official logo is a transparent colored PNG (red SC + skyline, red/white
+   wordmark), so it sits on the site's navy chrome as-is — no inversion. On the
+   light top nav it gets a navy plaque (see .site-logo) so the white wordmark
+   stays legible. */
 /* Homepage "What FRP does" — 4 cards as a balanced 2x2 (not 3+1) */
 .mkt-grid.hx-frp4 {
   grid-template-columns: repeat(2, 1fr);
@@ -1616,8 +1616,16 @@ section {
   gap: 28px;
   height: 72px;
 }
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 11px;
+  /* the logo's own navy — keeps its white wordmark legible on the light nav */
+  background: #002134;
+}
 .site-logo img {
-  height: 50px;
+  height: 46px;
   width: auto;
   display: block;
 }
