@@ -1,21 +1,24 @@
-// Salyers Construction's real logo — the SC monogram under the twin Golden Gate
-// bridge towers with the "SALYERS CONSTRUCTION" wordmark, as used on the trucks
-// and the approved site. The source art is solid black on transparent, so the
-// `light` variant just inverts it to white for dark navy chrome (header over the
-// hero, footer, mobile menu, wizard). Sizing is controlled by each context's CSS
-// (.site-logo img, .sf-brand .sc-logo-img, .qw-brand img, etc.).
+// Salyers Construction logo — red city-skyline + "SC" monogram and the
+// "SALYERS CONSTRUCTION" wordmark. Two contrast-tuned variants so it stays
+// legible on either background: navy wordmark for light chrome (the top nav) and
+// white wordmark for dark chrome (footer, mobile menu, quote-wizard and
+// accessibility-widget headers). The SC monogram + skyline stay brand red in
+// both. Sizing is controlled by each context's CSS (.site-logo img,
+// .sf-brand .sc-logo-img, .qw-brand img, .aw-head .sc-logo-img). To swap in the
+// final artwork, drop the file in and point `src` at it.
 import Image from "next/image";
 
 export function Logo({ light = false }: { light?: boolean }) {
   return (
-    <span className={`sc-logo${light ? " sc-logo--light" : ""}`} aria-hidden="true">
+    <span className="sc-logo" aria-hidden="true">
       <Image
-        src="/images/brand/salyers-logo.png"
+        src={`/images/brand/salyers-logo-on-${light ? "dark" : "light"}.svg`}
         alt=""
-        width={800}
-        height={800}
+        width={252}
+        height={92}
         className="sc-logo-img"
         priority
+        unoptimized
       />
     </span>
   );
