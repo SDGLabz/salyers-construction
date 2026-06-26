@@ -3,6 +3,7 @@ import { Google_Sans, Google_Sans_Code } from "next/font/google";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { CookieConsent } from "@/lib/components/cookie-consent";
 import { Analytics } from "@/lib/components/analytics";
+import { AccessibilityWidget } from "@/lib/components/accessibility-widget";
 import "./globals.css";
 
 // Display + body — Google Sans (now public on Google Fonts). Exposed to
@@ -50,8 +51,15 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        {children}
+        {/* #a11y-root + #a11y-shade wrap all page content so the accessibility
+            widget's page-level effects (contrast/saturation filters, recolor,
+            read mode, etc.) apply to the site but never to the widget itself,
+            which renders below as a sibling. */}
+        <div id="a11y-root">
+          <div id="a11y-shade">{children}</div>
+        </div>
         <CookieConsent />
+        <AccessibilityWidget />
       </body>
     </html>
   );
