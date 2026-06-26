@@ -9,17 +9,13 @@
 import Image from "next/image";
 
 export function Logo({ light = false }: { light?: boolean }) {
-  // Dark chrome (footer, mobile menu, quote-wizard + widget headers) uses the
-  // white-wordmark variant; the light top nav uses the navy-wordmark variant so
-  // it stays legible on white.
+  // Single all-red (monochrome) logo — works on both the white nav/menu and the
+  // navy footer/widget chrome, so the same file is used everywhere. The `light`
+  // prop is kept for call-site compatibility (style-only class hook).
   return (
-    <span className="sc-logo" aria-hidden="true">
+    <span className={`sc-logo${light ? " sc-logo--light" : ""}`} aria-hidden="true">
       <Image
-        src={
-          light
-            ? "/images/brand/salyers-logo.png"
-            : "/images/brand/salyers-logo-light.png"
-        }
+        src="/images/brand/salyers-logo.png"
         alt=""
         width={230}
         height={340}
