@@ -1614,14 +1614,14 @@ section {
   display: flex;
   align-items: center;
   gap: 28px;
-  height: 80px;
+  height: 94px;
 }
 .site-logo {
   display: inline-flex;
   align-items: center;
 }
 .site-logo img {
-  height: 66px;
+  height: 80px;
   width: auto;
   display: block;
 }
@@ -3845,7 +3845,7 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
 .mnav-logo { display: inline-flex; }
 .mnav-logo img {
   display: block;
-  height: 34px;
+  height: 62px;
   width: auto;
 }
 .mnav-x {

@@ -58,7 +58,7 @@ export function MobileMenu() {
     <div className="mnav" role="dialog" aria-modal="true" aria-label="Menu">
       <div className="mnav-top">
         <Link href="/" className="mnav-logo" onClick={close} aria-label="Salyers Construction — home">
-          <Logo light />
+          <Logo />
         </Link>
         <button type="button" className="mnav-x" aria-label="Close menu" onClick={close}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
