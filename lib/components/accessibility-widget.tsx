@@ -816,7 +816,14 @@ function Panel({
             </span>
           </div>
           <p className="aw-foot__by">
-            Accessibility tools by <span>Salyers Construction</span>
+            Accessibility tools by{" "}
+            <a
+              href="https://www.spiderdigitalgroup.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Spider Digital Group</span>
+            </a>
           </p>
         </div>
       </div>

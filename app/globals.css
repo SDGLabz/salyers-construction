@@ -6051,6 +6051,14 @@ a.ct-line .ct-line-v { color: var(--belzona-blue); }
   font-weight: 700;
   color: var(--belzona-blue);
 }
+.aw-foot__by a {
+  text-decoration: none;
+}
+.aw-foot__by a:hover span,
+.aw-foot__by a:focus-visible span {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 
 /* ---- cursor-following portals (rendered outside #a11y-root) ---- */
 .aw-magnifier {
