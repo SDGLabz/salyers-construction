@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description:
     service?.metaDescription ??
     "Externally bonded carbon and glass FRP seismic retrofit for concrete and masonry across California — Henkel and LOCTITE Tyfo, ACI 440.2R, ASCE 41, ICC-ES ESR-2103.",
+  alternates: { canonical: `${SITE_URL}/seismic` },
 };
 
 // One real seismic/structural photo per FRP service-type (accurate alt text +
@@ -88,6 +89,20 @@ export default function SeismicPage() {
     areaServed: {
       "@type": "State",
       name: "California",
+    },
+    // Enumerate the real FRP retrofit applications shown on this page as a
+    // catalog of sub-services (built from the same catalog data the page renders).
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Seismic FRP retrofit applications",
+      itemListElement: frpTypes.map((t) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: t.name,
+          description: t.whatItDoes,
+        },
+      })),
     },
     url: `${SITE_URL}/seismic`,
   };

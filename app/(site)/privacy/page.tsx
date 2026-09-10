@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: seoTitle("Privacy Policy"),
   description:
     "How Salyers Construction collects, uses, discloses, retains, and protects personal information through this website, and the privacy rights of California, other U.S. state, and international (GDPR/UK) residents.",
+  alternates: { canonical: `${SITE_URL}/privacy` },
 };
 
 export default function PrivacyPage() {

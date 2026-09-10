@@ -86,6 +86,20 @@ const serviceLd = {
     },
   },
   areaServed: { "@type": "State", name: "California" },
+  // Enumerate the real resinous coating systems shown on this page as a catalog
+  // of sub-services (built from the same catalog data the systems accordion renders).
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Resinous floor coating systems",
+    itemListElement: systems.map((s) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: s.name,
+        description: s.body,
+      },
+    })),
+  },
   url: `${SITE_URL}/coatings`,
 };
 

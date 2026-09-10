@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: seoTitle("Certifications & Standards"),
   description:
     "The credentials behind a Salyers Construction bid in California: CSLB B1 #960653 general building contractor since 2011, a certified Henkel/LOCTITE Tyfo FRP applicator (ICC-ES ESR-2103), and a trained Polymer Nation coatings installer.",
+  alternates: { canonical: `${SITE_URL}/certifications` },
 };
 
 // Each credential gets a photo that accurately depicts what it backs.

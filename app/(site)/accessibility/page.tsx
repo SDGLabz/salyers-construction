@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: seoTitle("Accessibility Statement"),
   description:
     "Salyers Construction's commitment to digital accessibility — the on-page accessibility tool, the standards we work toward (WCAG 2.1 AA), and how to report a barrier.",
+  alternates: { canonical: `${SITE_URL}/accessibility` },
 };
 
 const breadcrumbLd = {

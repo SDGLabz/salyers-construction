@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: seoTitle("FAQ — Seismic FRP & Coatings"),
   description:
     "Answers to the questions structural engineers, GCs, and building owners ask Salyers Construction about seismic FRP retrofit and industrial epoxy floor coatings across California — added mass, ACI 440.2R and ASCE 41 standards, occupancy, cure and return-to-service, surface prep, and how a written bid turns into an installed job.",
+  alternates: { canonical: `${SITE_URL}/faq` },
 };
 
 // Topic groups, in the order engineers tend to ask about them.

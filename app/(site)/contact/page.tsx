@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: seoTitle("Contact — Request a Bid"),
   description:
     "Request a written, itemized bid for seismic FRP retrofit or industrial epoxy coatings in California, or send project drawings. Salyers Construction, B1 #960653, Roseville CA. Bids back in 1–2 business days.",
+  alternates: { canonical: `${SITE_URL}/contact` },
 };
 
 const breadcrumbLd = {

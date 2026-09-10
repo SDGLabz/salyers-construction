@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: seoTitle("Terms & Conditions"),
   description:
     "The Terms & Conditions for the Salyers Construction website: acceptable use, intellectual property, disclaimers, limitation of liability, binding arbitration and class-action waiver, California governing law, and required consumer notices.",
+  alternates: { canonical: `${SITE_URL}/terms` },
 };
 
 export default function TermsPage() {

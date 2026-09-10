@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: seoTitle("Projects"),
   description:
     "A featured Salyers Construction seismic retrofit: carbon FRP strips bonded to a working parking-structure slab underside in California, phased so tenant access never stopped. Documented job references available on request.",
+  alternates: { canonical: `${SITE_URL}/projects` },
 };
 
 // Honest, accurate prep → install → cure sequence (verbatim from the source site).

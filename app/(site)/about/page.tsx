@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: seoTitle("About Salyers Construction"),
   description:
     "A California B1 general contractor since 2011 (CSLB #960653). Engineering-rigorous seismic FRP retrofit statewide, plus Polymer Nation industrial coatings in Northern California. Engineering first, hands behind it.",
+  alternates: { canonical: `${SITE_URL}/about` },
 };
 
 const breadcrumbLd = {

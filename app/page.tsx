@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: seoTitle("Seismic FRP Retrofit & Industrial Coatings California"),
   description:
     "Salyers Construction is a California B1 general contractor (#960653, since 2011) for seismic FRP retrofit and industrial epoxy coatings statewide — Sacramento, the Bay Area, Los Angeles, and San Diego. Installed from engineer-of-record drawings.",
+  alternates: { canonical: SITE_URL },
 };
 
 // Arrow glyph reused on links/CTAs.
